@@ -33,7 +33,6 @@
 </head>
 
 <body>
-
     <div class="wrapper">
 
         @include('./layouts.header')
@@ -41,6 +40,69 @@
         @include('./layouts.sidebar')
 
         <main class="page-content">
+
+            <div class="row row-cols-1 row-cols-md-2 row-cols-lg-2 row-cols-xl-4">
+                <div class="col">
+                    <div class="card radius-10">
+                        <div class="card-body">
+                            <div class="d-flex align-items-center">
+                                <div>
+                                    <h5 class="mb-0 text-secondary">Returning Guest</h5>
+                                    <h4 class="my-1">4805</h4>
+                                    <!-- <p class="mb-0 font-13 text-success"><i class="bi bi-caret-up-fill"></i> 5% from last week</p> -->
+                                </div>
+                                <div class="widget-icon-large bg-gradient-purple text-white ms-auto"><i class="bi bi-people-fill"></i>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="col">
+                    <div class="card radius-10">
+                        <div class="card-body">
+                            <div class="d-flex align-items-center">
+                                <div>
+                                    <h5 class="mb-0 text-secondary">New Guest</h5>
+                                    <h4 class="my-1">242</h4>
+                                </div>
+                                <div class="widget-icon-large bg-gradient-success text-white ms-auto"><i class="bi bi-people-fill"></i>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="col">
+                    <div class="card radius-10">
+                        <div class="card-body">
+                            <div class="d-flex align-items-center">
+                                <div>
+                                    <h5 class="mb-0 text-secondary">Guest Nationalities</h5>
+                                    <h4 class="my-1">450</h4>
+                                </div>
+                                <div class="widget-icon-large bg-gradient-danger text-white ms-auto"><i class="bi bi-people-fill"></i>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="col">
+                    <div class="card radius-10">
+                        <div class="card-body">
+                            <div class="d-flex align-items-center">
+                                <div>
+                                    <h5 class="mb-0 text-secondary">Active Loactions</h5>
+                                    <h4 class="my-1">100</h4>
+                                </div>
+                                <div class="widget-icon-large bg-gradient-info text-white ms-auto"><i class="bi bi-bar-chart-line-fill"></i>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <!--end row-->
+
+
             <div class="row">
                 <div class="col-12 col-lg-8 col-xl-8 d-flex">
                     <div class="card radius-10 w-100">
@@ -102,6 +164,8 @@
                     </div>
                 </div>
             </div>
+            <!--end row-->
+
             <div class="row">
                 <div class="col-12 col-lg-6 col-xl-6 d-flex">
                     <div class="card radius-10 w-100">
@@ -163,10 +227,15 @@
                     </div>
                 </div>
             </div>
+            <!--end row-->
+
+
         </main>
 
         <div class="overlay nav-toggle-icon"></div>
+
         <a href="javaScript:;" class="back-to-top"><i class='bx bxs-up-arrow-alt'></i></a>
+
         <div class="switcher-body">
             <button class="btn btn-primary btn-switcher shadow-sm" type="button" data-bs-toggle="offcanvas" data-bs-target="#offcanvasScrolling" aria-controls="offcanvasScrolling"><i class="bi bi-paint-bucket me-0"></i></button>
             <div class="offcanvas offcanvas-end shadow border-start-0 p-2" data-bs-scroll="true" data-bs-backdrop="false" tabindex="-1" id="offcanvasScrolling">
@@ -228,10 +297,12 @@
                 </div>
             </div>
         </div>
+        <!--end switcher-->
+
     </div>
 
     <script src="/assets/js/bootstrap.bundle.min.js"></script>
-
+    <!--plugins-->
     <script src="/assets/js/jquery.min.js"></script>
     <script src="/assets/plugins/simplebar/js/simplebar.min.js"></script>
     <script src="/assets/plugins/metismenu/js/metisMenu.min.js"></script>
@@ -244,7 +315,7 @@
     <script src="/assets/plugins/apexcharts-bundle/js/apexcharts.min.js"></script>
     <script src="/assets/plugins/datatable/js/jquery.dataTables.min.js"></script>
     <script src="/assets/plugins/datatable/js/dataTables.bootstrap5.min.js"></script>
-
+    <!--app-->
     <script src="/assets/js/app.js"></script>
     <script src="/assets/js/index.js"></script>
 

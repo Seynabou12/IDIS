@@ -22,7 +22,7 @@
     <!-- loader-->
     <link href="/assets/css/pace.min.css" rel="stylesheet" />
 
-    <title>Skodash - Bootstrap 5 Admin Template</title>
+    <title>Cloudi-fi</title>
     <!-- Bootstrap bundle JS -->
     <script src="/assets/js/bootstrap.bundle.min.js"></script>
     <!--plugins-->
@@ -44,16 +44,14 @@
         @include('layouts.sidebar')
 
         <main class="page-content">
+
             @yield('content')
+
         </main>
 
     </div>
 
-
-    <!--Start Back To Top Button-->
     <a href="javaScript:;" class="back-to-top"><i class='bx bxs-up-arrow-alt'></i></a>
-    <!--End Back To Top Button-->
-
 
     <script src="/assets/plugins/metismenu/js/metisMenu.min.js"></script>
     <script src="/assets/plugins/perfect-scrollbar/js/perfect-scrollbar.js"></script>
@@ -65,6 +63,7 @@
     <script src="/assets/js/app.js"></script>
 
     @yield('js')
+    
 </body>
 
 </html>

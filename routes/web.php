@@ -14,5 +14,19 @@ use Illuminate\Support\Facades\Route;
 */
 
 Route::get('/', function () {
-    return view('layouts.app');
+    return view('welcome');
 });
+
+Route::get('/reporting', function () {
+    return view('pages.reporting');
+});
+
+Route::get('/location', function () {
+    return view('pages.locations');
+});
+
+Route::get('/pointAccés', function () {
+    return view('pages.pointacces');
+});
+// Route::get('/mentors/create', [MentorController::class, 'create']);
+// Route::post("/mentors/create", [MentorController::class, 'store']);
