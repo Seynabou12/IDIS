@@ -17,16 +17,8 @@ Route::get('/', function () {
     return view('welcome');
 });
 
-Route::get('/reporting', function () {
-    return view('pages.reporting');
-});
+Route::get('/dashboard', function () {
+    return view('dashboard');
+})->middleware(['auth', 'verified'])->name('dashboard');
 
-Route::get('/location', function () {
-    return view('pages.locations');
-});
-
-Route::get('/pointAccés', function () {
-    return view('pages.pointacces');
-});
-// Route::get('/mentors/create', [MentorController::class, 'create']);
-// Route::post("/mentors/create", [MentorController::class, 'store']);
+require __DIR__.'/auth.php';
