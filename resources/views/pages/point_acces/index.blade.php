@@ -94,7 +94,7 @@
                         <thead>
                             <tr>
                                 <th>Numero</th>
-                                <th>Firmwane</th>
+                                <th>Firmware</th>
                                 <th>Name</th>
                                 <th>Mac</th>
                                 <th>Identifier</th>
@@ -106,8 +106,31 @@
                                 <th>Action</th>
                             </tr>
                         </thead>
+
                         <tbody>
-                            
+                            @foreach ($accespoints as $accespoint)
+                            <tr>
+                                <td>{{ $accespoint->id }}</td>
+                                <td>{{ $accespoint->firmware }}</td>
+                                <td>{{ $accespoint->name }}</td>
+                                <td>{{ $accespoint->mac }}</td>
+                                <td>{{ $accespoint->identifier }}</td>
+                                <td>{{ $accespoint->latitude  }}</td>
+                                <td>{{ $accespoint->longitude }}</td>
+                                <td>{{ $accespoint->wan_ip }}</td>
+                                <td>{{ $accespoint->first_seen }}</td>
+                                <td>{{ $accespoint->last_seen }}</td>
+
+                                <td class="text-center text-primary cursor-event">
+                                    {{-- <a href="javascript:;" class="text-primary" data-bs-toggle="tooltip"
+                                            data-bs-placement="bottom" title=""
+                                            data-bs-original-title="View detail" aria-label="Views"><i
+                                                class="fs-5 bi bi-eye-fill"></i></a> --}}
+                                    <span onclick="$(this).edit('{{ $accespoint->id }}')"><i class="fs-5 bi bi-pencil-fill"></i></span>
+                                    <span class="text-danger" onclick="$(this).delete('{{ $accespoint->id }}')"><i class="fs-5 bi bi-trash-fill"></i></span>
+                                </td>
+                            </tr>
+                            @endforeach
                         </tbody>
                     </table>
                 </div>

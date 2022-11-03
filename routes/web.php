@@ -1,5 +1,9 @@
 <?php
 
+use App\Http\Controllers\CaptivePortalsController;
+use App\Http\Controllers\CustomerController;
+use App\Http\Controllers\NetworkController;
+use App\Http\Controllers\NodeController;
 use Illuminate\Support\Facades\Route;
 
 /*
@@ -16,9 +20,13 @@ use Illuminate\Support\Facades\Route;
 Route::get('/', function () {
     return view('welcome');
 });
+Route::get('/reporting', function () {
+    return view('pages.reporting');
+});
 
-Route::get('/dashboard', function () {
-    return view('dashboard');
-})->middleware(['auth', 'verified'])->name('dashboard');
-
-require __DIR__.'/auth.php';
+// Route::get('/customer/{$customer_id}/networks', [NetworkController::class, 'index']);
+Route::get('/customers', [CustomerController::class, 'index']);
+Route::get('/selected-customer/{id}', [CustomerController::class, 'selected']);
+Route::get('/networks', [NetworkController::class, 'index']);
+Route::get('/pointacces', [NodeController::class, 'index']);
+Route::get('/portail_captifs', [CaptivePortalsController::class, 'index']);

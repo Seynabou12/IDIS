@@ -37,7 +37,6 @@
     <div class="wrapper">
 
         @include('./layouts.header')
-
         @include('./layouts.sidebar')
 
         <main class="page-content">

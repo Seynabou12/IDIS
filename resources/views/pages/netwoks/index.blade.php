@@ -40,7 +40,7 @@
 <hr />
 <div class="">
     <div class="col-md-12 card card-body">
-        <form action="/network" method="post" id="form">
+        <form action="/networks" method="post" id="form">
 
             @csrf
             <div class="row">
@@ -105,7 +105,27 @@
                             </tr>
                         </thead>
                         <tbody>
-                            
+                            @foreach ($networks as $network)
+                            <tr>
+                                <td>{{ $network->id }}</td>
+                                <td>{{ $network->nasname }}</td>
+                                <td>{{ $network->auth_port }}</td>
+                                <td>{{ $network->acct_port }}</td>
+                                <td>{{ $network->region }}</td>
+                                <td>{{ $network->secret }}</td>
+                                <td>{{ $network->primary_ip }}</td>
+                                <td>{{ $network->backup_ip }}</td>
+
+                                <td class="text-center text-primary cursor-event">
+                                    {{-- <a href="javascript:;" class="text-primary" data-bs-toggle="tooltip"
+                                            data-bs-placement="bottom" title=""
+                                            data-bs-original-title="View detail" aria-label="Views"><i
+                                                class="fs-5 bi bi-eye-fill"></i></a> --}}
+                                    <span onclick="$(this).edit('{{ $network->id }}')"><i class="fs-5 bi bi-pencil-fill"></i></span>
+                                    <span class="text-danger" onclick="$(this).delete('{{ $network->id }}')"><i class="fs-5 bi bi-trash-fill"></i></span>
+                                </td>
+                            </tr>
+                            @endforeach
                         </tbody>
                     </table>
                 </div>
@@ -115,7 +135,6 @@
 
 </div>
 @endsection
-
 
 @section('js')
 <script>
