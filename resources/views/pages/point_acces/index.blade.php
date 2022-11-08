@@ -1,6 +1,4 @@
 @extends('layouts.app')
-
-
 @section('content')
 
 @if ($errors->any())
@@ -35,57 +33,9 @@
 </script>
 @endif
 
-
 <h6 class="mb-0 text-uppercase">Liste des pointaccess</h6>
 <hr />
 <div class="">
-    <div class="col-md-12 card card-body">
-        <form action="/pointacces" method="post" id="form">
-
-            @csrf
-            <div class="row">
-                <div class="form-group mb-3 col-md-6">
-                    <label for="nasname" class="control-label">nasname</label>
-                    <input type="text" class="form-control" name="nasname" id="nasname" required />
-                </div>
-                <div class="form-group mb-3 col-md-6">
-                    <label for="auth_port" class="control-label">Auth Port</label>
-                    <input type="text" class="form-control" name="auth_port" id="auth_port" required />
-                </div>
-            </div>
-            <div class="row">
-                <div class="form-group mb-3 col-md-6">
-                    <label for="acct_port" class="control-label">Acct Port</label>
-                    <input type="text" class="form-control" name="acct_port" id="acct_port" required />
-                </div>
-                <div class="form-group mb-3 col-md-6">
-                    <label for="region" class="control-label">Region</label>
-                    <input type="text" class="form-control" name="region" id="region" required />
-                </div>
-            </div>
-            <div class="row">
-                <div class="form-group mb-3 col-md-6">
-                    <label for="secret" class="control-label">Secret</label>
-                    <input type="text" class="form-control" name="secret" id="secret" required />
-                </div>
-                <div class="form-group mb-3 col-md-6">
-                    <label for="primary_ip" class="control-label">Primary Ip</label>
-                    <input type="text" class="form-control" name="primary_ip" id="primary_ip" required />
-                </div>
-            </div>
-            <div class="row">
-                <div class="form-group mb-3 col-md-6">
-                    <label for="backup_ip" class="control-label">Backup Ip</label>
-                    <input type="text" class="form-control" name="backup_ip" id="backup_ip" required />
-                </div>
-            </div>
-            <div class="form-group mt-4">
-                <input type="reset" value="Annuler" class="btn btn-danger mr-2" onclick="$(this).resetform()">
-                <input type="submit" value="Enregistrer" class="btn btn-primary">
-            </div>
-
-        </form>
-    </div>
     <div class="col-md-12" style="margin-top: 20px;">
         <div class="card">
             <div class="card-body">
@@ -106,7 +56,6 @@
                                 <th>Action</th>
                             </tr>
                         </thead>
-
                         <tbody>
                             @foreach ($accespoints as $accespoint)
                             <tr>
@@ -141,10 +90,10 @@
 </div>
 @endsection
 
-
 @section('js')
 <script>
     $(document).ready(function() {
+        
         $(document).ready(function() {
             $('#example').DataTable();
         });

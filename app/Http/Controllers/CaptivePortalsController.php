@@ -9,7 +9,6 @@ class CaptivePortalsController extends Controller
 {
     
     public function index($customer_id = null)
-
     {
         
         $captifportals = new \GuzzleHttp\Client(); 
@@ -28,6 +27,7 @@ class CaptivePortalsController extends Controller
 
     public function create()
     {
+
 
     }
 

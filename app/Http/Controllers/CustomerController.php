@@ -20,12 +20,14 @@ class CustomerController extends Controller
                 'Content-Type' => 'application/json;charset=utf-8',
             ],
         ]);
+
         $customers = json_decode($response->getBody()->getContents())->_embedded->customers;
         // dd($customers);
         return view('pages.customer.index', compact("customers"));
     }
 
     public function selected($id)
+
     {
         $configuration = Configuration::all()->first() ?? new Configuration();
         $configuration->current_customer_id = $id;

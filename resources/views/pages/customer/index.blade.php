@@ -35,57 +35,11 @@
 </script>
 @endif
 
-
-<h6 class="mb-0 text-uppercase">Liste des customerss</h6>
+<h6 class="mb-0 text-uppercase">Liste des Comptes</h6>
 <hr />
+
 <div class="">
-    <!-- <div class="col-md-12 card card-body">
-        <form action="/portail_captive" method="post" id="form">
-
-            @csrf
-            <div class="row">
-                <div class="form-group mb-3 col-md-6">
-                    <label for="nasname" class="control-label">nasname</label>
-                    <input type="text" class="form-control" name="nasname" id="nasname" required />
-                </div>
-                <div class="form-group mb-3 col-md-6">
-                    <label for="auth_port" class="control-label">Auth Port</label>
-                    <input type="text" class="form-control" name="auth_port" id="auth_port" required />
-                </div>
-            </div>
-            <div class="row">
-                <div class="form-group mb-3 col-md-6">
-                    <label for="acct_port" class="control-label">Acct Port</label>
-                    <input type="text" class="form-control" name="acct_port" id="acct_port" required />
-                </div>
-                <div class="form-group mb-3 col-md-6">
-                    <label for="region" class="control-label">Region</label>
-                    <input type="text" class="form-control" name="region" id="region" required />
-                </div>
-            </div>
-            <div class="row">
-                <div class="form-group mb-3 col-md-6">
-                    <label for="secret" class="control-label">Secret</label>
-                    <input type="text" class="form-control" name="secret" id="secret" required />
-                </div>
-                <div class="form-group mb-3 col-md-6">
-                    <label for="primary_ip" class="control-label">Primary Ip</label>
-                    <input type="text" class="form-control" name="primary_ip" id="primary_ip" required />
-                </div>
-            </div>
-            <div class="row">
-                <div class="form-group mb-3 col-md-6">
-                    <label for="backup_ip" class="control-label">Backup Ip</label>
-                    <input type="text" class="form-control" name="backup_ip" id="backup_ip" required />
-                </div>
-            </div>
-            <div class="form-group mt-4">
-                <input type="reset" value="Annuler" class="btn btn-danger mr-2" onclick="$(this).resetform()">
-                <input type="submit" value="Enregistrer" class="btn btn-primary">
-            </div>
-
-        </form>
-    </div> -->
+   
     <div class="col-md-12" style="margin-top: 20px;">
         <div class="card">
             <div class="card-body">
@@ -99,10 +53,9 @@
                                 <th>Creation By</th>
                                 <th>Region</th>
                                 <th>Total Users</th>
-                                <th>Total Aps</th>
-                                <th>Plan Id</th>
                                 <th>Username</th>
                                 <th>Phone</th>
+                                <th>Plan</th>
                                 <th>Plan Expiration</th>
                                 <th>Action</th>
                             </tr>
@@ -111,17 +64,16 @@
                         <tbody>
                             @foreach ($customers as $customer)
                             <tr>
-                                <td>{{ $customer->id }}</td>
+                                <td><a href="#">{{ $customer->id }}</a></td>
                                 <td>{{ $customer->company_name }}</td>
                                 <td>{{ $customer->creationdate }}</td>
-                                <td>{{ $customer->creationby  }}</td>
-                                <td>{{ $customer->region  }}</td>
+                                <td>{{ $customer->creationby }}</td>
+                                <td>{{ $customer->region }}</td>
                                 <td>{{ $customer->total_users  }}</td>
-                                <td>{{ $customer->total_aps}}</td>
-                                <td>{{ $customer->plan_id  }}</td>
-                                <td>{{ $customer->username  }}</td>
+                                <td>{{ $customer->username}}</td>
                                 <td>{{ $customer->phone  }}</td>
-                                <td>{{ $customer->plan_expiration  }}</td>
+                                <td>{{ $customer->plan  }}</td>
+                                <td>{{ $customer->plan_expiration }}</td>
                                 <td class="text-center text-primary cursor-event">
                                     {{-- <a href="javascript:;" class="text-primary" data-bs-toggle="tooltip"
                                             data-bs-placement="bottom" title=""
@@ -158,13 +110,15 @@
                     json: "json"
                 },
                 function(data, textStatus, jqXHR) {
-                    $("#nasname").val(data.nasname).change();
-                    $("#auth_port").val(data.auth_port).change();
-                    $("#acct_port").val(data.acct_port).change();
+                    $("#company_name").val(data.company_name).change();
+                    $("#creationdate").val(data.creationdate).change();
+                    $("#creationby").val(data.creationby).change();
                     $("#region").val(data.region).change();
-                    $("#secret").val(data.secret).change();
-                    $("#primary_ip").val(data.primary_ip).change();
-                    $("#backup_ip").val(data.backup_ip).change();
+                    $("#total_users").val(data.total_users).change();
+                    $("#username").val(data.username).change();
+                    $("#phone").val(data.phone).change();
+                    $("#plan").val(data.plan).change();
+                    $("#plan_expiration").val(data.plan_expiration).change();
                     // $("#form").attr("action", "/customers/" + data.uuid);
                 },
                 "json"
