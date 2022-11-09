@@ -32,6 +32,8 @@ class CustomerController extends Controller
         $configuration = Configuration::all()->first() ?? new Configuration();
         $configuration->current_customer_id = $id;
         $configuration->save();
+
+        return redirect("/");
     }
 
 }

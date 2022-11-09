@@ -19,17 +19,12 @@
                                             <label for="nasname" class="control-label">Nasname</label>
                                             <input type="text" class="form-control" name="nasname" id="nasname" required />
                                         </div>
-                                        <div class="form-group mb-3 col-md-6">
-                                            <label for="region" class="control-label">Région</label>
-                                            <input type="text" class="form-control" name="region" id="region" required />
-                                        </div>
+                                    </div>
+                                    <div class="form-group">
+                                        <button type="button" class="btn btn-danger mr-2" data-bs-dismiss="modal" value="annuler">Annuler</button>
+                                        <input type="submit" class="btn btn-primary" value="Enregistrer" />
                                     </div>
                                 </form>
-                            </div>
-
-                            <div class="modal-footer">
-                                <button type="button" class="btn btn-danger mr-2" data-bs-dismiss="modal" value="annuler">Annuler</button>
-                                <button type="submit" class="btn btn-primary" value="enregistrer">Enregistrer</button>
                             </div>
                         </div>
                     </div>

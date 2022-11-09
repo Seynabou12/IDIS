@@ -26,4 +26,9 @@ class UtilisateurController extends Controller
 
     }
 
+    public function details()
+    {
+        return view('pages.user.details');
+    }
+
 }

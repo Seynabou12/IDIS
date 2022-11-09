@@ -20,13 +20,13 @@ class AuthController extends Controller
             'password' => 'required'
         ]);
         if (Auth::attempt($tab, $request->all())) {
-            if(!Auth::user()->etat){
-                return redirect()->route('unauthorization');
-            }
+            // if(!Auth::user()->etat){
+            //     return redirect()->route('unauthorization');
+            // }
             session()->regenerate();
             $user = Auth::user();
             if ($user->profil == 'superadmin') {
-                return redirect()->route('');
+                return redirect()->route('accueil');
             } else if ($user->profil == 'customer') {
                 return redirect('/');
             } else if ($user->profil == 'visiteur') {

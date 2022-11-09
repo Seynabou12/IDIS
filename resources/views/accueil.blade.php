@@ -25,7 +25,7 @@
 	<link href="/assets/css/semi-dark.css" rel="stylesheet" />
 	<link href="/assets/css/header-colors.css" rel="stylesheet" />
 
-	<title>Selectionner Une Entreprise</title>
+	<title>Selectionner une Entreprise</title>
 </head>
 
 <body>
@@ -86,7 +86,7 @@
 										</div>
 										<div class="modal-footer">
 											<button type="button" class="btn btn-danger mr-2" data-bs-dismiss="modal" value="annuler">Annuler</button>
-											<button type="button" class="btn btn-primary">Enregistrer</button>
+											<button type="submit" class="btn btn-primary" value="enregistrer">Enregistrer</button>
 										</div>
 									</div>
 								</div>
@@ -106,7 +106,8 @@
 									@csrf
 									<div class="mb-3">
 										<label class="form-label">Select Customer</label>
-										<select class="single-select">
+										<select class="single-select" id="customer" onchange="selection()">
+											<option value="">Customer</option>
 											@foreach($customers as $customer)
 											<option value="{{ $customer->id }}">{{ $customer->company_name }}</option>
 											@endforeach
@@ -115,7 +116,7 @@
 								</form>
 							</div>
 							<div class="modal-footer">
-								<button type="button" class="btn btn-primary">Selectionner</button>
+								<button type="submit" class="btn btn-primary">Selectionner</button>
 							</div>
 						</div>
 					</div>
@@ -125,6 +126,7 @@
 		<div class="overlay nav-toggle-icon"></div>
 		<a href="javaScript:;" class="back-to-top"><i class='bx bxs-up-arrow-alt'></i></a>
 	</div>
+
 	<script src="/assets/js/bootstrap.bundle.min.js"></script>
 	<script src="/assets/js/jquery.min.js"></script>
 	<script src="/assets/plugins/simplebar/js/simplebar.min.js"></script>
@@ -134,6 +136,12 @@
 	<script src="/assets/plugins/select2/js/select2.min.js"></script>
 	<script src="/assets/js/form-select2.js"></script>
 	<script src="/assets/js/app.js"></script>
+
+	<script>
+		function selection() {
+			document.location.href = document.location.origin + "/selected-customer/"+document.getElementById("customer").value;
+		}
+	</script>
 </body>
 
 </html>

@@ -6,6 +6,7 @@ namespace Database\Seeders;
 
 use App\Models\User;
 use Illuminate\Database\Seeder;
+use Illuminate\Support\Facades\Hash;
 
 class DatabaseSeeder extends Seeder
 {
@@ -23,7 +24,7 @@ class DatabaseSeeder extends Seeder
             'nom' => 'Dione',
             'email' => 'dioneseynabou0@gmail.com',
             // 'photo' => '/images/news-3.jpg',
-            'password' => 'password',
+            'password' => Hash::make("password"),
             'profil' => 'superadmin'
         ]);
 

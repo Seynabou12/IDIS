@@ -5,6 +5,10 @@ namespace App\Http\Controllers;
 use App\Models\Configuration;
 use App\Models\Network;
 use GuzzleHttp\Psr7\Request;
+use Illuminate\Http\Request as HttpRequest;
+use Illuminate\Support\Facades\Http;
+use Illuminate\Support\Facades\Redirect;
+use Illuminate\Support\Facades\Request as FacadesRequest;
 
 class NetworkController extends Controller
 {
@@ -25,68 +29,52 @@ class NetworkController extends Controller
         return view('pages.netwoks.index', compact("networks"));
     }
 
-    // public function store()
-    // {
-
-    //     $networks = new \GuzzleHttp\Client();
-    //     $customer_id = Configuration::all()->first()->current_customer_id;
-    //     $token  = 'fc2142095d3ce2a8b15ea2f0c7bdd48be304a52f';
-    //     $response = $networks->request('GET', 'https://console.ironwifi.com/api/' . $customer_id . '/networks', [
-    //         'headers' => [
-    //             'Authorization' => 'Bearer ' . $token,
-    //             'Content-Type' => 'application/json;charset=utf-8',
-    //         ],
-    //     ]);
-
-    //     foreach ($networks as $post) {
-    //         $post = (array)$post;
-    //         Network::updateOrCreate([
-    //             ['id' => $post['id']],
-    //             [
-    //                 'id' => $post['id'],
-    //                 'nasname' => $post['nasname'],
-    //                 'auth_port' => '',
-    //                 'acct_port' => '',
-    //                 'region' => '',
-    //                 'secret' => '',
-    //                 'primary_ip' => '',
-    //                 'backup_ip' => '',
-    //             ]
-    //         ]);
-    //     }
-
-    //     $networks = json_decode($response->getBody()->getContents())->_embedded->networks;
-    //     dd('ajout');
-    // }
-
     public function create()
+
     {
         return view('pages.netwoks.create');
     }
 
-    public function store()
+    public function store(HttpRequest $request) 
     {
-
-        $networks = new \GuzzleHttp\Client();
+        
+        $clients = new \GuzzleHttp\Client();
         $customer_id = Configuration::all()->first()->current_customer_id;
         $token  = 'fc2142095d3ce2a8b15ea2f0c7bdd48be304a52f';
+        $network = new Network();
+        $network->groupname = $request->nasname;
         $body = '{
-            "nasname":"",
-            "region":""
+            "nasname":"main_network",
+            "region":"us"
         }';
-        $response = $networks->request('POST', 'https://console.ironwifi.com/api/' . $customer_id . '/networks',  [
+
+
+        $r = Http::withToken($token)->acceptJson()->withBody(json_encode($network), "application/json")->post('https://console.ironwifi.com/api/' . $customer_id . '/groups',
+    );
+        dd($r);
+
+
+        $r = Http::withToken($token)->withBody(json_encode($network), "application/json")->post('https://console.ironwifi.com/api/' . $customer_id . '/networks',
+    );
+        dd($r);
+
+
+        $request = $clients->request('POST', 'https://console.ironwifi.com/api/' . $customer_id . '/networks', [
             'headers' => [
                 'Authorization' => 'Bearer ' . $token,
                 'Content-Type' => 'application/json;charset=utf-8',
-            ],
+            ]
+        ]);
 
-        ], $body);
-        $networks = json_decode($response->getBody()->getContents())->_embedded->networks;
-        // dd($networks);
-        return redirect('/networks')->with("success", "Le Network a été bien enregistrer");
+
+
+        dd($request);
+
+        $clients = json_decode($request->getBody()->getContents());
+         dd($clients);
+        return Redirect('/networks')->with("success", "Le Network a été bien enregistrer");
     }
 
-  
     public function delete(string $id)
     {
         try {
@@ -97,5 +85,4 @@ class NetworkController extends Controller
             return back()->withErrors("Impossible de supprimer ce network");
         }
     }
-
 }

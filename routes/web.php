@@ -38,15 +38,21 @@ Route::get('/reporting', function () {
 });
 
 Route::get('/users', [UtilisateurController::class, 'index']);
-Route::get('/selected-customer/{id}', [CustomerController::class, 'selected']);
+Route::get('/users/details', [UtilisateurController::class, 'details']);
 Route::get('/networks', [NetworkController::class, 'index']);
-Route::get("/networks/add", [NetworkController::class, 'create']);
 Route::post('/networks/add', [NetworkController::class, 'store']);
+Route::get('/networks/add', [NetworkController::class, 'create']);
 Route::get("/networks/{id}/delete", [NetworkController::class, 'delete'])->name("network.delete")->where('id', '[0-9a-z\-]+');
 Route::get('/pointacces', [NodeController::class, 'index']);
 Route::get('/portail_captifs', [CaptivePortalsController::class, 'index']);
 Route::get('/orgunits', [OrganitUnitController::class, 'index']);
 Route::get('/vouchers', [VoucherController::class, 'index']);
+
+
+
+Route::get('/selected-customer/{id}', [CustomerController::class, 'selected']);
+
+
 
 Route::middleware(['authentification'])->group(
     function () {

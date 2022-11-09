@@ -9,6 +9,7 @@ class AccueilController extends Controller
 {
     public function accueil()
     {
+        
         $customers = new \GuzzleHttp\Client();
         // $customer_id = Configuration::all()->first()->current_customer_id;
         $token  = 'fc2142095d3ce2a8b15ea2f0c7bdd48be304a52f';
@@ -18,6 +19,7 @@ class AccueilController extends Controller
                 'Content-Type' => 'application/json;charset=utf-8',
             ],
         ]);
+
         $customers = json_decode($response->getBody()->getContents())->_embedded->customers;
         return view('accueil', compact('customers'));
     }
