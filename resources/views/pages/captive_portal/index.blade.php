@@ -51,8 +51,7 @@
                                 <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
                             </div>
                             <div class="col-md-12 card card-body">
-                                <form action="/portail_captive" method="post" id="form">
-
+                                <form action="/portail_captifs" method="POST" id="form" enctype="multipart/form-data">
                                     @csrf
                                     <div class="row">
                                         <div class="form-group mb-3 col-md-6">
@@ -60,26 +59,27 @@
                                             <input type="text" class="form-control" name="nasname" id="nasname" required />
                                         </div>
                                         <div class="form-group mb-3 col-md-6">
-                                            <label for="auth_port" class="control-label">Network</label>
-                                            <input type="text" class="form-control" name="auth_port" id="auth_port" required />
+                                            <label for="network_id" class="control-label">Network</label>
+                                            <input type="text" class="form-control" name="network_id" id="network_id" required />
                                         </div>
                                     </div>
                                     <div class="row">
                                         <div class="form-group mb-3 col-md-6">
-                                            <label for="acct_port" class="control-label">Vendor</label>
-                                            <input type="text" class="form-control" name="acct_port" id="acct_port" required />
+                                            <label for="vendor" class="control-label">Vendor</label>
+                                            <input type="text" class="form-control" name="vendor" id="vendor" required />
                                         </div>
                                         <div class="form-group mb-3 col-md-6">
-                                            <label for="region" class="control-label">Nasname</label>
-                                            <input type="text" class="form-control" name="region" id="region" required />
+                                            <label for="nasname" class="control-label">Nasname</label>
+                                            <input type="text" class="form-control" name="nasname" id="nasname" required />
                                         </div>
+                                    </div>
+                                    <div class="modal-footer">
+                                        <button type="button" class="btn btn-danger mr-2" data-bs-dismiss="modal" value="annuler">Close</button>
+                                        <input type="submit" class="btn btn-primary" value="Enregistrer" />
                                     </div>
                                 </form>
                             </div>
-                            <div class="modal-footer">
-                                <button type="button" class="btn btn-danger mr-2" data-bs-dismiss="modal" value="annuler">Close</button>
-                                <button type="button" class="btn btn-primary">Enregistrer</button>
-                            </div>
+
                         </div>
                     </div>
                 </div>
@@ -141,22 +141,19 @@
         });
 
         $.fn.resetform = function() {
-            $("#form").attr("action", "/pointacces");
+            $("#form").attr("action", "/portail_captifs");
         }
 
         $.fn.edit = function(id) {
-            $.get(document.location.origin + "/pointacces/" + id, {
+            $.get(document.location.origin + "/portail_captifs/" + id, {
                     json: "json"
                 },
                 function(data, textStatus, jqXHR) {
                     $("#nasname").val(data.nasname).change();
-                    $("#auth_port").val(data.auth_port).change();
-                    $("#acct_port").val(data.acct_port).change();
-                    $("#region").val(data.region).change();
-                    $("#secret").val(data.secret).change();
-                    $("#primary_ip").val(data.primary_ip).change();
-                    $("#backup_ip").val(data.backup_ip).change();
-                    // $("#form").attr("action", "/pointacces/" + data.uuid);
+                    $("#network_id").val(data.network_id).change();
+                    $("#vendor").val(data.vendor).change();
+                    $("#nasname").val(data.nasname).change();;
+                    $("#form").attr("action", "//portail_captifs/" + data.id);
                 },
                 "json"
             );
@@ -164,7 +161,7 @@
         $.fn.delete = function(id) {
 
             Swal.fire({
-                title: 'Voulez-vous supprimer ce pointacces?',
+                title: 'Voulez-vous supprimer ce portail_captifs?',
                 icon: 'question',
                 showCancelButton: true,
                 confirmButtonColor: '#3085d6',
@@ -173,7 +170,7 @@
                 cancelButtonText: 'Annuler'
             }).then((result) => {
                 if (result.isConfirmed) {
-                    document.location.href = document.location.origin + "/pointacces/" + id +
+                    document.location.href = document.location.origin + "/portail_captifs/" + id +
                         "/delete";
                 }
             })

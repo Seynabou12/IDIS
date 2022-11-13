@@ -335,44 +335,7 @@
         $.fn.resetform = function() {
             $("#form").attr("action", "/users");
         }
-
-        // $.fn.edit = function(id) {
-        //     $.get(document.location.origin + "/users/" + id, {
-        //             json: "json"
-        //         },
-        //         function(data, textStatus, jqXHR) {
-        //             $("#username").val(data.username).change();
-        //             $("#email").val(data.email).change();
-        //             $("#firstname").val(data.firstname).change();
-        //             $("#lastname").val(data.lastname).change();
-        //             $("#fullname").val(data.fullname).change();
-        //             $("#phone").val(data.phone).change();
-        //             $("#creationdate").val(data.creationdate).change();
-        //             $("#source").val(data.source).change();
-        //             $("#authdate_orig").val(data.authdate_orig).change();
-        //             $("#authdate").val(data.authdate).change();
-        //             // $("#form").attr("action", "/users/" + data.uuid);
-        //         },
-        //         "json"
-        //     );
-        // }
-        // $.fn.delete = function(id) {
-
-        //     Swal.fire({
-        //         title: 'Voulez-vous supprimer ce users?',
-        //         icon: 'question',
-        //         showCancelButton: true,
-        //         confirmButtonColor: '#3085d6',
-        //         cancelButtonColor: '#d33',
-        //         confirmButtonText: 'Supprimer!',
-        //         cancelButtonText: 'Annuler'
-        //     }).then((result) => {
-        //         if (result.isConfirmed) {
-        //             document.location.href = document.location.origin + "/users/" + id +
-        //                 "/delete";
-        //         }
-        //     })
-        // }
+        
 
     });
 </script>

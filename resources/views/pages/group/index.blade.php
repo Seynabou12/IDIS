@@ -64,7 +64,8 @@
                                             <span onclick="$(this).edit('{{ $group->id }}')"><i
                                                     class="fs-5 bi bi-pencil-fill"></i></span>
                                             <span class="text-danger" onclick="$(this).delete('{{ $group->id }}')"><i
-                                                    class="fs-5 bi bi-trash-fill"></i></span>
+                                                class="fs-5 bi bi-trash-fill"></i>
+                                            </span>
                                         </td>
                                     </tr>
                                 @endforeach
@@ -75,7 +76,7 @@
             </div>
         </div>
         <div class="col-md-4">
-            <form action="/groups" method="post" id="form">
+            <form action="/groups/create" method="POST" id="form" enctype="multipart/form-data">
 
                 @csrf
                 <div class="form-group mb-2">

@@ -34,11 +34,11 @@
     });
 </script>
 @endif
-
+@include('pages.netwoks.create')
 <h6 class="mb-0 text-uppercase">Liste des Networks</h6>
 <hr />
 
-@include('pages.netwoks.create')
+
 
 <div class="col-md-12" style="margin-top: 20px;">
     <div class="card">
@@ -100,7 +100,7 @@
         });
 
         $.fn.resetform = function() {
-            $("#form").attr("action", "/networks/add");
+            $("#form").attr("action", "/networks");
         }
 
         $.fn.edit = function(id) {

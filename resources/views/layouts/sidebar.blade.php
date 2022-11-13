@@ -9,6 +9,8 @@
     <div class="toggle-icon ms-auto" style="color: #0270e0;"><i class="bi bi-chevron-double-left"></i>
     </div>
   </div>
+  @auth
+  @if (Auth::user()->profil == 'superadmin')
   <ul class="metismenu mm-show" id="menu">
     <li class="menu-label">Graphes</li>
     <li>
@@ -53,9 +55,11 @@
         <li> <a href="/users"><i class="bi bi-person-plus-fill"></i>Users</a></li>
         <li> <a href="/groups"><i class="bi bi-people-fill"></i>Groups</a></li>
         <li> <a href="/orgunits"><i class="bi bi-hdd-network"></i>Organizational Units</a> </li>
-        <li> <a href="/vouchers"><i class="bi bi-hdd-network"></i>Vouchers</a> </li>
-        <li> <a href="/connector"><i class="bi bi-hdd-network"></i>Connectors</a></li>
+        <!-- <li> <a href="/vouchers"><i class="bi bi-hdd-network"></i>Vouchers</a> </li>
+        <li> <a href="/connector"><i class="bi bi-hdd-network"></i>Connectors</a></li> -->
       </ul>
     </li>
   </ul>
+  @endif
+  @endauth
 </aside>
