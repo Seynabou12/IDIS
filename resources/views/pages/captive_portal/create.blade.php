@@ -11,13 +11,14 @@
                                 <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
                             </div>
                             <div class="col-md-12 card card-body">
-                                <form action="/portail_captive" method="post" id="form" >
+                                <form action="/portail_captif/create" method="post" id="form" enctype="multipart/form-data">
                                     @csrf
                                     <div class="row">
                                         <div class="form-group mb-3 col-md-6">
                                             <label for="nasname" class="control-label">Name</label>
                                             <input type="text" class="form-control" name="nasname" id="nasname" required />
                                         </div>
+
                                         <div class="form-group mb-3 col-md-6">
                                             <label for="auth_port" class="control-label">Network</label>
                                             <input type="text" class="form-control" name="auth_port" id="auth_port" required />
@@ -28,10 +29,6 @@
                                             <label for="acct_port" class="control-label">Vendor</label>
                                             <input type="text" class="form-control" name="acct_port" id="acct_port" required />
                                         </div>
-                                        <div class="form-group mb-3 col-md-6">
-                                            <label for="region" class="control-label">Nasname</label>
-                                            <input type="text" class="form-control" name="region" id="region" required />
-                                        </div>
                                     </div>
                                     <div class="form-group">
                                         <button type="button" class="btn btn-danger mr-2" data-bs-dismiss="modal" value="annuler">Annuler</button>
@@ -39,7 +36,7 @@
                                     </div>
                                 </form>
                             </div>
-                           
+
                         </div>
                     </div>
                 </div>

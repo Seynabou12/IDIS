@@ -49,13 +49,13 @@ class NetworkController extends Controller
             'body' => json_encode($body)
             
         ]);
-
         return Redirect('/networks')->with("success", "Le Network a été bien enregistrer");
         
     }
-
+    
     public function delete(string $id)
     {
+
         try {
             $direction =  Network::findById($id);
             $direction->delete();
@@ -63,6 +63,7 @@ class NetworkController extends Controller
         } catch (\Throwable $th) {
             return back()->withErrors("Impossible de supprimer ce network");
         }
+
     }
 
  

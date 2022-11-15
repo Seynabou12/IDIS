@@ -25,24 +25,23 @@
 	<link href="/assets/css/semi-dark.css" rel="stylesheet" />
 	<link href="/assets/css/header-colors.css" rel="stylesheet" />
 
-	<title>Selectionner une Entreprise</title>
+	<title>Entreprise</title>
 </head>
 
 <body>
 	<div class="wrapper">
-		<main class="page-content ">
-			@include('pages.customer.create')
+		<main class="page-content" style="background-image: url(assets/images/gallery/imgres.html);">
 			<div class="row">
-				<div class="col-xl-9 mx-auto">
-					<h6 class="mb-0 text-uppercase">Selectionner une Entreprise</h6>
+				<div class="col-xl-9 mx-auto" style="padding: 50px 200px 20px 100px;">
+					<h6 class="mb-0 text-uppercase" style="font-weight: bold; font-size: 20px;">Selectionner une Entreprise</h6>
 					<hr />
-					<div class="card">
+					<div class="card" style="padding: 20px 20px 20px 20px;">
 						<div class="card-body">
 							<div class="border p-3 rounded">
 								<form action="/acceuil" method="post" id="form">
 									@csrf
 									<div class="mb-3">
-										<label class="form-label">Select Customer</label>
+										<label class="form-label" style="font-size: 18px; font-weight: bold;">Select Customer</label>
 										<select class="single-select" id="customer" onchange="selection()">
 											<option value="">Customer</option>
 											@foreach($customers as $customer)

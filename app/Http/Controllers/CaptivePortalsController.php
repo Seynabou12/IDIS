@@ -30,6 +30,7 @@ class CaptivePortalsController extends Controller
     {
 
         $clients = new \GuzzleHttp\Client();
+        $networks = new \GuzzleHttp\Client();
         $customer_id = Configuration::all()->first()->current_customer_id;
         $token  = 'fc2142095d3ce2a8b15ea2f0c7bdd48be304a52f';
         $portails = new CaptivePortals();
@@ -37,17 +38,33 @@ class CaptivePortalsController extends Controller
         $body = [];
         $body["name"] = $request->name;
         $body["network_id"] = $request->network_id;
-        $body["vendor"] = "Virtual";
+        $body["vendor"] = "Peplink";
+
+       
+       
 
         $portail = $clients->request('POST', 'https://console.ironwifi.com/api/' . $customer_id . '/captive-portals', [
             'headers' => [
                 'Authorization' => 'Bearer ' . $token,
                 'Content-Type' => 'application/json;charset=utf-8',
             ],
-            'body' => json_encode($body)
+            'body' => json_encode($body),
 
-        ]);
-    }
-
+            $response = $networks->request('GET', 'https://console.ironwifi.com/api/' . $customer_id . '/networks', [
+                'headers' => [
+                    'Authorization' => 'Bearer ' . $token,
+                    'Content-Type' => 'application/json;charset=utf-8',
+                ],
     
+            ]),
+           
+        ]);
+        $networks = json_decode($response->getBody()->getContents())->_embedded->networks;
+
+        return view('portail_captifs', compact('networks'))->with("success", "Le Network a été bien enregistrer");
+
+        // return Redirect('/portail_captifs', compact('networks'))->with("success", "Le Network a été bien enregistrer");
+
+
+    }
 }

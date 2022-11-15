@@ -36,7 +36,7 @@
 @endif
 
 <h6 class="mb-0 text-uppercase">Liste des Utilisateurs</h6>
-<hr />  
+<hr />
 <div class="col-md-12" style="margin-top: 20px;">
     <div class="card">
         <div class="card-body">
@@ -44,8 +44,6 @@
                 <table id="example" class="table table-striped table-bordered" style="width:100%">
                     <thead>
                         <tr>
-
-                            <th>Status</th>
                             <th>Numéro</th>
                             <th>Username</th>
                             <th>Email</th>
@@ -54,15 +52,15 @@
                             <th>Creation Date</th>
                             <th>Aut Date Orig</th>
                             <th>Aut Date</th>
+                            <th>Statut</th>
                             <th>Action</th>
-                            
                         </tr>
                     </thead>
 
                     <tbody>
                         @foreach ($users as $user)
                         <tr>
-                            <td>status</td>
+                           
                             <td>{{ $user->id }}</td>
                             <td>{{ $user->username }}</td>
                             <td>{{ $user->email }}</td>
@@ -71,6 +69,7 @@
                             <td>{{ $user->creationdate  }}</td>
                             <td>{{ $user->authdate_orig  }}</td>
                             <td>{{ $user->authdate }}</td>
+                            <td><span class="badge bg-light-success text-success w-100">Connecter</span></td>
                             <td class="text-center text-primary cursor-event">
                                 <a href="/users/{{ $user->id }}/details" class="text-primary" data-bs-toggle="tooltip" data-bs-placement="bottom" title="" aria-label="Views"><i class="fs-5 bi bi-eye-fill"></i></a>
                                 <span class="text-warning" onclick="$(this).edit('{{ $user->id }}')"><i class="fs-5 bi bi-pencil-fill"></i></span>

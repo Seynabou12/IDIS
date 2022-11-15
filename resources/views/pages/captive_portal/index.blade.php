@@ -35,58 +35,10 @@
 </script>
 @endif
 
+@include('pages.captive_portal.create')
 
 <h6 class="mb-0 text-uppercase">Liste des Portails Captifs</h6>
 <hr />
-<div class="">
-    <div class="page-breadcrumb d-none d-sm-flex align-items-center mb-3">
-        <div class="ms-auto">
-            <div class="col">
-                <button type="button" class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#exampleLargeModal">Add Captive Portal</button>
-                <div class="modal fade" id="exampleLargeModal" tabindex="-1" aria-hidden="true">
-                    <div class="modal-dialog modal-lg">
-                        <div class="modal-content">
-                            <div class="modal-header">
-                                <h5 class="modal-title">Formulaire d'Ajout de Portail Captive</h5>
-                                <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
-                            </div>
-                            <div class="col-md-12 card card-body">
-                                <form action="/portail_captifs" method="POST" id="form" enctype="multipart/form-data">
-                                    @csrf
-                                    <div class="row">
-                                        <div class="form-group mb-3 col-md-6">
-                                            <label for="nasname" class="control-label">Name</label>
-                                            <input type="text" class="form-control" name="nasname" id="nasname" required />
-                                        </div>
-                                        <div class="form-group mb-3 col-md-6">
-                                            <label for="network_id" class="control-label">Network</label>
-                                            <input type="text" class="form-control" name="network_id" id="network_id" required />
-                                        </div>
-                                    </div>
-                                    <div class="row">
-                                        <div class="form-group mb-3 col-md-6">
-                                            <label for="vendor" class="control-label">Vendor</label>
-                                            <input type="text" class="form-control" name="vendor" id="vendor" required />
-                                        </div>
-                                        <div class="form-group mb-3 col-md-6">
-                                            <label for="nasname" class="control-label">Nasname</label>
-                                            <input type="text" class="form-control" name="nasname" id="nasname" required />
-                                        </div>
-                                    </div>
-                                    <div class="modal-footer">
-                                        <button type="button" class="btn btn-danger mr-2" data-bs-dismiss="modal" value="annuler">Close</button>
-                                        <input type="submit" class="btn btn-primary" value="Enregistrer" />
-                                    </div>
-                                </form>
-                            </div>
-
-                        </div>
-                    </div>
-                </div>
-            </div>
-        </div>
-    </div>
-</div>
 <div class="">
     <div class="col-md-12" style="margin-top: 20px;">
         <div class="card">
@@ -97,9 +49,8 @@
                             <tr>
                                 <th>Numero</th>
                                 <th>Name</th>
-                                <th>Networks</th>
+                                <th>Networks Id</th>
                                 <th>Vendor</th>
-                                <th>Nasname</th>
                                 <th>Action</th>
                             </tr>
                         </thead>
@@ -111,7 +62,6 @@
                                 <td>{{ $captifportal->name }}</td>
                                 <td>{{ $captifportal->network_id }}</td>
                                 <td>{{ $captifportal->vendor }}</td>
-                                <td>{{ $captifportal->nasname  }}</td>
                                 <td class="text-center text-primary cursor-event">
                                     {{-- <a href="javascript:;" class="text-primary" data-bs-toggle="tooltip"
                                             data-bs-placement="bottom" title=""
@@ -120,6 +70,7 @@
                                     <span onclick="$(this).edit('{{ $captifportal->id }}')"><i class="fs-5 bi bi-pencil-fill"></i></span>
                                     <span class="text-danger" onclick="$(this).delete('{{ $captifportal->id }}')"><i class="fs-5 bi bi-trash-fill"></i></span>
                                 </td>
+
                             </tr>
                             @endforeach
                         </tbody>
@@ -153,7 +104,7 @@
                     $("#network_id").val(data.network_id).change();
                     $("#vendor").val(data.vendor).change();
                     $("#nasname").val(data.nasname).change();;
-                    $("#form").attr("action", "//portail_captifs/" + data.id);
+                    $("#form").attr("action", "/portail_captifs/" + data.id);
                 },
                 "json"
             );

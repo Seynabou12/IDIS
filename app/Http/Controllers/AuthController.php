@@ -10,6 +10,7 @@ class AuthController extends Controller
 {
     public function formLogin()
     {
+
         return view('auth.login');
     }
 
@@ -20,9 +21,6 @@ class AuthController extends Controller
             'password' => 'required'
         ]);
         if (Auth::attempt($tab, $request->all())) {
-            // if(!Auth::user()->etat){
-            //     return redirect()->route('unauthorization');
-            // }
             session()->regenerate();
             $user = Auth::user();
             if ($user->profil == 'superadmin') {
@@ -33,7 +31,7 @@ class AuthController extends Controller
                 dd('Vous etes un utilisateur');
             }
         } else {
-            Session::flash('message','Email ou mot de passe Incorrect');
+            Session::flash('message','Adresse Email ou Mot de Passe Incorrect');
             Session::flash('class-alert','alert-danger');
             return back();
         }

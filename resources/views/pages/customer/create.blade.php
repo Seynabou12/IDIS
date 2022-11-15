@@ -22,7 +22,6 @@
 											<label for="company_name" class="control-label">Company Name</label>
 											<input type="text" class="form-control" name="company_name" id="company_name" required />
 										</div>
-
 									</div>
 									<div class="row">
 										<div class="form-group mb-3 col-md-6">
@@ -40,7 +39,6 @@
 									</div>
 								</form>
 							</div>
-
 						</div>
 					</div>
 				</div>

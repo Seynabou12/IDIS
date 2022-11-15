@@ -35,11 +35,12 @@
 </script>
 @endif
 
+@include('pages.customer.create')
+
 <h6 class="mb-0 text-uppercase">Liste des Comptes</h6>
 <hr />
 
 <div class="">
-   
     <div class="col-md-12" style="margin-top: 20px;">
         <div class="card">
             <div class="card-body">
@@ -47,15 +48,14 @@
                     <table id="example" class="table table-striped table-bordered" style="width:100%">
                         <thead>
                             <tr>
-                                <th>Numero</th>
                                 <th>Company Name</th>
-                                <th>Creation Date</th>
-                                <th>Creation By</th>
-                                <th>Region</th>
-                                <th>Total Users</th>
                                 <th>Username</th>
                                 <th>Phone</th>
+                                <th>Region</th>
+                                <th>Total Users</th>
                                 <th>Plan</th>
+                                <th>Total APS</th>
+                                <th>Creation Date</th>
                                 <th>Plan Expiration</th>
                                 <th>Action</th>
                             </tr>
@@ -64,15 +64,15 @@
                         <tbody>
                             @foreach ($customers as $customer)
                             <tr>
-                                <td><a href="#">{{ $customer->id }}</a></td>
+                               
                                 <td>{{ $customer->company_name }}</td>
-                                <td>{{ $customer->creationdate }}</td>
-                                <td>{{ $customer->creationby }}</td>
-                                <td>{{ $customer->region }}</td>
-                                <td>{{ $customer->total_users  }}</td>
                                 <td>{{ $customer->username}}</td>
                                 <td>{{ $customer->phone  }}</td>
+                                <td>{{ $customer->region }}</td>
+                                <td>{{ $customer->total_users  }}</td>
                                 <td>{{ $customer->plan  }}</td>
+                                <td>{{ $customer->total_aps}}</td>
+                                <td>{{ $customer->creationdate }}</td>
                                 <td>{{ $customer->plan_expiration }}</td>
                                 <td class="text-center text-primary cursor-event">
                                     {{-- <a href="javascript:;" class="text-primary" data-bs-toggle="tooltip"
@@ -90,7 +90,6 @@
             </div>
         </div>
     </div>
-
 </div>
 @endsection
 

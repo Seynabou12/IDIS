@@ -10,7 +10,6 @@
                                 <h5 class="modal-title">Formulaire d'Ajout de Networks</h5>
                                 <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
                             </div>
-
                             <div class="col-md-12 card card-body">
                                 <form action="/networks/add" method="POST" id="form" enctype="multipart/form-data">
                                     @csrf

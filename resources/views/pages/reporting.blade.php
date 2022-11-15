@@ -30,26 +30,25 @@
     <link href="/assets/css/header-colors.css" rel="stylesheet" />
 
     <title>Cloudi-fi</title>
+
 </head>
 
 <body>
+
     <div class="wrapper">
 
         @include('./layouts.header')
-
         @include('./layouts.sidebar')
 
         <main class="page-content">
-
             <div class="row row-cols-1 row-cols-md-2 row-cols-lg-2 row-cols-xl-4">
                 <div class="col">
                     <div class="card radius-10">
                         <div class="card-body">
                             <div class="d-flex align-items-center">
                                 <div>
-                                    <h5 class="mb-0 text-secondary">Returning Guest</h5>
-                                    <h4 class="my-1">4805</h4>
-                                    <!-- <p class="mb-0 font-13 text-success"><i class="bi bi-caret-up-fill"></i> 5% from last week</p> -->
+                                    <h5 class="mb-0 text-secondary">Total Users</h5>
+                                    <h4 class="my-1">123</h4>
                                 </div>
                                 <div class="widget-icon-large bg-gradient-purple text-white ms-auto"><i class="bi bi-people-fill"></i>
                                 </div>
@@ -62,7 +61,7 @@
                         <div class="card-body">
                             <div class="d-flex align-items-center">
                                 <div>
-                                    <h5 class="mb-0 text-secondary">New Guest</h5>
+                                    <h5 class="mb-0 text-secondary">User Connect</h5>
                                     <h4 class="my-1">242</h4>
                                 </div>
                                 <div class="widget-icon-large bg-gradient-success text-white ms-auto"><i class="bi bi-people-fill"></i>
@@ -76,7 +75,7 @@
                         <div class="card-body">
                             <div class="d-flex align-items-center">
                                 <div>
-                                    <h5 class="mb-0 text-secondary">Guest Nationalities</h5>
+                                    <h5 class="mb-0 text-secondary">Total Networks</h5>
                                     <h4 class="my-1">450</h4>
                                 </div>
                                 <div class="widget-icon-large bg-gradient-danger text-white ms-auto"><i class="bi bi-people-fill"></i>
@@ -100,8 +99,6 @@
                     </div>
                 </div>
             </div>
-            <!--end row-->
-
 
             <div class="row">
                 <div class="col-12 col-lg-8 col-xl-8 d-flex">

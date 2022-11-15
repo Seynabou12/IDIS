@@ -40,6 +40,46 @@
         @include('./layouts.sidebar')
 
         <main class="page-content">
+
+            <div class="card border shadow-none">
+                <div class="card-header py-3">
+                    <div class="row align-items-center g-3">
+                        <div class="col-12 col-lg-6">
+                            <h3 class="mb-0">Customer Name</h3>
+                        </div>
+                        <div class="col-12 col-lg-6 text-md-end">
+                            <a href="javascript:;" class="btn btn-sm btn-danger me-2"><i class="bi bi-file-earmark-pdf-fill"></i> Export as PDF</a>
+                            <a href="javascript:;" onclick="window.print()" class="btn btn-sm btn-secondary"><i class="bi bi-printer-fill"></i> Print</a>
+                        </div>
+                    </div>
+                </div>
+                <div class="card-header py-2 bg-light">
+                    <div class="row row-cols-1 row-cols-lg-3">
+                        <div class="col">
+                            <div class="">
+                                <address class="m-t-5 m-b-5">
+                                    <strong class="text-inverse h5">Phone</strong><br>
+                                    Phone 781794521<br>
+                                </address>
+                            </div>
+                        </div>
+                        <div class="col">
+                            <div class="">
+                                <address class="m-t-5 m-b-5">
+                                    <strong class="text-inverse h5">Email</strong><br>
+                                    dioneseynabou0@gmail.com<br>
+                                </address>
+                            </div>
+                        </div>
+                        <div class="col">
+                            <div class="">
+                                <strong class="text-inverse h5">Creation Date</strong><br>
+                                August 3,2012</br>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
             <div class="row">
                 <div class="col-12 col-lg-8 col-xl-8 d-flex">
                     <div class="card radius-10 w-100">
