@@ -65,6 +65,7 @@ class CustomerController extends Controller
 
     public function delete($id)
     {
+
         $customers = new \GuzzleHttp\Client();
         $token  = 'fc2142095d3ce2a8b15ea2f0c7bdd48be304a52f';
         $response = $customers->request('DELETE', 'https://us-west1.ironwifi.com/api/afridev-group-0503703d/customers/'.$id , [
@@ -75,7 +76,7 @@ class CustomerController extends Controller
         ]);
 
         $customers = json_decode($response->getBody()->getContents());
-        
         return Redirect('/customers')->with("success", "Le Customer a été bien supprimer");
     }
+    
 }

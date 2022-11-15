@@ -122,6 +122,7 @@
         }
 
         $.fn.delete = function(id) {
+
             Swal.fire({
                 title: 'Voulez-vous supprimer ce network?',
                 icon: 'question',

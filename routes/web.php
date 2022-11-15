@@ -47,6 +47,8 @@ Route::get("/accueil", [AccueilController::class, 'accueil'])->name('accueil');
 
 Route::get('/groups', [GroupController::class, 'index']);
 Route::post('/groups/create', [GroupController::class, 'create']);
+Route::get("/groups/{id}/delete", [GroupController::class, 'delete'])->name("group.delete")->where('id', '[0-9a-z\-]+');
+
 
 Route::get('/users', [UtilisateurController::class, 'index']);
 Route::get('/users/{id}/details', [UtilisateurController::class, 'details'])->where("id", "[0-9a-z]+");
