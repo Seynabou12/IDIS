@@ -9,6 +9,7 @@ use App\Http\Controllers\NetworkController;
 use App\Http\Controllers\NodeController;
 use App\Http\Controllers\OrganitUnitController;
 use App\Http\Controllers\ReportingContoller;
+use App\Http\Controllers\SuperAdmin\SuperAdminController;
 use App\Http\Controllers\UtilisateurController;
 use App\Http\Controllers\VoucherController;
 use Illuminate\Support\Facades\Route;
@@ -27,18 +28,16 @@ use Illuminate\Support\Facades\Route;
 Route::get('/welcom', function () {
     return view('welcome');
 });
-// Route::get('/reporting', function () {
-//     return view('pages.reporting');
-// });
 
 Route::get('/reporting', [ReportingContoller::class, 'reporting']);
+
+Route::get('/dashbord', [SuperAdminController::class, 'dashbord']);
 
 Route::get('/customer/{$customer_id}/networks', [NetworkController::class, 'index']);
 Route::get('/selected-customer/{id}', [CustomerController::class, 'selected']);
 Route::get('/customers', [CustomerController::class, 'index']);
 Route::post('/customers/create', [CustomerController::class, 'create'])->where("id", "[0-9a-z]+");
 Route::get("/customers/{id}/delete", [CustomerController::class, 'delete'])->name("customer.delete")->where('id', '[0-9a-z\-]+');
-
 
 Route::get("/", [AuthController::class, 'formLogin'])->name('auth.formLogin');
 Route::post("/", [AuthController::class, 'login'])->name('auth.login');
@@ -49,9 +48,8 @@ Route::get('/groups', [GroupController::class, 'index']);
 Route::post('/groups/create', [GroupController::class, 'create']);
 Route::get("/groups/{id}/delete", [GroupController::class, 'delete'])->name("group.delete")->where('id', '[0-9a-z\-]+');
 
-
 Route::get('/users', [UtilisateurController::class, 'index']);
-Route::get('/users/{id}/details', [UtilisateurController::class, 'details'])->where("id", "[0-9a-z]+");
+Route::get('/users/{id}/details', [UtilisateurController::class, 'details'])->name("user.details")->where("id", "[0-9a-z]+");
 
 Route::get('/networks', [NetworkController::class, 'index']);
 Route::post('/networks/add', [NetworkController::class, 'store'])->where("id", "[0-9a-z]+");
@@ -61,6 +59,7 @@ Route::get('/pointacces', [NodeController::class, 'index']);
 
 Route::get('/portail_captifs', [CaptivePortalsController::class, 'index']);
 Route::post('/portail_captif/create', [CaptivePortalsController::class, 'create'])->name('portail_captifs')->where('id', '[0-9a-z\-]+');
+Route::get("/portail_captif/{id}/delete", [CaptivePortalsController::class, 'delete'])->name("portail_captifs.delete")->where('id', '[0-9a-z\-]+');
 
 Route::get('/orgunits', [OrganitUnitController::class, 'index']);
 

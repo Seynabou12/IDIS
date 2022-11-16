@@ -44,6 +44,7 @@
                 <table id="example" class="table table-striped table-bordered" style="width:100%">
                     <thead>
                         <tr>
+
                             <th>Numéro</th>
                             <th>Username</th>
                             <th>Email</th>
@@ -54,6 +55,7 @@
                             <th>Aut Date</th>
                             <th>Statut</th>
                             <th>Action</th>
+                            
                         </tr>
                     </thead>
 
@@ -75,6 +77,7 @@
                                 <span class="text-warning" onclick="$(this).edit('{{ $user->id }}')"><i class="fs-5 bi bi-pencil-fill"></i></span>
                                 <span class="text-danger" onclick="$(this).delete('{{ $user->id }}')"><i class="fs-5 bi bi-trash-fill"></i></span>
                             </td>
+
                         </tr>
                         @endforeach
                     </tbody>

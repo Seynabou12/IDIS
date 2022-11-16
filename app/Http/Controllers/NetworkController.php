@@ -51,7 +51,7 @@ class NetworkController extends Controller
             $network = json_decode($networks->getBody()->getContents());
             return Redirect('/networks')->with("success", "Le Groupe a été bien enregistrer");
         } catch (\Throwable $th) {
-            return back()->withErrors("Le Groupe a été bien enregistrer");
+            return back();
         }
     }
 
@@ -70,7 +70,7 @@ class NetworkController extends Controller
                 ],
             ]);
             $networks = json_decode($response->getBody()->getContents());
-            return Redirect('/networks')->with("success", "Le Network a été bien enregistrer");
+            return Redirect('/networks')->with("success", "Le Network a été bien supprimer");
         } catch (\Throwable $th) {
             return back()->withErrors("Impossible de supprimer ce network");
         }

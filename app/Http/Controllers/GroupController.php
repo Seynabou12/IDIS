@@ -48,13 +48,12 @@ class GroupController extends Controller
                     'Authorization' => 'Bearer ' . $token,
                     'Content-Type' => 'application/json;charset=utf-8',
                 ],
-
                 'body' => json_encode($body)
 
             ]);
             return Redirect('/groups')->with("success", "Le Groupe a été bien enregistrer");
         } catch (\Throwable $th) {
-            return back()->withErrors("Impossible de supprimer ce groupe");
+            return back()->withErrors("success", "Le Groupe a été bien enregistrer");
         }
     }
 
@@ -73,7 +72,7 @@ class GroupController extends Controller
             ]);
 
             $groups = json_decode($response->getBody()->getContents());
-            return Redirect('/groups')->with("success", "Le Groupe a été bien enregistré");
+            return Redirect('/groups')->with("success", "Le Groupe a été bien Supprimé");
 
         } catch (\Throwable $th) {
             return back()->withErrors("Le Groupe a été bien supprimé");

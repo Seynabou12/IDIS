@@ -24,4 +24,7 @@ class ReportingContoller extends Controller
        
         return view('pages.reporting', compact('users'));
     }
+
+   
+
 }

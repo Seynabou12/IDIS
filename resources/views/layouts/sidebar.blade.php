@@ -10,8 +10,30 @@
     </div>
   </div>
   @auth
-  @if (Auth::user()->profil == 'superadmin')
+
   <ul class="metismenu mm-show" id="menu">
+    @if (Auth::user()->profil == 'superadmin')
+    <li class="menu-label">Dashbord</li>
+    <li>
+      <a href="/dashbord" class="">
+        <div class="parent-icon"><i class="bi bi-grid"></i>
+        </div>
+        <div class="menu-title">Dashbord</div>
+      </a>
+    </li>
+    @endif
+    @if (Auth::user()->profil == 'superadmin')
+    <li class="menu-label">Gestion des Entreprises</li>
+    <li>
+      <a href="/customers" class="">
+        <div class="parent-icon"><i class="bi bi-house-door"></i>
+        </div>
+        <div class="menu-title">Customers</div>
+      </a>
+    </li>
+    @endif
+
+    @if (Auth::user()->profil == 'customer')
     <li class="menu-label">Graphes</li>
     <li>
       <a href="/" class="">
@@ -43,7 +65,6 @@
         </li>
       </ul>
     </li>
-
     <li class="menu-label">Utilisateurs</li>
     <li>
       <a class="has-arrow" href="javascript:;">
@@ -55,11 +76,11 @@
         <li> <a href="/users"><i class="bi bi-person-plus-fill"></i>Users</a></li>
         <li> <a href="/groups"><i class="bi bi-people-fill"></i>Groups</a></li>
         <li> <a href="/orgunits"><i class="bi bi-hdd-network"></i>Organizational Units</a> </li>
-        <!-- <li> <a href="/vouchers"><i class="bi bi-hdd-network"></i>Vouchers</a> </li>
-        <li> <a href="/connector"><i class="bi bi-hdd-network"></i>Connectors</a></li> -->
+
       </ul>
     </li>
+    @endif
   </ul>
-  @endif
   @endauth
+
 </aside>

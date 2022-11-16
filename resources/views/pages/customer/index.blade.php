@@ -64,7 +64,7 @@
                         <tbody>
                             @foreach ($customers as $customer)
                             <tr>
-                               
+
                                 <td>{{ $customer->company_name }}</td>
                                 <td>{{ $customer->username}}</td>
                                 <td>{{ $customer->phone  }}</td>
@@ -103,6 +103,7 @@
         $.fn.resetform = function() {
             $("#form").attr("action", "/customers");
         }
+    
 
         $.fn.edit = function(id) {
             $.get(document.location.origin + "/customers/" + id, {
@@ -113,12 +114,11 @@
                     $("#creationdate").val(data.creationdate).change();
                     $("#creationby").val(data.creationby).change();
                     $("#region").val(data.region).change();
-                    $("#total_users").val(data.total_users).change();
                     $("#username").val(data.username).change();
                     $("#phone").val(data.phone).change();
                     $("#plan").val(data.plan).change();
                     $("#plan_expiration").val(data.plan_expiration).change();
-                    // $("#form").attr("action", "/customers/" + data.uuid);
+                    $("#form").attr("action", "/customers/" + data.id);
                 },
                 "json"
             );

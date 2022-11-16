@@ -30,28 +30,31 @@ class CustomerController extends Controller
     public function create(HttpRequest $request)
     {
 
-        $clients = new \GuzzleHttp\Client();
-        $token  = 'fc2142095d3ce2a8b15ea2f0c7bdd48be304a52f';
-        $customer = new Customer();
-        // $body = $network->nasname = $request->nasname;
-        $body = [];
-        $body["username"] = $request->username;
-        $body["company_name"] = $request->company_name;
-        $body["phone"] = $request->phone;
-        $body["region"] = "europe-west2";
-        $body["plan"] = "14_days_trial";
-        $body["plan_quantity"] = $request->plan_quantity;
+        try {
+            $clients = new \GuzzleHttp\Client();
+            $token  = 'fc2142095d3ce2a8b15ea2f0c7bdd48be304a52f';
+            $customer = new Customer();
+            // $body = $network->nasname = $request->nasname;
+            $body = [];
+            $body["username"] = $request->username;
+            $body["company_name"] = $request->company_name;
+            $body["phone"] = $request->phone;
+            $body["region"] = "europe-west2";
+            $body["plan"] = "14_days_trial";
+            $body["plan_quantity"] = $request->plan_quantity;
 
-        $customers = $clients->request('POST', 'https://us-west1.ironwifi.com/api/afridev-group-0503703d/customers', [
-            'headers' => [
-                'Authorization' => 'Bearer ' . $token,
-                'Content-Type' => 'application/json;charset=utf-8',
-            ],
-            'body' => json_encode($body)
+            $customers = $clients->request('POST', 'https://us-west1.ironwifi.com/api/afridev-group-0503703d/customers', [
+                'headers' => [
+                    'Authorization' => 'Bearer ' . $token,
+                    'Content-Type' => 'application/json;charset=utf-8',
+                ],
+                'body' => json_encode($body)
 
-        ]);
-
-        return Redirect('/customers')->with("success", "Le Network a été bien enregistrer");
+            ]);
+            return Redirect('/customers')->with("success", "Le Customer a été bien enregistrer");
+        } catch (\Throwable $th) {
+            return back();
+        }
     }
 
     public function selected($id)
@@ -68,7 +71,7 @@ class CustomerController extends Controller
 
         $customers = new \GuzzleHttp\Client();
         $token  = 'fc2142095d3ce2a8b15ea2f0c7bdd48be304a52f';
-        $response = $customers->request('DELETE', 'https://us-west1.ironwifi.com/api/afridev-group-0503703d/customers/'.$id , [
+        $response = $customers->request('DELETE', 'https://us-west1.ironwifi.com/api/afridev-group-0503703d/customers/' . $id, [
             'headers' => [
                 'Authorization' => 'Bearer ' . $token,
                 'Content-Type' => 'application/json;charset=utf-8',
@@ -78,5 +81,33 @@ class CustomerController extends Controller
         $customers = json_decode($response->getBody()->getContents());
         return Redirect('/customers')->with("success", "Le Customer a été bien supprimer");
     }
-    
+
+    public function edit(Request $request, $id)
+    {
+        try {
+            $clients = new \GuzzleHttp\Client();
+            $token  = 'fc2142095d3ce2a8b15ea2f0c7bdd48be304a52f';
+            $customer = new Customer();
+            // $body = $network->nasname = $request->nasname;
+            $body = [];
+            $body["username"] = $request->username;
+            $body["company_name"] = $request->company_name;
+            $body["phone"] = $request->phone;
+            $body["region"] = "europe-west2";
+            $body["plan"] = "14_days_trial";
+            $body["plan_quantity"] = $request->plan_quantity;
+
+            $customers = $clients->request('POST', 'https://us-west1.ironwifi.com/api/afridev-group-0503703d/customers', [
+                'headers' => [
+                    'Authorization' => 'Bearer ' . $token,
+                    'Content-Type' => 'application/json;charset=utf-8',
+                ],
+                'body' => json_encode($body)
+
+            ]);
+            return Redirect('/customers')->with("success", "Le Customer a été bien enregistrer");
+        } catch (\Throwable $th) {
+            return back();
+        }
+    }
 }
