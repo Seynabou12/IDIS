@@ -47,8 +47,8 @@
                         <div class="card-body">
                             <div class="d-flex align-items-center">
                                 <div>
-                                    <h5 class="mb-0 text-secondary">Total Users</h5>
-                                    <h4 class="my-1">123</h4>
+                                    <h5 class="mb-0 text-secondary">Max Users</h5>
+                                    <h4 class="my-1">{{ count($users) }}</h4>
                                 </div>
                                 <div class="widget-icon-large bg-gradient-purple text-white ms-auto"><i class="bi bi-people-fill"></i>
                                 </div>
@@ -61,8 +61,8 @@
                         <div class="card-body">
                             <div class="d-flex align-items-center">
                                 <div>
-                                    <h5 class="mb-0 text-secondary">User Connect</h5>
-                                    <h4 class="my-1">242</h4>
+                                    <h5 class="mb-0 text-secondary">Users Connect</h5>
+                                    <h4 class="my-1">0</h4>
                                 </div>
                                 <div class="widget-icon-large bg-gradient-success text-white ms-auto"><i class="bi bi-people-fill"></i>
                                 </div>
@@ -76,7 +76,7 @@
                             <div class="d-flex align-items-center">
                                 <div>
                                     <h5 class="mb-0 text-secondary">Total Networks</h5>
-                                    <h4 class="my-1">450</h4>
+                                    <h4 class="my-1">{{ count($networks) }}</h4>
                                 </div>
                                 <div class="widget-icon-large bg-gradient-danger text-white ms-auto"><i class="bi bi-people-fill"></i>
                                 </div>
@@ -89,8 +89,8 @@
                         <div class="card-body">
                             <div class="d-flex align-items-center">
                                 <div>
-                                    <h5 class="mb-0 text-secondary">Active Loactions</h5>
-                                    <h4 class="my-1">100</h4>
+                                    <h5 class="mb-0 text-secondary">Total APS</h5>
+                                    <h4 class="my-1">{{ count($accespoints) }}</h4>
                                 </div>
                                 <div class="widget-icon-large bg-gradient-info text-white ms-auto"><i class="bi bi-bar-chart-line-fill"></i>
                                 </div>
@@ -101,49 +101,34 @@
             </div>
 
             <div class="row">
-                <div class="col-12 col-lg-8 col-xl-8 d-flex">
-                    <div class="card radius-10 w-100">
-                        <div class="card-body">
-                            <div class="row row-cols-1 row-cols-lg-2 g-3 align-items-center">
-                                <div class="col">
-                                    <h5 class="mb-0">Sales Figures</h5>
-                                </div>
-                                <div class="col">
-                                    <div class="d-flex align-items-center justify-content-sm-end gap-3 cursor-pointer">
-                                        <div class="font-13"><i class="bi bi-circle-fill text-primary"></i><span class="ms-2">Sales</span></div>
-                                        <div class="font-13"><i class="bi bi-circle-fill text-success"></i><span class="ms-2">Orders</span></div>
-                                    </div>
-                                </div>
-                            </div>
-                            <div id="chart1"></div>
-                        </div>
-                    </div>
-                </div>
-                <div class="col-12 col-lg-4 col-xl-4 d-flex">
+                <div class="col-12 col-lg-8 col-xl-6 d-flex">
                     <div class="card radius-10 w-100">
                         <div class="card-header bg-transparent">
                             <div class="row g-3 align-items-center">
                                 <div class="col">
-                                    <h5 class="mb-0">Statistics</h5>
+                                    <h5 class="mb-0">Devices Users</h5>
                                 </div>
+                            </div>
+                        </div>
+                        <div class="card-body">
+                            <div class="d-lg-flex align-items-center justify-content-center gap-4">
+                                <div id="chart3"></div>
+                                <ul class="list-group list-group-flush">
+                                    <li class="list-group-item"><i class="bi bi-circle-fill text-purple me-1"></i> Android: <span class="me-1">89</span></li>
+                                    <li class="list-group-item"><i class="bi bi-circle-fill text-info me-1"></i> Windows: <span class="me-1">45</span></li>
+                                    <li class="list-group-item"><i class="bi bi-circle-fill text-pink me-1"></i> Iphone: <span class="me-1">35</span></li>
+                                    <li class="list-group-item"><i class="bi bi-circle-fill text-success me-1"></i> Autres: <span class="me-1">62</span></li>
+                                </ul>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-12 col-lg-4 col-xl-6 d-flex">
+                    <div class="card radius-10 w-100">
+                        <div class="card-header bg-transparent">
+                            <div class="row g-3 align-items-center">
                                 <div class="col">
-                                    <div class="d-flex align-items-center justify-content-end gap-3 cursor-pointer">
-                                        <div class="dropdown">
-                                            <a class="dropdown-toggle dropdown-toggle-nocaret" href="#" data-bs-toggle="dropdown" aria-expanded="false"><i class="bx bx-dots-horizontal-rounded font-22 text-option"></i>
-                                            </a>
-                                            <ul class="dropdown-menu">
-                                                <li><a class="dropdown-item" href="javascript:;">Action</a>
-                                                </li>
-                                                <li><a class="dropdown-item" href="javascript:;">Another action</a>
-                                                </li>
-                                                <li>
-                                                    <hr class="dropdown-divider">
-                                                </li>
-                                                <li><a class="dropdown-item" href="javascript:;">Something else here</a>
-                                                </li>
-                                            </ul>
-                                        </div>
-                                    </div>
+                                    <h5 class="mb-0">Systemes</h5>
                                 </div>
                             </div>
                         </div>
@@ -164,47 +149,7 @@
             <!--end row-->
 
             <div class="row">
-                <div class="col-12 col-lg-6 col-xl-6 d-flex">
-                    <div class="card radius-10 w-100">
-                        <div class="card-header bg-transparent">
-                            <div class="row g-3 align-items-center">
-                                <div class="col">
-                                    <h5 class="mb-0">Statistics</h5>
-                                </div>
-                                <div class="col">
-                                    <div class="d-flex align-items-center justify-content-end gap-3 cursor-pointer">
-                                        <div class="dropdown">
-                                            <a class="dropdown-toggle dropdown-toggle-nocaret" href="#" data-bs-toggle="dropdown" aria-expanded="false"><i class="bx bx-dots-horizontal-rounded font-22 text-option"></i>
-                                            </a>
-                                            <ul class="dropdown-menu">
-                                                <li><a class="dropdown-item" href="javascript:;">Action</a>
-                                                </li>
-                                                <li><a class="dropdown-item" href="javascript:;">Another action</a>
-                                                </li>
-                                                <li>
-                                                    <hr class="dropdown-divider">
-                                                </li>
-                                                <li><a class="dropdown-item" href="javascript:;">Something else here</a>
-                                                </li>
-                                            </ul>
-                                        </div>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-                        <div class="card-body">
-                            <div class="d-lg-flex align-items-center justify-content-center gap-4">
-                                <div id="chart3"></div>
-                                <ul class="list-group list-group-flush">
-                                    <li class="list-group-item"><i class="bi bi-circle-fill text-purple me-1"></i> Visitors: <span class="me-1">89</span></li>
-                                    <li class="list-group-item"><i class="bi bi-circle-fill text-info me-1"></i> Subscribers: <span class="me-1">45</span></li>
-                                    <li class="list-group-item"><i class="bi bi-circle-fill text-pink me-1"></i> Contributor: <span class="me-1">35</span></li>
-                                    <li class="list-group-item"><i class="bi bi-circle-fill text-success me-1"></i> Author: <span class="me-1">62</span></li>
-                                </ul>
-                            </div>
-                        </div>
-                    </div>
-                </div>
+                
                 <div class="col-12 col-lg-6 col-xl-6 d-flex">
                     <div class="card radius-10 w-100">
                         <div class="card-body">

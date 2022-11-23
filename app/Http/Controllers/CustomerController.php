@@ -23,7 +23,6 @@ class CustomerController extends Controller
         ]);
 
         $customers = json_decode($response->getBody()->getContents())->_embedded->customers;
-        // dd($customers);
         return view('pages.customer.index', compact("customers"));
     }
 
@@ -84,6 +83,7 @@ class CustomerController extends Controller
 
     public function edit(Request $request, $id)
     {
+        
         try {
             $clients = new \GuzzleHttp\Client();
             $token  = 'fc2142095d3ce2a8b15ea2f0c7bdd48be304a52f';
@@ -93,7 +93,7 @@ class CustomerController extends Controller
             $body["username"] = $request->username;
             $body["company_name"] = $request->company_name;
             $body["phone"] = $request->phone;
-            $body["region"] = "europe-west2";
+            $body["region"] = "global"; 
             $body["plan"] = "14_days_trial";
             $body["plan_quantity"] = $request->plan_quantity;
 

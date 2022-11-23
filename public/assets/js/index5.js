@@ -180,7 +180,7 @@ var options = {
     width: 340,
     type: 'donut',
   },
-  labels: ["Visitors", "Subscribers", "Contributor", "Author"],
+  labels: ["Android", "Windows", "Iphone", "Autres"],
   colors: ["#3361ff", "#e72e2e", "#12bf24", "#ff6632"],
   legend: {
     show: false,

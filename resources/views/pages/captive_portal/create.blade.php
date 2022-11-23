@@ -15,19 +15,19 @@
                                     @csrf
                                     <div class="row">
                                         <div class="form-group mb-3 col-md-6">
-                                            <label for="nasname" class="control-label">Name</label>
-                                            <input type="text" class="form-control" name="nasname" id="nasname" required />
+                                            <label for="name" class="control-label">Name</label>
+                                            <input type="text" class="form-control" name="name" id="name" required />
                                         </div>
 
                                         <div class="form-group mb-3 col-md-6">
                                             <label for="auth_port" class="control-label">Network</label>
-                                            <input type="text" class="form-control" name="auth_port" id="auth_port" required />
+                                            <input type="text" class="form-control" name="network_id" id="network_id" required />
                                         </div>
                                     </div>
                                     <div class="row">
                                         <div class="form-group mb-3 col-md-6">
-                                            <label for="acct_port" class="control-label">Vendor</label>
-                                            <input type="text" class="form-control" name="acct_port" id="acct_port" required />
+                                            <label for="vendor" class="control-label">Vendor</label>
+                                            <input type="text" class="form-control" name="vendor" id="vendor" required />
                                         </div>
                                     </div>
                                     <div class="form-group">

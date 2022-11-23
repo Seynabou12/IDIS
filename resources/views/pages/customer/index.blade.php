@@ -1,4 +1,4 @@
-@extends('layouts.app')
+@extends('layouts.apps')
 
 
 @section('content')
@@ -35,62 +35,61 @@
 </script>
 @endif
 
-@include('pages.customer.create')
+<div class="" style="margin-top: -100px;">
+    @include('pages.customer.create')
+    <h6 class="mb-0 text-uppercase" style="font-size: 18px; font-weight: bold;">Liste des Comptes</h6>
+    <hr />
+    <div class="">
+        <div class="col-md-12" style="margin-top: 20px;">
+            <div class="card">
+                <div class="card-body">
+                    <div class="table-responsive">
+                        <table id="example" class="table table-striped table-bordered" style="width:100%">
+                            <thead>
+                                <tr>
+                                    <th>Company Name</th>
+                                    <th>Username</th>
+                                    <th>Phone</th>
+                                    <th>Region</th>
+                                    <th>Total Users</th>
+                                    <th>Plan</th>
+                                    <th>Total APS</th>
+                                    <th>Creation Date</th>
+                                    <th>Plan Expiration</th>
+                                    <th>Action</th>
+                                </tr>
+                            </thead>
 
-<h6 class="mb-0 text-uppercase">Liste des Comptes</h6>
-<hr />
+                            <tbody>
+                                @foreach ($customers as $customer)
+                                <tr>
 
-<div class="">
-    <div class="col-md-12" style="margin-top: 20px;">
-        <div class="card">
-            <div class="card-body">
-                <div class="table-responsive">
-                    <table id="example" class="table table-striped table-bordered" style="width:100%">
-                        <thead>
-                            <tr>
-                                <th>Company Name</th>
-                                <th>Username</th>
-                                <th>Phone</th>
-                                <th>Region</th>
-                                <th>Total Users</th>
-                                <th>Plan</th>
-                                <th>Total APS</th>
-                                <th>Creation Date</th>
-                                <th>Plan Expiration</th>
-                                <th>Action</th>
-                            </tr>
-                        </thead>
+                                    <td>{{ $customer->company_name }}</td>
+                                    <td>{{ $customer->username}}</td>
+                                    <td>{{ $customer->phone  }}</td>
+                                    <td>{{ $customer->region }}</td>
+                                    <td>{{ $customer->total_users  }}</td>
+                                    <td>{{ $customer->plan  }}</td>
+                                    <td>{{ $customer->total_aps}}</td>
+                                    <td>{{ $customer->creationdate }}</td>
+                                    <td>{{ $customer->plan_expiration }}</td>
+                                    <td class="text-center text-primary cursor-event">
+                                        <a href="/selected-customer/{{$customer->id}}" class="text-primary" data-bs-toggle="tooltip" data-bs-placement="bottom" title="" data-bs-original-title="View detail" aria-label="Views"><i class="fs-5 bi bi-eye-fill"></i></a>
+                                        <span class="text-warning" onclick="$(this).edit('{{ $customer->id }}')"><i class="fs-5 bi bi-pencil-fill"></i></span>
+                                        <span class="text-danger" onclick="$(this).delete('{{ $customer->id }}')"><i class="fs-5 bi bi-trash-fill"></i></span>
+                                    </td>
 
-                        <tbody>
-                            @foreach ($customers as $customer)
-                            <tr>
-
-                                <td>{{ $customer->company_name }}</td>
-                                <td>{{ $customer->username}}</td>
-                                <td>{{ $customer->phone  }}</td>
-                                <td>{{ $customer->region }}</td>
-                                <td>{{ $customer->total_users  }}</td>
-                                <td>{{ $customer->plan  }}</td>
-                                <td>{{ $customer->total_aps}}</td>
-                                <td>{{ $customer->creationdate }}</td>
-                                <td>{{ $customer->plan_expiration }}</td>
-                                <td class="text-center text-primary cursor-event">
-                                    {{-- <a href="javascript:;" class="text-primary" data-bs-toggle="tooltip"
-                                            data-bs-placement="bottom" title=""
-                                            data-bs-original-title="View detail" aria-label="Views"><i
-                                                class="fs-5 bi bi-eye-fill"></i></a> --}}
-                                    <span onclick="$(this).edit('{{ $customer->id }}')"><i class="fs-5 bi bi-pencil-fill"></i></span>
-                                    <span class="text-danger" onclick="$(this).delete('{{ $customer->id }}')"><i class="fs-5 bi bi-trash-fill"></i></span>
-                                </td>
-                            </tr>
-                            @endforeach
-                        </tbody>
-                    </table>
+                                </tr>
+                                @endforeach
+                            </tbody>
+                        </table>
+                    </div>
                 </div>
             </div>
         </div>
     </div>
 </div>
+
 @endsection
 
 @section('js')
@@ -103,7 +102,7 @@
         $.fn.resetform = function() {
             $("#form").attr("action", "/customers");
         }
-    
+
 
         $.fn.edit = function(id) {
             $.get(document.location.origin + "/customers/" + id, {

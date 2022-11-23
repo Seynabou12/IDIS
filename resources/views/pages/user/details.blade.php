@@ -335,7 +335,7 @@
         $.fn.resetform = function() {
             $("#form").attr("action", "/users");
         }
-        
+
 
     });
 </script>

@@ -12,6 +12,7 @@ class AuthController extends Controller
     {
 
         return view('auth.login');
+        
     }
 
     public function login(Request $request)
@@ -24,9 +25,9 @@ class AuthController extends Controller
             session()->regenerate();
             $user = Auth::user();
             if ($user->profil == 'superadmin') {
-                return redirect()->route('accueil');
+                return redirect()->route('dashbord');
             } else if ($user->profil == 'customer') {
-                return redirect('/');
+                return redirect('/welcom');
             } else if ($user->profil == 'visiteur') {
                 dd('Vous etes un utilisateur');
             }

@@ -28,45 +28,44 @@ class CaptivePortalsController extends Controller
 
     public function create(Request $request)
     {
+        try {
+            $clients = new \GuzzleHttp\Client();
+            $networks = new \GuzzleHttp\Client();
+            $customer_id = Configuration::all()->first()->current_customer_id;
+            $token  = 'fc2142095d3ce2a8b15ea2f0c7bdd48be304a52f';
+            $portails = new CaptivePortals();
+            // $body = $network->nasname = $request->nasname;
+            $body = [];
+            $body["name"] = $request->name;
+            $body["network_id"] = $request->network_id;
+            $body["vendor"] = "Peplink";
 
-        $clients = new \GuzzleHttp\Client();
-        $networks = new \GuzzleHttp\Client();
-        $customer_id = Configuration::all()->first()->current_customer_id;
-        $token  = 'fc2142095d3ce2a8b15ea2f0c7bdd48be304a52f';
-        $portails = new CaptivePortals();
-        // $body = $network->nasname = $request->nasname;
-        $body = [];
-        $body["name"] = $request->name;
-        $body["network_id"] = $request->network_id;
-        $body["vendor"] = "Peplink";
-
-       
-       
-
-        $portail = $clients->request('POST', 'https://console.ironwifi.com/api/' . $customer_id . '/captive-portals', [
-            'headers' => [
-                'Authorization' => 'Bearer ' . $token,
-                'Content-Type' => 'application/json;charset=utf-8',
-            ],
-            'body' => json_encode($body),
-
-            $response = $networks->request('GET', 'https://console.ironwifi.com/api/' . $customer_id . '/networks', [
+            $portail = $clients->request('POST', 'https://console.ironwifi.com/api/' . $customer_id . '/captive-portals', [
                 'headers' => [
                     'Authorization' => 'Bearer ' . $token,
                     'Content-Type' => 'application/json;charset=utf-8',
                 ],
-    
-            ]),
-           
-        ]);
-        $networks = json_decode($response->getBody()->getContents())->_embedded->networks;
+                'body' => json_encode($body),
 
-        return view('portail_captifs', compact('networks'))->with("success", "Le Network a été bien enregistrer");
+                $response = $networks->request('GET', 'https://console.ironwifi.com/api/' . $customer_id . '/networks', [
+                    'headers' => [
+                        'Authorization' => 'Bearer ' . $token,
+                        'Content-Type' => 'application/json;charset=utf-8',
+                    ],
+
+                ]),
+
+            ]);
+            $networks = json_decode($response->getBody()->getContents())->_embedded->networks;
+            return view('portail_captifs', compact('networks'))->with("success", "Le Network a été bien enregistrer");
+        } catch (\Throwable $th) {
+            return back();
+        }
 
         // return Redirect('/portail_captifs', compact('networks'))->with("success", "Le Network a été bien enregistrer");
 
-
     }
+
 
     public function delete(string $id)
     {
@@ -76,7 +75,7 @@ class CaptivePortalsController extends Controller
             $portails = new \GuzzleHttp\Client();
             $customer_id = Configuration::all()->first()->current_customer_id;
             $token  = 'fc2142095d3ce2a8b15ea2f0c7bdd48be304a52f';
-            $response = $portails->request('DELETE', 'https://console.ironwifi.com/api/'. $customer_id .'/captive-portals/'.$id, [
+            $response = $portails->request('DELETE', 'https://console.ironwifi.com/api/' . $customer_id . '/captive-portals/'.$id, [
                 'headers' => [
                     'Authorization' => 'Bearer ' . $token,
                     'Content-Type' => 'application/json;charset=utf-8',

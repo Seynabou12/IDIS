@@ -9,31 +9,8 @@
     <div class="toggle-icon ms-auto" style="color: #0270e0;"><i class="bi bi-chevron-double-left"></i>
     </div>
   </div>
-  @auth
-
   <ul class="metismenu mm-show" id="menu">
-    @if (Auth::user()->profil == 'superadmin')
-    <li class="menu-label">Dashbord</li>
-    <li>
-      <a href="/dashbord" class="">
-        <div class="parent-icon"><i class="bi bi-grid"></i>
-        </div>
-        <div class="menu-title">Dashbord</div>
-      </a>
-    </li>
-    @endif
-    @if (Auth::user()->profil == 'superadmin')
-    <li class="menu-label">Gestion des Entreprises</li>
-    <li>
-      <a href="/customers" class="">
-        <div class="parent-icon"><i class="bi bi-house-door"></i>
-        </div>
-        <div class="menu-title">Customers</div>
-      </a>
-    </li>
-    @endif
 
-    @if (Auth::user()->profil == 'customer')
     <li class="menu-label">Graphes</li>
     <li>
       <a href="/" class="">
@@ -79,8 +56,8 @@
 
       </ul>
     </li>
-    @endif
+
   </ul>
-  @endauth
+
 
 </aside>

@@ -1,8 +1,14 @@
 <div class="">
+
 	<div class="page-breadcrumb d-none d-sm-flex align-items-center mb-3">
 		<div class="ms-auto">
+
 			<div class="col">
+				<!-- <a href="/accueil">
+					<button type="submit" class="btn btn-primary">Select Customer</button>
+				</a> -->
 				<button type="button" class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#exampleLargeModal">Add Customer</button>
+
 				<div class="modal fade" id="exampleLargeModal" tabindex="-1" aria-hidden="true">
 					<div class="modal-dialog modal-lg">
 						<div class="modal-content">

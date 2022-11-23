@@ -5,12 +5,16 @@ $(function() {
 // chart 1
 var options = {
     series: [{
-        name: "Sales",
+        name: "Windows",
         data: [450, 650, 440, 160, 350, 414, 555, 257, 400, 555, 257]
     },{
-        name: "Orders",
+        name: "MacBooks",
         data: [580, 350, 760, 350, 687, 352, 785, 241, 352, 685, 425]
-    }],
+    },{
+      name: "Mobiles",
+      data: [50, 30, 20, 90, 97, 52, 75, 21, 22, 65, 455]
+  }],
+
     chart: {
         foreColor: '#9a9797',
         type: "area",
@@ -36,7 +40,7 @@ var options = {
     },
     markers: {
         size: 0,
-        colors: ["#3461ff", "#12bf24"],
+        colors: ["#3461ff", "#12bf24", "#f00020"],
         strokeColors: "#fff",
         strokeWidth: 2,
         hover: {
@@ -75,7 +79,7 @@ var options = {
           shade: 'light',
           type: "vertical",
           shadeIntensity: 0.5,
-          gradientToColors: ["#3461ff", "#12bf24"],
+          gradientToColors: ["#3461ff", "#12bf24", "#f00020"],
           inverseColors: true,
           opacityFrom: 0.8,
           opacityTo: 0.2,
@@ -83,7 +87,7 @@ var options = {
           //colorStops: []
         }
       },
-    colors: ["#3461ff", "#12bf24"],
+    colors: ["#3461ff", "#12bf24", '#f00020'],
     xaxis: {
         categories: ["Jan", "Feb", "Mar", "Apr", "May", "Jun", "Jul", "Aug", "Sep", "Oct", "Nov", "Dec"]
     },
@@ -91,7 +95,7 @@ var options = {
         theme: 'dark',
         y: {
             formatter: function (val) {
-                return "" + val + ""
+                return "" + val + "" 
             }
         }
     }
@@ -158,7 +162,7 @@ var options = {
     width: 340,
     type: 'donut',
   },
-  labels: ["Visitors", "Subscribers", "Contributor", "Author"],
+  labels: ["Android", "Windows", "Iphone", "Autres"],
   fill: {
     type: 'gradient',
     gradient: {

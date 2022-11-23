@@ -2,17 +2,15 @@
 <html lang="en" class="light-theme">
 
 <head>
-    <!-- Required meta tags -->
+
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <link rel="icon" href="/assets/images/favicon-32x32.png" type="image/png" />
-    <!--plugins-->
     <link href="/assets/plugins/simplebar/css/simplebar.css" rel="stylesheet" />
     <link href="/assets/plugins/perfect-scrollbar/css/perfect-scrollbar.css" rel="stylesheet" />
     <link href="/assets/plugins/metismenu/css/metisMenu.min.css" rel="stylesheet" />
     <link href="/assets/plugins/vectormap/jquery-jvectormap-2.0.2.css" rel="stylesheet" />
     <link href="/assets/plugins/datatable/css/dataTables.bootstrap5.min.css" rel="stylesheet" />
-    <!-- Bootstrap CSS -->
     <link href="/assets/css/bootstrap.min.css" rel="stylesheet" />
     <link href="/assets/css/bootstrap-extended.css" rel="stylesheet" />
     <link href="/assets/css/style.css" rel="stylesheet" />
@@ -20,10 +18,7 @@
     <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@400;500&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.5.0/font/bootstrap-icons.css">
 
-    <!-- loader-->
     <link href="/assets/css/pace.min.css" rel="stylesheet" />
-
-    <!--Theme Styles-->
     <link href="/assets/css/dark-theme.css" rel="stylesheet" />
     <link href="/assets/css/light-theme.css" rel="stylesheet" />
     <link href="/assets/css/semi-dark.css" rel="stylesheet" />
@@ -35,18 +30,18 @@
 <body>
 
     <div class="wrapper">
+
         @include('./layouts.header')
         @include('./layouts.sidebar')
-        <main class="page-content">
 
+        <main class="page-content">
             <div class="card border shadow-none">
                 <div class="card-header py-3">
                     <div class="row align-items-center g-3">
                         <div class="col-12 col-lg-6">
-                            <h3 class="mb-0">Customer Name</h3>
+                            <h3 class="mb-0">{{ $customer->company_name}}</h3>
                         </div>
                         <div class="col-12 col-lg-6 text-md-end">
-                            <a href="javascript:;" class="btn btn-sm btn-danger me-2"><i class="bi bi-file-earmark-pdf-fill"></i> Export as PDF</a>
                             <a href="javascript:;" onclick="window.print()" class="btn btn-sm btn-secondary"><i class="bi bi-printer-fill"></i> Print</a>
                         </div>
                     </div>
@@ -57,7 +52,7 @@
                             <div class="">
                                 <address class="m-t-5 m-b-5">
                                     <strong class="text-inverse h5">Phone</strong><br>
-                                    Phone 781794521<br>
+                                    Phone 774598303<br>
                                 </address>
                             </div>
                         </div>
@@ -65,14 +60,14 @@
                             <div class="">
                                 <address class="m-t-5 m-b-5">
                                     <strong class="text-inverse h5">Email</strong><br>
-                                    dioneseynabou0@gmail.com<br>
+                                    contact@impact-tech.net <br>
                                 </address>
                             </div>
                         </div>
                         <div class="col">
                             <div class="">
                                 <strong class="text-inverse h5">Creation Date</strong><br>
-                                August 3,2012</br>
+                                2022-05-25 16:25:26</br>
                             </div>
                         </div>
                     </div>
@@ -84,12 +79,13 @@
                         <div class="card-body">
                             <div class="row row-cols-1 row-cols-lg-2 g-3 align-items-center">
                                 <div class="col">
-                                    <h5 class="mb-0">Sales Figures</h5>
+                                    <h5 class="mb-0">Devices Data</h5>
                                 </div>
                                 <div class="col">
                                     <div class="d-flex align-items-center justify-content-sm-end gap-3 cursor-pointer">
-                                        <div class="font-13"><i class="bi bi-circle-fill text-primary"></i><span class="ms-2">Sales</span></div>
-                                        <div class="font-13"><i class="bi bi-circle-fill text-success"></i><span class="ms-2">Orders</span></div>
+                                        <div class="font-13"><i class="bi bi-circle-fill text-primary"></i><span class="ms-2">Windows</span></div>
+                                        <div class="font-13"><i class="bi bi-circle-fill text-success"></i><span class="ms-2">Mac</span></div>
+                                        <div class="font-13"><i class="bi bi-circle-fill text-danger"></i><span class="ms-2">Mobiles</span></div>
                                     </div>
                                 </div>
                             </div>
@@ -98,7 +94,44 @@
                     </div>
                 </div>
                 <div class="col-12 col-lg-4 col-xl-4 d-flex">
+
                     <div class="card radius-10 w-100">
+                        <div class="card-header bg-transparent">
+                            <div class="row g-3 align-items-center">
+                                <div class="col">
+                                    <h5 class="mb-0">Table des Matiéres </h5>
+                                </div>
+                                <div class="card-body">
+                                    <table class="table mb-0">
+                                        <thead class="table-dark">
+                                            <tr>
+                                                <th scope="col">Authentication</th>
+                                                <th scope="col">Count</th>
+                                            </tr>
+                                        </thead>
+                                        <tbody>
+                                            <tr>
+                                                <th scope="row">Windows</th>
+                                                <td>23</td>
+
+                                            </tr>
+                                            <tr>
+                                                <th scope="row">Mobiles</th>
+                                                <td>24</td>
+
+                                            </tr>
+                                            <tr>
+                                                <th scope="row">MacBooks</th>
+                                                <td colspan="2">4</td>
+                                            </tr>
+                                        </tbody>
+                                    </table>
+                                </div>
+                            </div>
+                        </div>
+
+                    </div>
+                    <!-- <div class="card radius-10 w-100">
                         <div class="card-header bg-transparent">
                             <div class="row g-3 align-items-center">
                                 <div class="col">
@@ -136,7 +169,7 @@
                             <li class="list-group-item d-flex justify-content-between align-items-center bg-transparent">Pending<span class="badge bg-success badge-pill">10%</span>
                             </li>
                         </ul>
-                    </div>
+                    </div> -->
                 </div>
             </div>
             <div class="row">
@@ -281,6 +314,7 @@
     <script src="/assets/plugins/apexcharts-bundle/js/apexcharts.min.js"></script>
     <script src="/assets/plugins/datatable/js/jquery.dataTables.min.js"></script>
     <script src="/assets/plugins/datatable/js/dataTables.bootstrap5.min.js"></script>
+
 
     <script src="/assets/js/app.js"></script>
     <script src="/assets/js/index.js"></script>

@@ -1,6 +1,7 @@
 <?php
 
 use App\Http\Controllers\AccueilController;
+use App\Http\Controllers\AdminDashbordController;
 use App\Http\Controllers\AuthController;
 use App\Http\Controllers\CaptivePortalsController;
 use App\Http\Controllers\CustomerController;
@@ -12,6 +13,7 @@ use App\Http\Controllers\ReportingContoller;
 use App\Http\Controllers\SuperAdmin\SuperAdminController;
 use App\Http\Controllers\UtilisateurController;
 use App\Http\Controllers\VoucherController;
+use App\Http\Middleware\Auth;
 use Illuminate\Support\Facades\Route;
 
 /*
@@ -25,17 +27,16 @@ use Illuminate\Support\Facades\Route;
 |
 */
 
-Route::get('/welcom', function () {
-    return view('welcome');
-});
+Route::get('/welcom', [AdminDashbordController::class, 'welcom']);
 
 Route::get('/reporting', [ReportingContoller::class, 'reporting']);
 
-Route::get('/dashbord', [SuperAdminController::class, 'dashbord']);
+Route::get('/dashbord', [SuperAdminController::class, 'dashbord'])->name('dashbord');
 
 Route::get('/customer/{$customer_id}/networks', [NetworkController::class, 'index']);
 Route::get('/selected-customer/{id}', [CustomerController::class, 'selected']);
 Route::get('/customers', [CustomerController::class, 'index']);
+Route::get('/customers/{id}/details', [CustomerController::class, 'details'])->where('id', '[0-9]+');
 Route::post('/customers/create', [CustomerController::class, 'create'])->where("id", "[0-9a-z]+");
 Route::get("/customers/{id}/delete", [CustomerController::class, 'delete'])->name("customer.delete")->where('id', '[0-9a-z\-]+');
 
@@ -44,26 +45,32 @@ Route::post("/", [AuthController::class, 'login'])->name('auth.login');
 
 Route::get("/accueil", [AccueilController::class, 'accueil'])->name('accueil');
 
-Route::get('/groups', [GroupController::class, 'index']);
+Route::get('/groups', [GroupController::class, 'index'])->where('id', '[0-9a-z\-]+');
 Route::post('/groups/create', [GroupController::class, 'create']);
 Route::get("/groups/{id}/delete", [GroupController::class, 'delete'])->name("group.delete")->where('id', '[0-9a-z\-]+');
 
-Route::get('/users', [UtilisateurController::class, 'index']);
-Route::get('/users/{id}/details', [UtilisateurController::class, 'details'])->name("user.details")->where("id", "[0-9a-z]+");
+Route::get('/users', [UtilisateurController::class, 'index'])->where('id', '[0-9a-z\-]+');
+Route::get('/users/{id}/details', [UtilisateurController::class, 'details'])->name('user.details')->where("id", "[0-9a-z]+");
+Route::get("/users/{id}/delete", [UtilisateurController::class, 'delete'])->name("user.delete")->where('id', '[0-9a-z\-]+');
 
-Route::get('/networks', [NetworkController::class, 'index']);
+Route::get('/networks', [NetworkController::class, 'index'])->where('id', '[0-9a-z\-]+');
 Route::post('/networks/add', [NetworkController::class, 'store'])->where("id", "[0-9a-z]+");
 Route::get("/networks/{id}/delete", [NetworkController::class, 'delete'])->name("network.delete")->where('id', '[0-9a-z\-]+');
 
-Route::get('/pointacces', [NodeController::class, 'index']);
+Route::get('/pointacces', [NodeController::class, 'index'])->where('id', '[0-9a-z\-]+');
 
-Route::get('/portail_captifs', [CaptivePortalsController::class, 'index']);
-Route::post('/portail_captif/create', [CaptivePortalsController::class, 'create'])->name('portail_captifs')->where('id', '[0-9a-z\-]+');
-Route::get("/portail_captif/{id}/delete", [CaptivePortalsController::class, 'delete'])->name("portail_captifs.delete")->where('id', '[0-9a-z\-]+');
+Route::get('/portail_captifs', [CaptivePortalsController::class, 'index'])->where('id', '[0-9a-z\-]+');
+Route::post('/portail_captifs/create', [CaptivePortalsController::class, 'create'])->name('portail_captifs')->where('id', '[0-9a-z\-]+');
+Route::get("/portail_captifs/{id}/delete", [CaptivePortalsController::class, 'delete'])->name("portail_captifs.delete")->where('id', '[0-9a-z\-]+');
 
-Route::get('/orgunits', [OrganitUnitController::class, 'index']);
+Route::get('/orgunits', [OrganitUnitController::class, 'index'])->where('id', '[0-9a-z\-]+');
 
-Route::get('/vouchers', [VoucherController::class, 'index']);
+Route::get('/vouchers', [VoucherController::class, 'index'])->where('id', '[0-9a-z\-]+');
+
+
+
+
+
 
 
 
