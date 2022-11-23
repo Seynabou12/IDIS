@@ -50,7 +50,7 @@ class CustomerController extends Controller
                 'body' => json_encode($body)
 
             ]);
-            return Redirect('/customers')->with("success", "Le Customer a été bien enregistrer");
+            return Redirect('/customers')->with("success", "L'entreprise a été bien enregistré");
         } catch (\Throwable $th) {
             return back();
         }
@@ -58,6 +58,7 @@ class CustomerController extends Controller
 
     public function selected($id)
     {
+
         $configuration = Configuration::all()->first() ?? new Configuration();
         $configuration->current_customer_id = $id;
         $configuration->save();
@@ -83,8 +84,9 @@ class CustomerController extends Controller
 
     public function edit(Request $request, $id)
     {
-        
+
         try {
+            
             $clients = new \GuzzleHttp\Client();
             $token  = 'fc2142095d3ce2a8b15ea2f0c7bdd48be304a52f';
             $customer = new Customer();
@@ -93,18 +95,20 @@ class CustomerController extends Controller
             $body["username"] = $request->username;
             $body["company_name"] = $request->company_name;
             $body["phone"] = $request->phone;
-            $body["region"] = "global"; 
+            $body["region"] = "global";
             $body["plan"] = "14_days_trial";
             $body["plan_quantity"] = $request->plan_quantity;
 
-            $customers = $clients->request('POST', 'https://us-west1.ironwifi.com/api/afridev-group-0503703d/customers', [
+            $customers = $clients->request('PATCH', 'https://us-west1.ironwifi.com/api/afridev-group-0503703d/customers', [
                 'headers' => [
                     'Authorization' => 'Bearer ' . $token,
                     'Content-Type' => 'application/json;charset=utf-8',
                 ],
                 'body' => json_encode($body)
-
             ]);
+
+            $customer = json_decode($customers->getBody()->getContents());
+
             return Redirect('/customers')->with("success", "Le Customer a été bien enregistrer");
         } catch (\Throwable $th) {
             return back();

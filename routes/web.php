@@ -50,7 +50,7 @@ Route::post('/groups/create', [GroupController::class, 'create']);
 Route::get("/groups/{id}/delete", [GroupController::class, 'delete'])->name("group.delete")->where('id', '[0-9a-z\-]+');
 
 Route::get('/users', [UtilisateurController::class, 'index'])->where('id', '[0-9a-z\-]+');
-Route::get('/users/{id}/details', [UtilisateurController::class, 'details'])->name('user.details')->where("id", "[0-9a-z]+");
+Route::get("/users/{id}/details", [UtilisateurController::class, 'details'])->name('user.details')->where("id", "[0-9a-z]+");
 Route::get("/users/{id}/delete", [UtilisateurController::class, 'delete'])->name("user.delete")->where('id', '[0-9a-z\-]+');
 
 Route::get('/networks', [NetworkController::class, 'index'])->where('id', '[0-9a-z\-]+');

@@ -35,39 +35,63 @@
         @include('./layouts.sidebar')
 
         <main class="page-content">
-            <div class="card border shadow-none">
+            <div class="card">
                 <div class="card-header py-3">
-                    <div class="row align-items-center g-3">
-                        <div class="col-12 col-lg-6">
-                            <h3 class="mb-0">{{ $customer->company_name}}</h3>
-                        </div>
-                        <div class="col-12 col-lg-6 text-md-end">
-                            <a href="javascript:;" onclick="window.print()" class="btn btn-sm btn-secondary"><i class="bi bi-printer-fill"></i> Print</a>
+                    <div class="row g-3 align-items-center">
+                        <div class="col-12 col-lg-4 col-md-6 me-auto">
+                            <h5 class="mb-1"><strong>Customer Name: &nbsp</strong>{{ $customer->company_name }}</h5>
+                            <p class="mb-0">Numéro Entreprise : #{{ $customer->id }}</p>
                         </div>
                     </div>
                 </div>
-                <div class="card-header py-2 bg-light">
-                    <div class="row row-cols-1 row-cols-lg-3">
+                <div class="card-body">
+                    <div class="row row-cols-1 row-cols-xl-2 row-cols-xxl-3">
                         <div class="col">
-                            <div class="">
-                                <address class="m-t-5 m-b-5">
-                                    <strong class="text-inverse h5">Phone</strong><br>
-                                    Phone 774598303<br>
-                                </address>
+                            <div class="card border shadow-none radius-10">
+                                <div class="card-body">
+                                    <div class="d-flex align-items-center gap-3">
+                                        <div class="icon-box bg-light-primary border-0">
+                                            <i class="bi bi-building text-primary"></i>
+                                        </div>
+                                        <div class="info">
+                                            <p class="mb-1"><strong>Email:</strong> {{ $customer->username }}</p>
+                                            <p class="mb-1"><strong>Phone:</strong> {{ $customer->phone }}</p>
+                                            <p class="mb-1"><strong>Creation By:</strong> {{ $customer->creationby }}</p>
+                                        </div>
+                                    </div>
+                                </div>
                             </div>
                         </div>
                         <div class="col">
-                            <div class="">
-                                <address class="m-t-5 m-b-5">
-                                    <strong class="text-inverse h5">Email</strong><br>
-                                    contact@impact-tech.net <br>
-                                </address>
+                            <div class="card border shadow-none radius-10">
+                                <div class="card-body">
+                                    <div class="d-flex align-items-center gap-3">
+                                        <div class="icon-box bg-light-success border-0">
+                                            <i class="bi bi-truck text-success"></i>
+                                        </div>
+                                        <div class="info">
+                                            <p class="mb-1"><strong>Total Users</strong> : {{ $customer->total_users }}</p>
+                                            <p class="mb-1"><strong>Max APS</strong> : {{ $customer->total_aps }}</p>
+                                            <p class="mb-1"><strong>Total Venues</strong> : {{ $customer->total_venues }}</p>
+                                        </div>
+                                    </div>
+                                </div>
                             </div>
                         </div>
                         <div class="col">
-                            <div class="">
-                                <strong class="text-inverse h5">Creation Date</strong><br>
-                                2022-05-25 16:25:26</br>
+                            <div class="card border shadow-none radius-10">
+                                <div class="card-body">
+                                    <div class="d-flex align-items-center gap-3">
+                                        <div class="icon-box bg-light-danger border-0">
+                                            <i class="bi bi-calendar-date text-danger"></i>
+                                        </div>
+                                        <div class="info">
+                                            <p class="mb-1"><strong>Creation Date</strong> : {{ $customer->creationdate }}</p>
+                                            <p class="mb-1"><strong>Plan Expiration</strong> : {{ $customer->plan_expiration }} </p>
+                                            <p class="mb-1"><strong>Region</strong> : {{ $customer->region }} </p>
+                                        </div>
+                                    </div>
+                                </div>
                             </div>
                         </div>
                     </div>
