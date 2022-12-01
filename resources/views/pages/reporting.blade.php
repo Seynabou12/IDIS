@@ -99,7 +99,6 @@
                     </div>
                 </div>
             </div>
-
             <div class="row">
                 <div class="col-12 col-lg-8 col-xl-6 d-flex">
                     <div class="card radius-10 w-100">
@@ -114,8 +113,8 @@
                             <div class="d-lg-flex align-items-center justify-content-center gap-4">
                                 <div id="chart3"></div>
                                 <ul class="list-group list-group-flush">
-                                    <li class="list-group-item"><i class="bi bi-circle-fill text-purple me-1"></i> Android: <span class="me-1">89</span></li>
-                                    <li class="list-group-item"><i class="bi bi-circle-fill text-info me-1"></i> Windows: <span class="me-1">45</span></li>
+                                    <li class="list-group-item"><i class="bi bi-circle-fill text-purple me-1"></i> Windows: <span class="me-1">89</span></li>
+                                    <li class="list-group-item"><i class="bi bi-circle-fill text-info me-1"></i> Android: <span class="me-1">45</span></li>
                                     <li class="list-group-item"><i class="bi bi-circle-fill text-pink me-1"></i> Iphone: <span class="me-1">35</span></li>
                                     <li class="list-group-item"><i class="bi bi-circle-fill text-success me-1"></i> Autres: <span class="me-1">62</span></li>
                                 </ul>
@@ -136,19 +135,19 @@
                             <div id="chart2"></div>
                         </div>
                         <ul class="list-group list-group-flush mb-0">
-                            <li class="list-group-item d-flex justify-content-between align-items-center bg-transparent">New Orders<span class="badge bg-primary badge-pill">25%</span>
+                            <li class="list-group-item d-flex justify-content-between align-items-center bg-transparent">Windows<span class="badge bg-primary badge-pill">25%</span>
                             </li>
-                            <li class="list-group-item d-flex justify-content-between align-items-center bg-transparent">Completed<span class="badge bg-orange badge-pill">65%</span>
+                            <li class="list-group-item d-flex justify-content-between align-items-center bg-transparent">Android<span class="badge bg-orange badge-pill">65%</span>
                             </li>
-                            <li class="list-group-item d-flex justify-content-between align-items-center bg-transparent">Pending<span class="badge bg-success badge-pill">10%</span>
+                            <li class="list-group-item d-flex justify-content-between align-items-center bg-transparent">MacBook<span class="badge bg-success badge-pill">10%</span>
                             </li>
+
                         </ul>
                     </div>
                 </div>
             </div>
-            <!--end row-->
 
-            <div class="row">
+            <!-- <div class="row">
                 
                 <div class="col-12 col-lg-6 col-xl-6 d-flex">
                     <div class="card radius-10 w-100">
@@ -168,9 +167,7 @@
                         </div>
                     </div>
                 </div>
-            </div>
-            <!--end row-->
-
+            </div> -->
 
         </main>
 

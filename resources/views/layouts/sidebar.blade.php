@@ -1,4 +1,5 @@
 <aside class="sidebar-wrapper mm-active" data-simplebar="true">
+
   <div class="sidebar-header">
     <div>
       <img src="/assets/images/products/ironwifi.png" class="logo-icon" alt="logo icon">
@@ -10,7 +11,6 @@
     </div>
   </div>
   <ul class="metismenu mm-show" id="menu">
-
     <li class="menu-label">Graphes</li>
     <li>
       <a href="/" class="">
@@ -47,17 +47,17 @@
       <a class="has-arrow" href="javascript:;">
         <div class="parent-icon"><i class="bi bi-lock"></i>
         </div>
-        <div class="menu-title">Users</div>
+        <div class="menu-title">Visiteurs</div>
       </a>
       <ul class="mm-collapse">
         <li> <a href="/users"><i class="bi bi-person-plus-fill"></i>Users</a></li>
+        <li> <a href="/guests"><i class="bi bi-person-plus-fill"></i>Guests</a></li>
+        <li> <a href="#"><i class="bi bi-people-fill"></i>Authentication</a></li>
+        <li> <a href="#"><i class="bi bi-people-fill"></i>Profil</a></li>
         <li> <a href="/groups"><i class="bi bi-people-fill"></i>Groups</a></li>
         <li> <a href="/orgunits"><i class="bi bi-hdd-network"></i>Organizational Units</a> </li>
-
       </ul>
     </li>
-
   </ul>
-
 
 </aside>

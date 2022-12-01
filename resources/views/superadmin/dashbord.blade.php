@@ -58,8 +58,10 @@
                         <div class="card-body">
                             <div class="d-flex align-items-center">
                                 <div>
-                                    <h5 class="mb-0 text-secondary">Total Point Accés</h5>
-                                    <h4 class="my-1">450</h4>
+                                    <h5 class="mb-0 text-secondary">Total APs</h5>
+                                    
+                                        <h4 class="my-1">{{ $entreprise }}</h4>
+                                   
                                 </div>
                                 <div class="widget-icon-large bg-gradient-danger text-white ms-auto"><i class="bi bi-people-fill"></i>
                                 </div>
@@ -72,8 +74,9 @@
                         <div class="card-body">
                             <div class="d-flex align-items-center">
                                 <div>
-                                    <h5 class="mb-0 text-secondary">Total Captive Portal</h5>
-                                    <h4 class="my-1">100</h4>
+                                    <h5 class="mb-0 text-secondary">Total Users</h5>
+                                        <h4 class="my-1">{{ $users }}</h4>
+                                      
                                 </div>
                                 <div class="widget-icon-large bg-gradient-info text-white ms-auto"><i class="bi bi-bar-chart-line-fill"></i>
                                 </div>
@@ -83,8 +86,8 @@
                 </div>
             </div>
         </main>
+
         @include('pages.customer.index')
-       
 
     </div>
 

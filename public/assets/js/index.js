@@ -104,8 +104,6 @@ var options = {
   var chart = new ApexCharts(document.querySelector("#chart1"), options);
   chart.render();
 
-
-
 // chart 2
   
 var options = {
@@ -152,7 +150,6 @@ var options = {
   var chart = new ApexCharts(document.querySelector("#chart2"), options);
   chart.render();
 
-  
 
 // chart 3
   
@@ -173,8 +170,7 @@ var options = {
       inverseColors: true,
       opacityFrom: 1,
       opacityTo: 1,
-      //stops: [0, 50, 100],
-      //colorStops: []
+
     }
   },
   colors: ["#764ba2", "#005bea", "#fe5196", "#12bf24"],
@@ -199,9 +195,6 @@ var options = {
 
   var chart = new ApexCharts(document.querySelector("#chart3"), options);
   chart.render();
-
-
-
 
 // chart 4
 
@@ -292,14 +285,12 @@ var options = {
             }
         }
     }
+    
   };
 
   var chart = new ApexCharts(document.querySelector("#chart4"), options);
   chart.render();
 
-
-
-  
    // world map
 	
 	jQuery('#geographic-map').vectorMap({

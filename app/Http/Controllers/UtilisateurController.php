@@ -11,10 +11,10 @@ class UtilisateurController extends Controller
     public function index($customer_id = null)
     {
 
-        $users = new \GuzzleHttp\Client();
+        $guests = new \GuzzleHttp\Client();
         $customer_id = Configuration::all()->first()->current_customer_id;
         $token  = 'fc2142095d3ce2a8b15ea2f0c7bdd48be304a52f';
-        $response = $users->request('GET', 'https://console.ironwifi.com/api/' . $customer_id . '/users', [
+        $response = $guests->request('GET', 'https://console.ironwifi.com/api/' . $customer_id . '/users', [
             'headers' => [
                 'Authorization' => 'Bearer ' . $token,
                 'Content-Type' => 'application/json;charset=utf-8',
@@ -25,36 +25,32 @@ class UtilisateurController extends Controller
         return view('pages.user.index', compact("users"));
     }
 
-    public function details(string $id, $customer_id = null)
+    public function details(string $id)
     {
+
 
         try {
 
             $customer_id = Configuration::all()->first()->current_customer_id;
-            $guests = new \GuzzleHttp\Client();
+            $users = new \GuzzleHttp\Client();
             $token  = 'fc2142095d3ce2a8b15ea2f0c7bdd48be304a52f';
-            $response = $guests->request('GET', 'https://console.ironwifi.com/api/'.$customer_id.'/guests/'.$id, [
+
+            $response = $users->request('GET', 'https://europe-west2.ironwifi.com/api' . $customer_id . '/users/' . $id, [
                 'headers' => [
                     'Authorization' => 'Bearer ' . $token,
                     'Content-Type' => 'application/json;charset=utf-8',
+     
                 ],
             ]);
 
-            $guests = json_decode($response->getBody()->getContents())->_embedded->guests->device_data;
-            dd($guests);
-            return view('/users/{id}/details')->with("success", "Le Network a été bien supprimer");
+            $user = json_decode($response->getBody()->getContents())->_embedded->users;
+            dd($user);
+            return Redirect('/users/{id}/details')->with("success", "plus d'informations");
         } catch (\Throwable $th) {
-            return back();
+            dd('1');
         }
-           
-       
     }
 
-    // public function details(string $id)
-    // {
-        
-    //     return view('pages.user.details');
-    // }
 
     public function delete(string $id)
     {

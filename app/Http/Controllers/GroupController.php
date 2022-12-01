@@ -20,9 +20,9 @@ class GroupController extends Controller
         $customer_id = Configuration::all()->first()->current_customer_id;
         $token  = 'fc2142095d3ce2a8b15ea2f0c7bdd48be304a52f';
 
-        $response = $groups->request('GET', 'https://console.ironwifi.com/api/' . $customer_id . '/groups', [
+        $response = $groups->request('GET', 'https://europe-west2.ironwifi.com/api/' . $customer_id . '/groups', [
             'headers' => [
-                'Authorization' => 'Bearer ' . $token,
+                'Authorization' => 'Bearer' . $token,
                 'Content-Type' => 'application/json;charset=utf-8',
             ],
         ]);
@@ -77,5 +77,6 @@ class GroupController extends Controller
         } catch (\Throwable $th) {
             return back()->withErrors("Le Groupe a été bien supprimé");
         }
+        
     }
 }

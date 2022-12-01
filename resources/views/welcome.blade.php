@@ -67,7 +67,7 @@
                                 <div class="card-body">
                                     <div class="d-flex align-items-center gap-3">
                                         <div class="icon-box bg-light-success border-0">
-                                            <i class="bi bi-truck text-success"></i>
+                                            <i class="bi bi-plus-circle text-success"></i>
                                         </div>
                                         <div class="info">
                                             <p class="mb-1"><strong>Total Users</strong> : {{ $customer->total_users }}</p>
@@ -322,6 +322,7 @@
                 </div>
             </div>
         </div>
+
     </div>
 
     <script src="/assets/js/bootstrap.bundle.min.js"></script>
@@ -347,6 +348,7 @@
         new PerfectScrollbar(".best-product")
         new PerfectScrollbar(".top-sellers-list")
     </script>
+
 
 </body>
 

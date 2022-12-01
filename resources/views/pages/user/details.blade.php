@@ -67,15 +67,7 @@
                 <h5 class="mb-1">Tue, Apr 15, 2020, 8:44PM</h5>
                 <p class="mb-0">Order ID : #8965327</p>
             </div>
-            <div class="col-12 col-lg-3 col-6 col-md-3">
-                <select class="form-select">
-                    <option>Change Status</option>
-                    <option>Awaiting Payment</option>
-                    <option>Confirmed</option>
-                    <option>Shipped</option>
-                    <option>Delivered</option>
-                </select>
-            </div>
+           
             <div class="col-12 col-lg-3 col-6 col-md-3">
                 <button type="button" class="btn btn-primary">Save</button>
                 <button type="button" class="btn btn-secondary"><i class="bi bi-printer-fill"></i> Print</button>
@@ -135,7 +127,6 @@
                 </div>
             </div>
         </div>
-        <!--end row-->
 
         <div class="row">
             <div class="col-12 col-lg-8">

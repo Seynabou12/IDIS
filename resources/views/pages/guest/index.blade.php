@@ -59,21 +59,21 @@
                     </thead>
 
                     <tbody>
-                        @foreach ($users as $user)
+                        @foreach ($guests as $guest)
                         <tr>
 
-                            <td>{{ $user->id }}</td>
-                            <td>{{ $user->username }}</td>
-                            <td>{{ $user->email }}</td>
-                            <td>{{ $user->fullname  }}</td>
-                            <td>{{ $user->phone}}</td>
-                            <td>{{ $user->creationdate  }}</td>
-                            <td>{{ $user->authdate_orig  }}</td>
-                            <td>{{ $user->authdate }}</td>
+                            <td>{{ $guest->id }}</td>
+                            <td>{{ $guest->username }}</td>
+                            <td>{{ $guest->email }}</td>
+                            <td>{{ $guest->fullname  }}</td>
+                            <td>{{ $guest->phone}}</td>
+                            <td>{{ $guest->creationdate  }}</td>
+                            <td>{{ $guest->authdate_orig  }}</td>
+                            <td>{{ $guest->authdate }}</td>
                             <td class="text-center text-primary cursor-event">
-                                <a href="/users/{{ $user->id }}/details" class="text-primary" data-bs-toggle="tooltip" data-bs-placement="bottom" title="" aria-label="Views"><i class="fs-5 bi bi-eye-fill"></i></a>
-                                <span class="text-warning" onclick="$(this).edit('{{ $user->id }}')"><i class="fs-5 bi bi-pencil-fill"></i></span>
-                                <span class="text-danger" onclick="$(this).delete('{{ $user->id }}')"><i class="fs-5 bi bi-trash-fill"></i></span>
+                                <a href="/guests/{{ $guest->id }}/details" class="text-primary" data-bs-toggle="tooltip" data-bs-placement="bottom" title="" aria-label="Views"><i class="fs-5 bi bi-eye-fill"></i></a>
+                                <span class="text-warning" onclick="$(this).edit('{{ $guest->id }}')"><i class="fs-5 bi bi-pencil-fill"></i></span>
+                                <span class="text-danger" onclick="$(this).delete('{{ $guest->id }}')"><i class="fs-5 bi bi-trash-fill"></i></span>
                             </td>
 
                         </tr>

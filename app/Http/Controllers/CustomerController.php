@@ -50,10 +50,12 @@ class CustomerController extends Controller
                 'body' => json_encode($body)
 
             ]);
+            
             return Redirect('/customers')->with("success", "L'entreprise a été bien enregistré");
         } catch (\Throwable $th) {
             return back();
         }
+        
     }
 
     public function selected($id)

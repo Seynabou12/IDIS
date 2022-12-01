@@ -18,7 +18,16 @@ class SuperAdminController extends Controller
             ],
         ]);
         $customers = json_decode($response->getBody()->getContents())->_embedded->customers;
-        return view('superadmin.dashbord', compact('customers'));
+        $entreprise = 0;
+        foreach ($customers as $customer) {
+            $entreprise += $customer->total_aps;
+        }
+        $users = 0;
+        foreach ($customers as $customer) {
+            $users += $customer->total_users;
+        }
+       
+        return view('superadmin.dashbord', compact('customers', 'entreprise', 'users'));
     }
 
     public function customer()
@@ -35,6 +44,5 @@ class SuperAdminController extends Controller
         ]);
         $customers = json_decode($response->getBody()->getContents())->_embedded->customers;
         return view('accueil', compact('customers'));
-
     }
 }
