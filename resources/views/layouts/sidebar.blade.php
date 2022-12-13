@@ -45,12 +45,23 @@
     <li class="menu-label">Utilisateurs</li>
     <li>
       <a class="has-arrow" href="javascript:;">
-        <div class="parent-icon"><i class="bi bi-lock"></i>
+        <div class="parent-icon"><i class="bi bi-person-plus-fill"></i>
+        </div>
+        <div class="menu-title">Utilisateurs</div>
+      </a>
+      <ul class="mm-collapse">
+        <li> <a href="/users"><i class="bi bi-person-plus-fill"></i>Users</a></li>
+      </ul>
+    </li>
+
+    <li class="menu-label">Visiteurs</li>
+    <li>
+      <a class="has-arrow" href="javascript:;">
+        <div class="parent-icon"><i class="bi bi-person-plus-fill"></i>
         </div>
         <div class="menu-title">Visiteurs</div>
       </a>
       <ul class="mm-collapse">
-        <li> <a href="/users"><i class="bi bi-person-plus-fill"></i>Users</a></li>
         <li> <a href="/guests"><i class="bi bi-person-plus-fill"></i>Guests</a></li>
         <li> <a href="#"><i class="bi bi-people-fill"></i>Authentication</a></li>
         <li> <a href="#"><i class="bi bi-people-fill"></i>Profil</a></li>

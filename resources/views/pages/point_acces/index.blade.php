@@ -44,6 +44,7 @@
                         <thead>
                             <tr>
                                 <th>Numero</th>
+                                <th>Approval Status</th>
                                 <th>Firmware</th>
                                 <th>Name</th>
                                 <th>Mac</th>
@@ -60,6 +61,7 @@
                             @foreach ($accespoints as $accespoint)
                             <tr>
                                 <td>{{ $accespoint->id }}</td>
+                                <td>{{ $accespoint->approval_status}}</td>
                                 <td>{{ $accespoint->firmware }}</td>
                                 <td>{{ $accespoint->name }}</td>
                                 <td>{{ $accespoint->mac }}</td>
@@ -93,7 +95,7 @@
 @section('js')
 <script>
     $(document).ready(function() {
-        
+
         $(document).ready(function() {
             $('#example').DataTable();
         });

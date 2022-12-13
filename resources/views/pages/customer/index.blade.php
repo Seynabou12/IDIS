@@ -37,7 +37,7 @@
 
 <div class="" style="margin-top: -100px;">
     @include('pages.customer.create')
-    <h6 class="mb-0 text-uppercase" style="font-size: 18px; font-weight: bold;">Liste des Entreprises</h6>
+    <h6 class="mb-0 text-uppercase" style="font-size: 18px; font-weight: bold;">LIST OF COMPANIES</h6>
     <hr />
     <div class="">
         <div class="col-md-12" style="margin-top: 20px;">

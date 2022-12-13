@@ -26,6 +26,7 @@ class DatabaseSeeder extends Seeder
             // 'photo' => '/images/news-3.jpg',
             'password' => Hash::make("password"),
             'profil' => 'superadmin'
+            
         ]);
 
     }
