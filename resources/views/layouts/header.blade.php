@@ -16,7 +16,7 @@
                 <li class="nav-item dropdown dropdown-large">
                     <a class="nav-link dropdown-toggle dropdown-toggle-nocaret" href="#" data-bs-toggle="dropdown">
                         <div class="user-setting d-flex align-items-center gap-1">
-                            <img src="assets/images/avatars/avatar-1.png" class="user-img" alt="">
+                            <img src="https://console.ironwifi.com/assets/img/siluete.png" class="user-img" alt="">
                             <div class="user-name d-none d-sm-block">Jhon Deo</div>
                         </div>
                     </a>
@@ -190,7 +190,7 @@
                         <!--end row-->
                     </div>
                 </li>
-                <li class="nav-item dropdown dropdown-large">
+                <!-- <li class="nav-item dropdown dropdown-large">
                     <a class="nav-link dropdown-toggle dropdown-toggle-nocaret" href="#" data-bs-toggle="dropdown">
                         <div class="messages">
                             <span class="notify-badge">5</span>
@@ -439,7 +439,7 @@
                             </a>
                         </div>
                     </div>
-                </li>
+                </li> -->
             </ul>
         </div>
     </nav>

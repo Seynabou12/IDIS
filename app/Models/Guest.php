@@ -4,12 +4,13 @@ namespace App\Models;
 
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
+use Illuminate\Support\Arr;
 
 class Guest extends Model
 {
     use HasFactory;
 
-    public function list()
+    public static function list($toArray = false)
     {
 
         $guests = new \GuzzleHttp\Client();
@@ -21,9 +22,19 @@ class Guest extends Model
                 'Content-Type' => 'application/json;charset=utf-8',
             ],
         ]);
-
-        $guests = json_decode($response->getBody()->getContents())->_embedded->users;
-        dd($guests);
-        return view('pages.guest.index', compact("guests"));
+        if($toArray) $guests = json_decode($response->getBody()->getContents(), true)['_embedded']['users'];
+        else $guests = json_decode($response->getBody()->getContents())->_embedded->users;
+        return $guests;
     }
+
+    public static function get($email, $phone)
+    {
+
+        $list = Self::list(true);
+        $list = Arr::where($list, function ($value, $key) use ($email, $phone) {
+            return $value['email'] == $email || $value['phone'] == $phone;
+        });
+        return $list;
+    }
+
 }

@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use App\Models\Configuration;
+use App\Models\Guest;
 use Illuminate\Http\Request;
 
 class GuestController extends Controller
@@ -10,20 +11,14 @@ class GuestController extends Controller
 
     public function index($customer_id = null)
     {
-
-        $guests = new \GuzzleHttp\Client();
-        $customer_id = Configuration::all()->first()->current_customer_id;
-        $token  = 'fc2142095d3ce2a8b15ea2f0c7bdd48be304a52f';
-        $response = $guests->request('GET', 'https://console.ironwifi.com/api/' . $customer_id . '/users', [
-            'headers' => [
-                'Authorization' => 'Bearer ' . $token,
-                'Content-Type' => 'application/json;charset=utf-8',
-            ],
-        ]);
-
-        $guests = json_decode($response->getBody()->getContents())->_embedded->users;
-
+        $guests = Guest::list();
         return view('pages.guest.index', compact("guests"));
+    }
+
+    public function detail()
+    {
+        $list = Guest::get(request()->input('email'), request()->input('phone'));
+        return view('pages.guest.detail', compact("list"));
     }
 
     public function details(string $id, $customer_id = null)
@@ -40,8 +35,8 @@ class GuestController extends Controller
                 'accept' => 'application/json, text/plain, */*',
             ],
         ]);
-
-        $guests = json_decode($response->getBody()->getContents());
-        return view('pages.guest.detail');
+        $guest = json_decode($response->getBody()->getContents());
+        return view('pages.guest.detail', compact('guest'));
+        
     }
 }
