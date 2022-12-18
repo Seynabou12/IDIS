@@ -11,7 +11,8 @@ class NodeController extends Controller
     {
         
         $accespoints = new \GuzzleHttp\Client(); 
-        $customer_id = Configuration::all()->first()->current_customer_id;
+        $customer_id = session("current_customer_id");
+
         $token  = 'fc2142095d3ce2a8b15ea2f0c7bdd48be304a52f';
         $response = $accespoints->request('GET', 'https://europe-west2.ironwifi.com/api/'.$customer_id.'/nodes', [
             'headers' => [

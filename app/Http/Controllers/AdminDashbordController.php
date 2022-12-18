@@ -22,7 +22,7 @@ class AdminDashbordController extends Controller
         $current = new Customer();
         $customers = json_decode($response->getBody()->getContents())->_embedded->customers;
         foreach ($customers as $customer ) {
-            if($customer->id == Configuration::all()->first()->current_customer_id)
+            if($customer->id == session("current_customer_id"))
             $current = $customer;
         }
         $customer = $current;

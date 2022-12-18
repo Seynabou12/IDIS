@@ -6,6 +6,7 @@ use App\Models\Configuration;
 use Illuminate\Http\Request;
 use App\Models\Customer;
 use Illuminate\Http\Request as HttpRequest;
+use Illuminate\Support\Facades\Session;
 
 class CustomerController extends Controller
 {
@@ -60,11 +61,7 @@ class CustomerController extends Controller
 
     public function selected($id)
     {
-
-        $configuration = Configuration::all()->first() ?? new Configuration();
-        $configuration->current_customer_id = $id;
-        $configuration->save();
-
+        Session::put("current_customer_id", $id);
         return redirect("/welcom");
     }
 

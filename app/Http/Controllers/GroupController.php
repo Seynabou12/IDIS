@@ -16,18 +16,7 @@ class GroupController extends Controller
     public function index($customer_id = null)
     {
 
-        $groups = new \GuzzleHttp\Client();
-        $customer_id = Configuration::all()->first()->current_customer_id;
-        $token  = 'fc2142095d3ce2a8b15ea2f0c7bdd48be304a52f';
-
-        $response = $groups->request('GET', 'https://europe-west2.ironwifi.com/api/' . $customer_id . '/groups', [
-            'headers' => [
-                'Authorization' => 'Bearer' . $token,
-                'Content-Type' => 'application/json;charset=utf-8',
-            ],
-        ]);
-        $groups = json_decode($response->getBody()->getContents())->_embedded->groups;
-        // dd($groups);
+        $groups = Group::list();
         return view('pages.group.index', compact("groups"));
     }
 
@@ -35,8 +24,9 @@ class GroupController extends Controller
     {
 
         try {
+
             $clients = new \GuzzleHttp\Client();
-            $customer_id = Configuration::all()->first()->current_customer_id;
+            $customer_id = session("current_customer_id");
             $token  = 'fc2142095d3ce2a8b15ea2f0c7bdd48be304a52f';
             $group = new Group();
             // $body = $network->nasname = $request->nasname;
@@ -47,7 +37,9 @@ class GroupController extends Controller
                 'headers' => [
                     'Authorization' => 'Bearer ' . $token,
                     'Content-Type' => 'application/json;charset=utf-8',
+                    'accept' => 'application/json, text/plain, */*',
                 ],
+
                 'body' => json_encode($body)
 
             ]);
@@ -61,10 +53,11 @@ class GroupController extends Controller
     {
 
         try {
+
             $groups = new \GuzzleHttp\Client();
-            $customer_id = Configuration::all()->first()->current_customer_id;
+            $customer_id = session("current_customer_id");
             $token  = 'fc2142095d3ce2a8b15ea2f0c7bdd48be304a52f';
-            $response = $groups->request('DELETE', 'https://console.ironwifi.com/api/'. $customer_id .'/groups/'.$id, [
+            $response = $groups->request('DELETE', 'https://console.ironwifi.com/api/' . $customer_id . '/groups/' . $id, [
                 'headers' => [
                     'Authorization' => 'Bearer ' . $token,
                     'Content-Type' => 'application/json;charset=utf-8',
@@ -73,10 +66,8 @@ class GroupController extends Controller
 
             $groups = json_decode($response->getBody()->getContents());
             return Redirect('/groups')->with("success", "Le Groupe a été bien Supprimé");
-
         } catch (\Throwable $th) {
             return back()->withErrors("Le Groupe a été bien supprimé");
         }
-        
     }
 }

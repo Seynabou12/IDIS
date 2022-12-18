@@ -16,18 +16,9 @@ class NetworkController extends Controller
     public function index($customer_id = null)
     {
 
-        $networks = new \GuzzleHttp\Client();
-        $customer_id = Configuration::all()->first()->current_customer_id;
-        $token  = 'fc2142095d3ce2a8b15ea2f0c7bdd48be304a52f';
-        $response = $networks->request('GET', 'https://console.ironwifi.com/api/' . $customer_id . '/networks', [
-            'headers' => [
-                'Authorization' => 'Bearer ' . $token,
-                'Content-Type' => 'application/json;charset=utf-8',
-            ],
-        ]);
-        
-        $networks = json_decode($response->getBody()->getContents())->_embedded->networks;
+        $networks = Network::list();
         return view('pages.netwoks.index', compact("networks"));
+
     }
 
     public function store(HttpRequest $request)
@@ -36,7 +27,7 @@ class NetworkController extends Controller
         try {
 
             $clients = new \GuzzleHttp\Client();
-            $customer_id = Configuration::all()->first()->current_customer_id;
+            $customer_id = session("current_customer_id");
             $token  = 'fc2142095d3ce2a8b15ea2f0c7bdd48be304a52f';
             // $body = $network->nasname = $request->nasname;
             $body = [];
@@ -80,4 +71,6 @@ class NetworkController extends Controller
         }
 
     }
+
+    
 }

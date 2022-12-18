@@ -12,26 +12,17 @@ class CaptivePortalsController extends Controller
     public function index($customer_id = null)
     {
 
-        $captifportals = new \GuzzleHttp\Client();
-        $customer_id = Configuration::all()->first()->current_customer_id;
-        $token  = 'fc2142095d3ce2a8b15ea2f0c7bdd48be304a52f';
-        $response = $captifportals->request('GET', 'https://europe-west2.ironwifi.com/api/' . $customer_id . '/captive-portals', [
-            'headers' => [
-                'Authorization' => 'Bearer ' . $token,
-                'Content-Type' => 'application/json;charset=utf-8',
-            ],
-        ]);
-        $captifportals = json_decode($response->getBody()->getContents())->_embedded->captive_portals;
-        // dd($captifportals);
+        $captifportals = CaptivePortals::list();
         return view('pages.captive_portal.index', compact("captifportals"));
     }
 
     public function create(Request $request)
     {
+
         try {
             $clients = new \GuzzleHttp\Client();
             $networks = new \GuzzleHttp\Client();
-            $customer_id = Configuration::all()->first()->current_customer_id;
+            $customer_id = session("current_customer_id");
             $token  = 'fc2142095d3ce2a8b15ea2f0c7bdd48be304a52f';
             $portails = new CaptivePortals();
             // $body = $network->nasname = $request->nasname;
@@ -73,9 +64,10 @@ class CaptivePortalsController extends Controller
         try {
 
             $portails = new \GuzzleHttp\Client();
-            $customer_id = Configuration::all()->first()->current_customer_id;
+            $customer_id = session("current_customer_id");
+
             $token  = 'fc2142095d3ce2a8b15ea2f0c7bdd48be304a52f';
-            $response = $portails->request('DELETE', 'https://console.ironwifi.com/api/' . $customer_id . '/captive-portals/'.$id, [
+            $response = $portails->request('DELETE', 'https://console.ironwifi.com/api/' . $customer_id . '/captive-portals/' . $id, [
                 'headers' => [
                     'Authorization' => 'Bearer ' . $token,
                     'Content-Type' => 'application/json;charset=utf-8',
@@ -86,6 +78,5 @@ class CaptivePortalsController extends Controller
         } catch (\Throwable $th) {
             return back()->withErrors("Impossible de supprimer ce Portail Captif");
         }
-
     }
 }

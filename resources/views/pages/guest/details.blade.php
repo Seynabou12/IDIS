@@ -35,19 +35,14 @@
 </script>
 @endif
 
-@php
-
-    $guest = $list[0];
-    
-@endphp
-
+@if(count($list) > 0)
 <div class="card">
     <div class="card-header py-3">
         <div class="row g-3 align-items-center">
             <div class="col-12 col-lg-4 col-md-6 me-auto">
-                <h5 class="mb-1"><strong>Nom & Prénom: </strong> {{ $guest['firstname'] }} {{ $guest['lastname'] }}</h5>
-                <h5 class="mb-0"><strong> Téléphone: </strong> {{ $guest['mobilephone']}}</h5>
-                <h5 class="mb-0"><strong>Email: </strong> {{ $guest['email']}}</h5>
+                <h5 class="mb-1"><strong>Nom & Prénom: </strong> {{ $guest->firstname  }} {{ $guest->lastname  }}</h5>
+                <h5 class="mb-0"><strong> Téléphone: </strong> {{ $guest->mobilephone }}</h5>
+                <h5 class="mb-0"><strong>Email: </strong> {{ $guest->email }}</h5>
             </div>
         </div>
     </div>
@@ -58,9 +53,9 @@
                     <div class="card-body">
                         <div class="d-flex align-items-center gap-3">
                             <div class="info">
-                                <p class="mb-1"><strong>Date de Création </strong> : {{ $guest['creationdate'] }}</p>
-                                <p class="mb-1"><strong>Dernière Authentification</strong> : {{ $guest['authdate'] }}</p>
-                                <p class="mb-1"><strong>Date de Suppression</strong> : {{ $guest['deletiondate '] }}</p>
+                                <p class="mb-1"><strong>Date de Création </strong> : {{ $guest->creationdate }}</p>
+                                <p class="mb-1"><strong>Dernière Authentification</strong> : {{ $guest->authdate }}</p>
+                                <p class="mb-1"><strong>Date de Suppression</strong> : {{ $guest->deletiondate }}</p>
                                 <p class="mb-1"><strong>Heure de Connexion</strong> : </p>
                                 <p class="mb-1"><strong>Temp Total</strong> : </p>
                             </div>
@@ -143,6 +138,9 @@
 
     </div>
 </div>
+@else
+la liste est vide
+@endif
 
 
 <a href="javaScript:;" class="back-to-top"><i class='bx bxs-up-arrow-alt'></i></a>
