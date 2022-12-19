@@ -24,7 +24,7 @@
     <link href="/assets/css/semi-dark.css" rel="stylesheet" />
     <link href="/assets/css/header-colors.css" rel="stylesheet" />
 
-    <title>Cloudi-fi</title>
+    <title>IDIS-Accueil</title>
 </head>
 
 <body>

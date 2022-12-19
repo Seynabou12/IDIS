@@ -25,7 +25,7 @@
 	<link href="/assets/css/semi-dark.css" rel="stylesheet" />
 	<link href="/assets/css/header-colors.css" rel="stylesheet" />
 
-	<title>Entreprise</title>
+	<title>IDIS-Entreprise</title>
 </head>
 
 <body>

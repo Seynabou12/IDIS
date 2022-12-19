@@ -20,7 +20,7 @@
     <link rel="stylesheet" href="/css/bootstrap.css">
     <link href="/assets/css/pace.min.css" rel="stylesheet" />
 
-    <title>Cloudi-fi</title>
+    <title>IDIS</title>
     <script src="/assets/js/bootstrap.bundle.min.js"></script>
     <script src="/assets/js/jquery.min.js"></script>
     <script src="/assets/plugins/notifications/js/notifications.min.js"></script>

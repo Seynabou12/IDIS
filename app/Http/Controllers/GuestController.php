@@ -37,8 +37,8 @@ class GuestController extends Controller
     
             ]);
             $guest = json_decode($response->getBody()->getContents());
-        //  dd($guest);
-        return view('pages.guest.detail', compact("list","guest","firstValue"));
+            //  dd($guest);
+            return view('pages.guest.detail', compact("list","guest","firstValue"));
     }
 
     // public function details(string $id, $customer_id = null)

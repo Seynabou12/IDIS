@@ -93,8 +93,7 @@
             </div>
         </div>
     </div>
-
-    <div class="row">
+    <div class="row p-3">
         <div class="col-12 col-lg-8">
             <div class="card border shadow-none radius-10">
                 <div class="card-body">
@@ -137,8 +136,25 @@
                 </div>
             </div>
         </div>
-        <div class="col-lg-4">{{count($list)}}</div>
-
+        <div class="col-12 col-lg-4">
+            <div class="card border shadow-none bg-light radius-10">
+                <div class="card-body">
+                    <div class="d-flex align-items-center mb-4">
+                        <div>
+                            <h5 class="mb-0">Nombre de fois de Connexion</h5>
+                        </div>
+                    </div>
+                    <div class="d-flex align-items-center mb-3">
+                        <div>
+                            <p class="mb-0">Nombre de Connexion</p>
+                        </div>
+                        <div class="ms-auto">
+                            <h5 class="mb-0">{{count($list)}}</h5>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
     </div>
 </div>
 
