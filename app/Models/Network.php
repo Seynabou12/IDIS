@@ -30,11 +30,15 @@ class Network extends Model
             'headers' => [
                 'Authorization' => 'Bearer ' . $token,
                 'Content-Type' => 'application/json;charset=utf-8',
+                'accept' => 'application/json, text/plain, */*',
+
             ],
         ]);
-        if($toArray) $networks = json_decode($response->getBody()->getContents(), true)['_embedded']['networks'];
+
+        if ($toArray) $networks = json_decode($response->getBody()->getContents(), true)['_embedded']['networks'];
         else $networks = json_decode($response->getBody()->getContents())->_embedded->networks;
         return $networks;
-       
     }
+
+
 }

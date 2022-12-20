@@ -17,6 +17,8 @@ class ReportingContoller extends Controller
             'headers' => [
                 'Authorization' => 'Bearer ' . $token,
                 'Content-Type' => 'application/json;charset=utf-8',
+                'accept' => 'application/json, text/plain, */*',
+
             ],
         ]);
         $users = json_decode($response->getBody()->getContents())->_embedded->users;

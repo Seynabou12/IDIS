@@ -35,7 +35,7 @@
 </script>
 @endif
 
-<h6 class="mb-0 text-uppercase">Liste des Sessions</h6>
+<h6 class="mb-0 text-uppercase">liste des Visiteurs</h6>
 <hr />
 <div class="col-md-12" style="margin-top: 20px;">
     <div class="card">
@@ -57,27 +57,24 @@
 
                         </tr>
                     </thead>
-
+                    
                     <tbody>
 
-                        @foreach ($guests as $guest)
+                        @foreach ($list as $liste)
                         <tr>
 
-                            <td>{{ $guest->id }}</td>
-                            <td>{{ $guest->username }}</td>
-                            <td>{{ $guest->email }}</td>
-                            <td>{{ $guest->fullname  }}</td>
-                            <td>{{ $guest->phone }}</td>
-                            <td>{{ $guest->creationdate  }}</td>
-                            <td>{{ $guest->authdate_orig }}</td>
-                            <td>{{ $guest->authdate }}</td>
-
+                            <td>{{ $liste->id }}</td>
+                            <td>{{ $liste->username }}</td>
+                            <td>{{ $liste->email }}</td>
+                            <td>{{ $liste->fullname  }}</td>
+                            <td>{{ $liste->phone }}</td>
+                            <td>{{ $liste->creationdate  }}</td>
+                            <td>{{ $liste->authdate_orig }}</td>
+                            <td>{{ $liste->authdate }}</td>
                             <td class="text-center text-primary cursor-event">
-
-                                <a href="{{ route('guest.detail', ['email' => $guest->email, 'phone' => $guest->phone])}}" class="text-primary" data-bs-toggle="tooltip" data-bs-placement="bottom" title="" aria-label="Views"><i class="fs-5 bi bi-eye-fill"></i></a>
-                                <span class="text-warning" onclick="$(this).edit('{{ $guest->id }}')"><i class="fs-5 bi bi-pencil-fill"></i></span>
-                                <span class="text-danger" onclick="$(this).delete('{{ $guest->id }}')"><i class="fs-5 bi bi-trash-fill"></i></span>
-                                
+                                <a href="{{ route('guest.detail', ['email' => $liste->email, 'phone' => $liste->phone])}}" class="text-primary" data-bs-toggle="tooltip" data-bs-placement="bottom" title="" aria-label="Views"><i class="fs-5 bi bi-eye-fill"></i></a>
+                                <span class="text-warning" onclick="$(this).edit('{{ $liste->id }}')"><i class="fs-5 bi bi-pencil-fill"></i></span>
+                                <span class="text-danger" onclick="$(this).delete('{{ $liste->id }}')"><i class="fs-5 bi bi-trash-fill"></i></span>
                             </td>
 
                         </tr>

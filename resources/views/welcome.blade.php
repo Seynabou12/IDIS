@@ -55,8 +55,8 @@
                                         </div>
                                         <div class="info">
                                             <p class="mb-1"><strong>Email:</strong> {{ $customer->username }}</p>
-                                            <p class="mb-1"><strong>Phone:</strong> {{ $customer->phone }}</p>
-                                            <p class="mb-1"><strong>Creation By:</strong> {{ $customer->creationby }}</p>
+                                            <p class="mb-1"><strong>Téléphone:</strong> {{ $customer->phone }}</p>
+                                            <p class="mb-1"><strong>Creer par:</strong> {{ $customer->creationby }}</p>
                                         </div>
                                     </div>
                                 </div>
@@ -70,9 +70,9 @@
                                             <i class="bi bi-plus-circle text-success"></i>
                                         </div>
                                         <div class="info">
-                                            <p class="mb-1"><strong>Total Users</strong> : {{ $customer->total_users }}</p>
-                                            <p class="mb-1"><strong>Max APS</strong> : {{ $customer->total_aps }}</p>
-                                            <p class="mb-1"><strong>Total Venues</strong> : {{ $customer->total_venues }}</p>
+                                            <p class="mb-1"><strong>Nombre Total Visiteur</strong> : {{ $customer->total_users }}</p>
+                                            <p class="mb-1"><strong>Nombre APS</strong> : {{ $customer->total_aps }}</p>
+                                            <p class="mb-1"><strong>Total Lieux</strong> : {{ $customer->total_venues }}</p>
                                         </div>
                                     </div>
                                 </div>
@@ -86,8 +86,8 @@
                                             <i class="bi bi-calendar-date text-danger"></i>
                                         </div>
                                         <div class="info">
-                                            <p class="mb-1"><strong>Creation Date</strong> : {{ $customer->creationdate }}</p>
-                                            <p class="mb-1"><strong>Plan Expiration</strong> : {{ $customer->plan_expiration }} </p>
+                                            <p class="mb-1"><strong>Date de Creation</strong> : {{ $customer->creationdate }}</p>
+                                            <p class="mb-1"><strong>Expiration</strong> : {{ $customer->plan_expiration }} </p>
                                             <p class="mb-1"><strong>Region</strong> : {{ $customer->region }} </p>
                                         </div>
                                     </div>

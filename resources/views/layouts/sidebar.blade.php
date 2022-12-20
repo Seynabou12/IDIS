@@ -38,7 +38,7 @@
         </li>
         <li> <a href="/portail_captifs"><i class="bi bi-wifi"></i>Portails captifs</a>
         </li>
-        <li> <a href="/pointacces"><i class="bi bi-router"></i></i>Points d'accès</a>
+        <li> <a href="/pointacces"><i class="bi bi-router"></i>Points d'accès</a>
         </li>
       </ul>
     </li>
@@ -62,11 +62,11 @@
         <div class="menu-title">Visiteurs</div>
       </a>
       <ul class="mm-collapse">
-        <li> <a href="/guests"><i class="bi bi-person-plus-fill"></i>Visiteurs</a></li>
-        <li> <a href="#"><i class="bi bi-people-fill"></i>Authentication</a></li>
-        <li> <a href="#"><i class="bi bi-people-fill"></i>Profiles</a></li>
+        <li> <a href="/guests"><i class="bi bi-person-plus-fill"></i>Sessions</a></li>
+        <li> <a href="/guests/detaile"><i class="bi bi-people-fill"></i>Visiteurs</a></li>
+        <!-- <li> <a href="#"><i class="bi bi-people-fill"></i>Profiles</a></li>
         <li> <a href="/groups"><i class="bi bi-people-fill"></i>Groupes</a></li>
-        <li> <a href="/orgunits"><i class="bi bi-hdd-network"></i>Organizational Units</a> </li>
+        <li> <a href="/orgunits"><i class="bi bi-hdd-network"></i>Organizational Units</a> </li> -->
       </ul>
     </li>
   </ul>

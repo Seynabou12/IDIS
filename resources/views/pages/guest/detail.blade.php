@@ -35,17 +35,20 @@
 </script>
 @endif
 
-
 <div class="card">
+
     <div class="card-header py-3">
         <div class="row g-3 align-items-center">
             <div class="col-12 col-lg-4 col-md-6 me-auto">
-                <h5 class="mb-1"><strong>Nom & Prénom: </strong> {{ $firstValue['firstname'] }} {{ $firstValue['lastname'] }}</h5>
-                <h5 class="mb-0"><strong> Téléphone: </strong> {{ $firstValue['phone']}}</h5>
-                <h5 class="mb-0"><strong>Email: </strong> {{ $firstValue['email']}}</h5>
+
+                <h5 class="mb-1"><strong>Nom & Prénom: </strong> {{ $firstValue->firstname }} {{ $firstValue->lastname }}</h5>
+                <h5 class="mb-0"><strong> Téléphone: </strong> {{ $firstValue->phone}}</h5>
+                <h5 class="mb-0"><strong>Email: </strong> {{ $firstValue->email }}</h5>
+
             </div>
         </div>
     </div>
+
     <div class="card-body">
         <div class="row row-cols-1 row-cols-xl-2 row-cols-xxl-3">
             <div class="col">
@@ -53,8 +56,8 @@
                     <div class="card-body">
                         <div class="d-flex align-items-center gap-3">
                             <div class="info">
-                                <p class="mb-1"><strong>Date de Création </strong> : {{ $firstValue['creationdate'] }}</p>
-                                <p class="mb-1"><strong>Dernière Authentification</strong> : {{ $firstValue['authdate_orig'] }}</p>
+                                <p class="mb-1"><strong>Date de Création </strong> : {{ $firstValue->creationdate }}</p>
+                                <p class="mb-1"><strong>Dernière Authentification</strong> : {{ $firstValue->authdate_orig }}</p>
                                 <p class="mb-1"><strong>Date de Suppression</strong> : </p>
                                 <p class="mb-1"><strong>Heure de Connexion</strong> : </p>
                                 <p class="mb-1"><strong>Temp Total</strong> : </p>
@@ -68,10 +71,10 @@
                     <div class="card-body">
                         <div class="d-flex align-items-center gap-3">
                             <div class="info">
-                                <p class="mb-1"><strong>Etat</strong> : {{ $firstValue['state'] ?? ''  }} </p>
-                                <p class="mb-1"><strong>La Source</strong> : {{ $firstValue['auth_provider']  ?? '' }} </p>
-                                <p class="mb-1"><strong>Unité Organisationnelle</strong> : {{ $firstValue['country']  ?? ''  }} </p>
-                                <p class="mb-1"><strong>Source d'Authentification</strong> : {{ $firstValue['authsource']   ?? '' }} </p>
+                                <p class="mb-1"><strong>Etat</strong> : {{ $firstValue->state ?? ''  }} </p>
+                                <p class="mb-1"><strong>La Source</strong> : {{ $firstValue->auth_provider  ?? '' }} </p>
+                                <p class="mb-1"><strong>Unité Organisationnelle</strong> : {{ $firstValue->country ?? ''  }} </p>
+                                <p class="mb-1"><strong>Source d'Authentification</strong> : {{ $firstValue->authsource ?? '' }} </p>
                             </div>
                         </div>
                     </div>
@@ -82,10 +85,10 @@
                     <div class="card-body">
                         <div class="d-flex align-items-center gap-3">
                             <div class="info">
-                                <p class="mb-1"><strong>Ville</strong> : {{ $firstValue['city'] ?? ''  }}</p>
-                                <p class="mb-1"><strong>Pays</strong> : {{ $firstValue['country']  ?? '' }} </p>
-                                <p class="mb-1"><strong>Adresse</strong> : {{ $firstValue['address'] ?? '' }} </p>
-                                <p class="mb-1"><strong>Département</strong> : {{ $firstValue['department']  ?? '' }} </p>
+                                <p class="mb-1"><strong>Ville</strong> : {{ $firstValue->city ?? ''  }}</p>
+                                <p class="mb-1"><strong>Pays</strong> : {{ $firstValue->country ?? '' }} </p>
+                                <p class="mb-1"><strong>Adresse</strong> : {{ $firstValue->address ?? '' }} </p>
+                                <p class="mb-1"><strong>Département</strong> : {{ $firstValue->department ?? '' }} </p>
                             </div>
                         </div>
                     </div>
@@ -93,6 +96,7 @@
             </div>
         </div>
     </div>
+
     <div class="row p-3">
         <div class="col-12 col-lg-8">
             <div class="card border shadow-none radius-10">
@@ -103,21 +107,26 @@
                     <div class="table-responsive" style="margin-top: 20px;">
                         <table class="table align-middle mb-0">
                             <thead class="table-light">
+
                                 <tr>
+
                                     <th>Adresse Mac</th>
                                     <th>Premiére vue</th>
                                     <th>Derniére Vue</th>
                                     <th>Status</th>
+
                                 </tr>
+
                             </thead>
                             <tbody>
+                                
                                 @foreach($guest->device_data as $guests)
 
                                 <tr>
+
                                     <td>
                                         <div class="orderlist">
                                             <a class="d-flex align-items-center gap-2" href="javascript:;">
-
                                                 <div>
                                                     <P class="mb-0 product-title">{{ $guests->client_mac }}</P>
                                                 </div>
@@ -127,6 +136,7 @@
                                     <td>{{ $guests->first_seen }}</td>
                                     <td>{{ $guests->last_seen }}</td>
                                     <td>{{ $guests->status }}</td>
+
                                 </tr>
 
                                 @endforeach
@@ -141,7 +151,7 @@
                 <div class="card-body">
                     <div class="d-flex align-items-center mb-4">
                         <div>
-                            <h5 class="mb-0">Nombre de fois de Connexion</h5>
+                            <h5 class="mb-0">Nombre de fois Connecté</h5>
                         </div>
                     </div>
                     <div class="d-flex align-items-center mb-3">
@@ -156,6 +166,7 @@
             </div>
         </div>
     </div>
+
 </div>
 
 <a href="javaScript:;" class="back-to-top"><i class='bx bxs-up-arrow-alt'></i></a>

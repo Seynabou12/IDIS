@@ -7,7 +7,7 @@
 				<!-- <a href="/accueil">
 					<button type="submit" class="btn btn-primary">Select Customer</button>
 				</a> -->
-				<button type="button" class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#exampleLargeModal">Add Customer</button>
+				<button type="button" class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#exampleLargeModal">Ajouter une entreprise</button>
 
 				<div class="modal fade" id="exampleLargeModal" tabindex="-1" aria-hidden="true">
 					<div class="modal-dialog modal-lg">

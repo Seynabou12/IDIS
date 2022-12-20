@@ -37,7 +37,7 @@
 
 <div class="" style="margin-top: -100px;">
     @include('pages.customer.create')
-    <h6 class="mb-0 text-uppercase" style="font-size: 18px; font-weight: bold;">LIST OF COMPANIES</h6>
+    <h6 class="mb-0 text-uppercase" style="font-size: 18px; font-weight: bold;">LISTE DES ENTREPRISES</h6>
     <hr />
     <div class="">
         <div class="col-md-12" style="margin-top: 20px;">
@@ -47,15 +47,15 @@
                         <table id="example" class="table table-striped table-bordered" style="width:100%">
                             <thead>
                                 <tr>
-                                    <th>Company Name</th>
-                                    <th>Username</th>
-                                    <th>Phone</th>
+                                    <th>Nom de L'Entreprise</th>
+                                    <th>Email</th>
+                                    <th>Téléphone</th>
                                     <th>Region</th>
-                                    <th>Total Users</th>
+                                    <th>Nombre de Visiteurs</th>    
                                     <th>Plan</th>
                                     <th>Total APS</th>
-                                    <th>Creation Date</th>
-                                    <th>Plan Expiration</th>
+                                    <th>Date de Creation </th>
+                                    <th>Expiration </th>
                                     <th>Action</th>
                                 </tr>
                             </thead>

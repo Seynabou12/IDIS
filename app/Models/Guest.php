@@ -10,7 +10,7 @@ class Guest extends Model
 {
     use HasFactory;
 
-    public static function list($toArray = false)
+    public static function list()
     {
 
         $guests = new \GuzzleHttp\Client();
@@ -23,8 +23,7 @@ class Guest extends Model
             ],
         ]);
 
-        if($toArray) $guests = json_decode($response->getBody()->getContents(), true)['_embedded']['users'];
-        else $guests = json_decode($response->getBody()->getContents())->_embedded->users;
+        $guests = json_decode($response->getBody()->getContents())->_embedded->users;
         return $guests;
 
     }
@@ -32,11 +31,11 @@ class Guest extends Model
     public static function get($email, $phone)
     {
 
-        $list = Self::list(true);
-        $list = Arr::where($list, function ($value, $key) use ($email, $phone) {
-            return $value['email'] == $email || $value['phone'] == $phone;
+        $list = Self::list();
+        $list = array_filter($list, function ($object) use ($email, $phone) {
+            return $object->email == $email || $object->phone == $phone;
         });
-
+        
         return $list;
         
     }

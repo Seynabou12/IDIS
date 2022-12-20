@@ -57,6 +57,7 @@ Route::get('/users/{id}/delete', [UtilisateurController::class, 'delete'])->name
 Route::get('/guests', [GuestController::class, 'index'])->where('id', '[0-9a-z\-]+');
 Route::get('/guests/{id}/details', [GuestController::class, 'details'])->where("id", "[0-9a-z]+");
 Route::any('/guests/detail', [GuestController::class, 'detail'])->name('guest.detail');
+Route::any('/guests/detaile', [GuestController::class, 'detaile']);
 // Route::get('/guests/{id}/delete', [UtilisateurController::class, 'delete'])->name("user.delete")->where('id', '[0-9a-z\-]+');
 
 Route::get('/networks', [NetworkController::class, 'index'])->where('id', '[0-9a-z\-]+');

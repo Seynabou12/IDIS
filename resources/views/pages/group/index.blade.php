@@ -47,7 +47,7 @@
                             <thead>
                                 <tr>
                                     <th>Numero</th>
-                                    <th>Group Name</th>
+                                    <th>Nom Group</th>
                                     <th>Action</th>
                                 </tr>
                             </thead>
@@ -80,7 +80,7 @@
 
                 @csrf
                 <div class="form-group mb-2">
-                    <label for="groupname" class="control-label">Groupname</label>
+                    <label for="groupname" class="control-label">Nom du Groupe</label>
                     <input type="text" class="form-control" name="groupname" id="groupname" required />
                 </div>
                 <div class="form-group mt-4">

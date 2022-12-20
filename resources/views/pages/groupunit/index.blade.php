@@ -36,7 +36,7 @@
 @endif
 
 
-<h6 class="mb-0 text-uppercase">Liste de l'Organisation</h6>
+<h6 class="mb-0 text-uppercase">Liste des Organisations</h6>
 <hr />
 <div class="row">
     <div class="col-md-8">
@@ -46,8 +46,8 @@
                     <table id="example" class="table table-striped table-bordered" style="width:100%">
                         <thead>
                             <tr>
-                                <th>Numero</th>
-                                <th>Name</th>
+                                <th>Numéro</th>
+                                <th>Nom</th>
                                 <th>Members</th>
                                 <th>Action</th>
                             </tr>
@@ -78,7 +78,7 @@
         <form action="/orgunits" method="post" id="form">
             @csrf
             <div class="form-orgunit mb-2">
-                <label for="name" class="control-label">Nom de la orgunit</label>
+                <label for="name" class="control-label">Nom de l'orgunisation</label>
                 <input type="text" class="form-control" name="name" id="name" required />
             </div>
             <div class="form-orgunit mt-4">

@@ -27,7 +27,7 @@
     <link href="/assets/css/semi-dark.css" rel="stylesheet" />
     <link href="/assets/css/header-colors.css" rel="stylesheet" />
 
-    <title>Cloudi-fi</title>
+    <title>IDIS</title>
 
 </head>
 
@@ -44,7 +44,7 @@
                         <div class="card-body">
                             <div class="d-flex align-items-center">
                                 <div>
-                                    <h5 class="mb-0 text-secondary">Totals Customers</h5>
+                                    <h5 class="mb-0 text-secondary">Nombre Total d'Entreprise</h5>
                                     <h4 class="my-1" class="purecounter">{{ count($customers) }}</h4>
                                 </div>
                                 <div class="widget-icon-large bg-gradient-purple text-white ms-auto"><i class="bi bi-building"></i>
@@ -58,7 +58,7 @@
                         <div class="card-body">
                             <div class="d-flex align-items-center">
                                 <div>
-                                    <h5 class="mb-0 text-secondary">Total APs</h5>
+                                    <h5 class="mb-0 text-secondary">Nombre Total d'AP</h5>
                                     <h4 class="my-1">{{ $entreprise }}</h4>
                                 </div>
                                 <div class="widget-icon-large bg-gradient-danger text-white ms-auto"><i class="bi bi-bar-chart-line-fill"></i>
@@ -72,7 +72,7 @@
                         <div class="card-body">
                             <div class="d-flex align-items-center">
                                 <div>
-                                    <h5 class="mb-0 text-secondary">Total Users</h5>
+                                    <h5 class="mb-0 text-secondary">Nombre total de Visiteur</h5>
                                     <h4 class="my-1">{{ $users }}</h4>
                                 </div>
                                 <div class="widget-icon-large bg-gradient-info text-white ms-auto"><i class="bi bi-people-fill"></i>
@@ -81,20 +81,7 @@
                         </div>
                     </div>
                 </div>
-                <div class="col">
-                    <div class="card radius-10">
-                        <div class="card-body">
-                            <div class="d-flex align-items-center">
-                                <div>
-                                    <p class="mb-0 text-secondary">Total Revenue</p>
-                                    <h4 class="my-1">$24K</h4>
-                                </div>
-                                <div class="widget-icon-large bg-gradient-success text-white ms-auto"><i class="bi bi-currency-exchange"></i>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                </div>
+             
             </div>
         </main>
 
