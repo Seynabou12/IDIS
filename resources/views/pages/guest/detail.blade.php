@@ -113,16 +113,16 @@
                             </thead>
                             <tbody>
 
-                                @foreach($guest->device_data as $guests)
+                                @foreach($device_data as $guests)
                                 <tr>
-                                    
+
                                     <td>{{ $guests->client_mac }}</td>
                                     <td>{{ $guests->first_seen }}</td>
                                     <td>{{ $guests->last_seen }}</td>
                                     <td>{{ $guests->status }}</td>
 
                                 </tr>
-                               @endforeach
+                                @endforeach
 
                             </tbody>
                         </table>

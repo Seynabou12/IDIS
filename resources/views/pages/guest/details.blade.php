@@ -111,15 +111,8 @@
                                 <tbody>
                                     @foreach($guest->device_data as $guests)
                                     <tr>
-                                        <td>
-                                            <div class="orderlist">
-                                                <a class="d-flex align-items-center gap-2" href="javascript:;">
-                                                    <div>
-                                                        <P class="mb-0 product-title">{{ $guests->client_mac }}</P>
-                                                    </div>
-                                                </a>
-                                            </div>
-                                        </td>
+                                       
+                                        <td>{{ $guests->client_mac  }}</td>
                                         <td>{{ $guests->first_seen }}</td>
                                         <td>{{ $guests->last_seen }}</td>
                                         <td>{{ $guests->status }}</td>

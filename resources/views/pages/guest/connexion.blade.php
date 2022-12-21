@@ -48,6 +48,7 @@
                             <th>Nom & Prénom</th>
                             <th>Email</th>
                             <th>Telephone</th>
+                            <th>Nombre Connexion</th>
                             <th>Action</th>
 
                         </tr>
@@ -62,7 +63,7 @@
                             <td>{{ $liste->fullname  }}</td>
                             <td>{{ $liste->email }}</td>
                             <td>{{ $liste->phone }}</td>
-                            
+                            <td>{{ $size[$liste->email] }}</td>
                             <td class="text-center text-primary cursor-event">
                                 <a href="{{ route('guest.detail', ['email' => $liste->email, 'phone' => $liste->phone])}}" class="text-primary" data-bs-toggle="tooltip" data-bs-placement="bottom" title="" aria-label="Views"><i class="fs-5 bi bi-eye-fill"></i></a>
                                 <span class="text-warning" onclick="$(this).edit('{{ $liste->id }}')"><i class="fs-5 bi bi-pencil-fill"></i></span>
