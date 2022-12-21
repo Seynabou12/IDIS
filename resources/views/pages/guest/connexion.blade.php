@@ -45,32 +45,24 @@
                     <thead>
                         <tr>
 
-                            <th>Numéro</th>
-                            <th>Nom</th>
-                            <th>Email</th>
                             <th>Nom & Prénom</th>
+                            <th>Email</th>
                             <th>Telephone</th>
-                            <th>Date de Creation</th>
-                            <th>Dernière Authentification</th>
-                            <th>Date Authentification</th>
                             <th>Action</th>
 
                         </tr>
                     </thead>
-                    
+
                     <tbody>
 
                         @foreach ($list as $liste)
+                        
                         <tr>
 
-                            <td>{{ $liste->id }}</td>
-                            <td>{{ $liste->username }}</td>
-                            <td>{{ $liste->email }}</td>
                             <td>{{ $liste->fullname  }}</td>
+                            <td>{{ $liste->email }}</td>
                             <td>{{ $liste->phone }}</td>
-                            <td>{{ $liste->creationdate  }}</td>
-                            <td>{{ $liste->authdate_orig }}</td>
-                            <td>{{ $liste->authdate }}</td>
+                            
                             <td class="text-center text-primary cursor-event">
                                 <a href="{{ route('guest.detail', ['email' => $liste->email, 'phone' => $liste->phone])}}" class="text-primary" data-bs-toggle="tooltip" data-bs-placement="bottom" title="" aria-label="Views"><i class="fs-5 bi bi-eye-fill"></i></a>
                                 <span class="text-warning" onclick="$(this).edit('{{ $liste->id }}')"><i class="fs-5 bi bi-pencil-fill"></i></span>

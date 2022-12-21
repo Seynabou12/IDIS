@@ -74,7 +74,7 @@
 
                             <td class="text-center text-primary cursor-event">
 
-                                <a href="{{ route('guest.detail', ['email' => $guest->email, 'phone' => $guest->phone])}}" class="text-primary" data-bs-toggle="tooltip" data-bs-placement="bottom" title="" aria-label="Views"><i class="fs-5 bi bi-eye-fill"></i></a>
+                                <a href="/guests/{{ $guest->id }}/details" class="text-primary" data-bs-toggle="tooltip" data-bs-placement="bottom" title="" aria-label="Views"><i class="fs-5 bi bi-eye-fill"></i></a>
                                 <span class="text-warning" onclick="$(this).edit('{{ $guest->id }}')"><i class="fs-5 bi bi-pencil-fill"></i></span>
                                 <span class="text-danger" onclick="$(this).delete('{{ $guest->id }}')"><i class="fs-5 bi bi-trash-fill"></i></span>
                                 

@@ -10,6 +10,7 @@ class ReportingContoller extends Controller
 {
     public function reporting()
     {
+
         $users = new \GuzzleHttp\Client();
         $customer_id = Configuration::all()->first()->current_customer_id;
         $token  = 'fc2142095d3ce2a8b15ea2f0c7bdd48be304a52f';
@@ -32,6 +33,7 @@ class ReportingContoller extends Controller
                 'Content-Type' => 'application/json;charset=utf-8',
             ],
         ]);
+
         $networks = json_decode($response->getBody()->getContents())->_embedded->networks;
 
         $accespoints = new \GuzzleHttp\Client(); 
@@ -47,7 +49,5 @@ class ReportingContoller extends Controller
 
         return view('pages.reporting', compact('users', 'networks', 'accespoints'));
     }
-
-   
-
+    
 }

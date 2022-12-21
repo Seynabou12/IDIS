@@ -35,7 +35,7 @@
 </script>
 @endif
 
-@if(count($list) > 0)
+
 <div class="card">
     <div class="card-header py-3">
         <div class="row g-3 align-items-center">
@@ -55,9 +55,8 @@
                             <div class="info">
                                 <p class="mb-1"><strong>Date de Création </strong> : {{ $guest->creationdate }}</p>
                                 <p class="mb-1"><strong>Dernière Authentification</strong> : {{ $guest->authdate }}</p>
-                                <p class="mb-1"><strong>Date de Suppression</strong> : {{ $guest->deletiondate }}</p>
-                                <p class="mb-1"><strong>Heure de Connexion</strong> : </p>
                                 <p class="mb-1"><strong>Temp Total</strong> : </p>
+                                <p class="mb-1"><strong>Etat</strong> : {{ $guest->state }}</p>
                             </div>
                         </div>
                     </div>
@@ -68,7 +67,7 @@
                     <div class="card-body">
                         <div class="d-flex align-items-center gap-3">
                             <div class="info">
-                                <p class="mb-1"><strong>Etat</strong> : {{ $guest->state }}</p>
+                               
                                 <p class="mb-1"><strong>La Source</strong> : {{ $guest->auth_provider }} </p>
                                 <p class="mb-1"><strong>Unité Organisationnelle</strong> : {{ $guest->country }} </p>
                                 <p class="mb-1"><strong>Source d'Authentification</strong> : {{ $guest->authsource }} </p>
@@ -84,7 +83,6 @@
                             <div class="info">
                                 <p class="mb-1"><strong>Ville</strong> : {{ $guest->city }}</p>
                                 <p class="mb-1"><strong>Pays</strong> : {{ $guest->country }} </p>
-                                <p class="mb-1"><strong>Adresse</strong> : {{ $guest->address }} </p>
                                 <p class="mb-1"><strong>Département</strong> : {{ $guest->department }} </p>
                             </div>
                         </div>
@@ -92,7 +90,6 @@
                 </div>
             </div>
         </div>
-        <!--end row-->
 
         <div class="row">
             <div class="col-12 col-lg-8">
@@ -112,35 +109,36 @@
                                     </tr>
                                 </thead>
                                 <tbody>
+                                    @foreach($guest->device_data as $guests)
                                     <tr>
                                         <td>
                                             <div class="orderlist">
                                                 <a class="d-flex align-items-center gap-2" href="javascript:;">
-
                                                     <div>
-                                                        <P class="mb-0 product-title">{{ $guest->device_data[0]->client_mac }}</P>
+                                                        <P class="mb-0 product-title">{{ $guests->client_mac }}</P>
                                                     </div>
                                                 </a>
                                             </div>
                                         </td>
-                                        <td>{{ $guest->device_data[0]->first_seen }}</td>
-                                        <td>{{ $guest->device_data[0]->last_seen }}</td>
-                                        <td>{{ $guest->device_data[0]->status }}</td>
+                                        <td>{{ $guests->first_seen }}</td>
+                                        <td>{{ $guests->last_seen }}</td>
+                                        <td>{{ $guests->status }}</td>
+
                                     </tr>
+
+                                    @endforeach
                                 </tbody>
                             </table>
                         </div>
                     </div>
                 </div>
             </div>
-          
+
         </div>
 
     </div>
 </div>
-@else
-la liste est vide
-@endif
+
 
 
 <a href="javaScript:;" class="back-to-top"><i class='bx bxs-up-arrow-alt'></i></a>

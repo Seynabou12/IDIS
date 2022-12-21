@@ -54,10 +54,10 @@ Route::get('/users', [UtilisateurController::class, 'index'])->where('id', '[0-9
 Route::get('/users/{id}/details', [UtilisateurController::class, 'details'])->name('user.details')->where("id", "[0-9a-z]+");
 Route::get('/users/{id}/delete', [UtilisateurController::class, 'delete'])->name("user.delete")->where('id', '[0-9a-z\-]+');
 
-Route::get('/guests', [GuestController::class, 'index'])->where('id', '[0-9a-z\-]+');
+Route::get('/guests/connexion', [GuestController::class, 'index'])->where('id', '[0-9a-z\-]+');
 Route::get('/guests/{id}/details', [GuestController::class, 'details'])->where("id", "[0-9a-z]+");
 Route::any('/guests/detail', [GuestController::class, 'detail'])->name('guest.detail');
-Route::any('/guests/detaile', [GuestController::class, 'detaile']);
+Route::any('/guests', [GuestController::class, 'detaile']);
 // Route::get('/guests/{id}/delete', [UtilisateurController::class, 'delete'])->name("user.delete")->where('id', '[0-9a-z\-]+');
 
 Route::get('/networks', [NetworkController::class, 'index'])->where('id', '[0-9a-z\-]+');
