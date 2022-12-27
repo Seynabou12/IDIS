@@ -20,6 +20,7 @@ class Guest extends Model
             'headers' => [
                 'Authorization' => 'Bearer ' . $token,
                 'Content-Type' => 'application/json;charset=utf-8',
+                'accept' => 'application/json, text/plain, */*',
             ],
         ]);
 
@@ -35,7 +36,6 @@ class Guest extends Model
         $list = array_filter($list, function ($object) use ($email, $phone) {
             return $object->email == $email || $object->phone == $phone;
         });
-        
         return $list;
         
     }

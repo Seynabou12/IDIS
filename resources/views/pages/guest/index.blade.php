@@ -46,7 +46,7 @@
                         <tr>
 
                             <th>Numéro</th>
-                            <th>Nom</th>
+                            <th>Username</th>
                             <th>Email</th>
                             <th>Nom & Prénom</th>
                             <th>Telephone</th>

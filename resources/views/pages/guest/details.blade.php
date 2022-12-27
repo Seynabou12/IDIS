@@ -51,12 +51,11 @@
             <div class="col">
                 <div class="card border shadow-none radius-10">
                     <div class="card-body">
-                        <div class="d-flex align-items-center gap-3">
+                        <div class="d-flex align-items-center gap-3"> 
                             <div class="info">
-                                <p class="mb-1"><strong>Date de Création </strong> : {{ $guest->creationdate }}</p>
-                                <p class="mb-1"><strong>Dernière Authentification</strong> : {{ $guest->authdate }}</p>
-                                <p class="mb-1"><strong>Temp Total</strong> : </p>
-                                <p class="mb-1"><strong>Etat</strong> : {{ $guest->state }}</p>
+                                <p class="mb-1"><strong>Premiére Connexion </strong> : {{ $guest->creationdate }}</p>
+                                <p class="mb-1"><strong>Derniére Authentification</strong> : {{ $guest->authdate }}</p>
+                                <p class="mb-1"><strong>Temp Total</strong> :{{abs(strtotime($guest->authdate ) - strtotime($guest->creationdate))}} secondes </p>
                             </div>
                         </div>
                     </div>
@@ -103,9 +102,9 @@
                                 <thead class="table-light">
                                     <tr>
                                         <th>Adresse Mac</th>
-                                        <th>Premiére vue</th>
-                                        <th>Derniére Vue</th>
-                                        <th>Status</th>
+                                        <th>Début Connexion</th>
+                                        <th>Fin Connexion</th>
+                                       
                                     </tr>
                                 </thead>
                                 <tbody>
@@ -115,7 +114,6 @@
                                         <td>{{ $guests->client_mac  }}</td>
                                         <td>{{ $guests->first_seen }}</td>
                                         <td>{{ $guests->last_seen }}</td>
-                                        <td>{{ $guests->status }}</td>
 
                                     </tr>
 
@@ -154,6 +152,7 @@
         $.fn.edit = function(id) {
             $.get(document.location.origin + "/users/" + id, {
                     json: "json"
+
                 },
                 function(data, textStatus, jqXHR) {
                     $("#username").val(data.username).change();

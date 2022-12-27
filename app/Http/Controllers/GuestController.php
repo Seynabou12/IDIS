@@ -13,14 +13,15 @@ class GuestController extends Controller
     {
 
         $guests = Guest::list();
-        
         return view('pages.guest.index', compact("guests"));
+        
     }
 
     public function detail()
     {
 
         $device_data = [];
+        $visit = [];
         $list = Guest::get(request()->input('email'), request()->input('phone'));
         $guests = new \GuzzleHttp\Client();
         $customer_id = session("current_customer_id");
@@ -34,15 +35,18 @@ class GuestController extends Controller
                     'accept' => 'application/json, text/plain, */*',
                 ],
             ]);
-    
-            $guest = json_decode($response->getBody()->getContents());
-            foreach ($guest->device_data as $key ) {
-                $device_data [] = $key;
-            }
 
+            $guest = json_decode($response->getBody()->getContents());
+            $device = null;
+            foreach ($guest->device_data as $key) {
+                $device = $key;
+                $visit[] = $key;
+            }
+            $guest->device_data = $device;
+            $device_data[] = $guest;
         }
-      
-        return view('pages.guest.detail', compact("list", "device_data", "firstValue"));
+
+        return view('pages.guest.detail', compact("list", "device_data", "firstValue", "guest"));
     }
 
     public function detaile()
@@ -55,18 +59,16 @@ class GuestController extends Controller
             if (!key_exists($guest->email, $list)) {
                 $list["$guest->email"] = $guest;
             }
-            $size["$guest->email"] = isset($size["$guest->email"] ) ? $size["$guest->email"]  + 1 : 1;
+            $size["$guest->email"] = isset($size["$guest->email"]) ? $size["$guest->email"]  + 1 : 1;
         }
-        
-        return view('pages.guest.connexion', compact('list','size'));
-
+        return view('pages.guest.connexion', compact('list', 'size'));
     }
 
     public function details(string $id)
     {
 
         $guests = new \GuzzleHttp\Client();
-        $customer_id = Configuration::all()->first()->current_customer_id;
+        $customer_id = session("current_customer_id");
         $token  = 'fc2142095d3ce2a8b15ea2f0c7bdd48be304a52f';
         $response = $guests->request('GET', 'http://console.ironwifi.com/api/' . $customer_id . '/guests/' . $id, [
             'headers' => [
@@ -76,9 +78,10 @@ class GuestController extends Controller
                 'accept' => 'application/json, text/plain, */*',
             ],
         ]);
+
         $guest = json_decode($response->getBody()->getContents());
-        
         return view('pages.guest.details', compact('guest'));
 
     }
+
 }

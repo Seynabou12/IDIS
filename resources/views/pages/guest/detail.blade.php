@@ -55,9 +55,9 @@
                     <div class="card-body">
                         <div class="d-flex align-items-center gap-3">
                             <div class="info">
-                                <p class="mb-1"><strong>heure de début du compte : </strong> : </p>
-                                <p class="mb-1"><strong>heure d'arrêt du compte :</strong> : </p>
-                                <p class="mb-1"><strong>Durée de Connexion</strong> : </p>
+                                <p class="mb-1"><strong>Premiére Connexion: </strong>{{ $guest->creationdate }}</p>
+                                <p class="mb-1"><strong>Derniére Connexion : </strong>{{ $guest->authdate }}</p>
+                                <p class="mb-1"><strong>Durée de Connexion: </strong></p>
                             </div>
                         </div>
                     </div>
@@ -93,35 +93,48 @@
     </div>
 
     <div class="row p-3">
-        <div class="col-12 col-lg-8">
+        <div class="col-12 col-lg-12">
             <div class="card border shadow-none radius-10">
                 <div class="card-body">
                     <div class="d-flex align-items-center">
-                        <h5 class="mb-0">Dispositifs</h5>
+                        <h5 class="mb-0"></h5>
                     </div>
-                    <div class="table-responsive" style="margin-top: 20px;">
+                    <div class="table-responsive" style="margin-top: 20px; ">
                         <table class="table align-middle mb-0">
                             <thead class="table-light">
                                 <tr>
 
                                     <th>Adresse Mac</th>
-                                    <th>Premiére vue</th>
-                                    <th>Derniére Vue</th>
-                                    <th>Status</th>
+                                    <th>Debut Connexion</th>
+                                    <th>Fin Connexion</th>
+                                    <th>Premiére Connexion</th>
+                                    <th>Derniére Connexion</th>
+                                    <th>Source</th>
+                                    <th>Source Auth</th>
+                                    <th>Portail Captif</th>
+                                    <th>Ville</th>
 
                                 </tr>
                             </thead>
                             <tbody>
 
                                 @foreach($device_data as $guests)
+                                @if($guests->device_data)
                                 <tr>
 
-                                    <td>{{ $guests->client_mac }}</td>
-                                    <td>{{ $guests->first_seen }}</td>
-                                    <td>{{ $guests->last_seen }}</td>
-                                    <td>{{ $guests->status }}</td>
+                                    <td>{{ $guests->device_data?->client_mac }}</td>
+                                    <td>{{ $guests->device_data?->first_seen }}</td>
+                                    <td>{{ $guests->device_data?->last_seen }}</td>
+                                    <td>{{ $guests->creationdate }}</td>
+                                    <td>{{ $guests->authdate }}</td>
+                                    <td>{{ $guests->auth_provider }}</td>
+                                    <td>{{ $guests->authsource}}</td>
+                                    <td>{{ $guests->captive_portal }}</td>
+                                    <td>{{ $guests->city  ?? '' }}</td>
+
 
                                 </tr>
+                                @endif
                                 @endforeach
 
                             </tbody>
@@ -130,27 +143,7 @@
                 </div>
             </div>
         </div>
-        <div class="col-12 col-lg-4">
-            <div class="card border shadow-none bg-light radius-10">
-                <div class="card-body">
-                    <div class="d-flex align-items-center mb-4">
-                        <div>
-                            <h5 class="mb-0">Nombre de fois Connecté</h5>
-                        </div>
-                    </div>
-                    <div class="d-flex align-items-center mb-3">
-                        <div>
-                            <p class="mb-0">Nombre de Connexion</p>
-                        </div>
-                        <div class="ms-auto">
-                            <h5 class="mb-0">{{count($list)}}</h5>
-                        </div>
-                    </div>
-                </div>
-            </div>
-        </div>
     </div>
-
 </div>
 
 <a href="javaScript:;" class="back-to-top"><i class='bx bxs-up-arrow-alt'></i></a>
