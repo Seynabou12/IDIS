@@ -39,6 +39,7 @@ class GuestController extends Controller
             if ($date >= $date2 && $date <= $date1)
                 $tab[$date->month] += 1;
         }
+        
         return response()->json($tab);
     }
 
@@ -114,7 +115,7 @@ class GuestController extends Controller
 
             ],
         ]);
-        
+
         $guest = json_decode($response->getBody()->getContents());
         return view('pages.guest.details', compact('guest'));
 
