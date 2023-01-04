@@ -4,17 +4,50 @@ namespace App\Http\Controllers;
 
 use App\Models\Configuration;
 use App\Models\Guest;
+use Carbon\Carbon;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\DB;
 
 class GuestController extends Controller
 {
+
+    public function chart()
+    {
+
+        $guests = Guest::list();
+        $tab = [
+            1 => 0,
+            2 => 0,
+            3 => 0,
+            4 => 0,
+            5 => 0,
+            6 => 0,
+            7 => 0,
+            8 => 0,
+            9 => 0,
+            10 => 0,
+            11 => 0,
+            12 => 0,
+        ];
+
+        // si la date se trouve dans les douzes derniéres mois
+        $date1 = Carbon::today();
+        $date2 = Carbon::today()->subYear(1);
+        $newDateTime = Carbon::now()->subMonth();
+        foreach ($guests as $guest) {
+            $date = Carbon::parse(substr($guest->creationdate, 0, 10));
+            if ($date >= $date2 && $date <= $date1)
+                $tab[$date->month] += 1;
+        }
+        return response()->json($tab);
+    }
 
     public function index()
     {
 
         $guests = Guest::list();
         return view('pages.guest.index', compact("guests"));
-        
+
     }
 
     public function detail()
@@ -42,6 +75,7 @@ class GuestController extends Controller
                 $device = $key;
                 $visit[] = $key;
             }
+
             $guest->device_data = $device;
             $device_data[] = $guest;
         }
@@ -61,6 +95,7 @@ class GuestController extends Controller
             }
             $size["$guest->email"] = isset($size["$guest->email"]) ? $size["$guest->email"]  + 1 : 1;
         }
+
         return view('pages.guest.connexion', compact('list', 'size'));
     }
 
@@ -76,12 +111,12 @@ class GuestController extends Controller
                 'Authorization' => 'Bearer ' . $token,
                 'Content-Type' => 'application/hal+json',
                 'accept' => 'application/json, text/plain, */*',
+
             ],
         ]);
-
+        
         $guest = json_decode($response->getBody()->getContents());
         return view('pages.guest.details', compact('guest'));
 
     }
-
 }

@@ -33,10 +33,10 @@
               <div class="col-lg-7">
                 <div class="card-body p-4 p-sm-5">
 
-                  <h4 class="card-title" style="text-align: center; font-weight: bold; font-size: 30px;">TOTAL_WIFI</h4>
+                  <h4 class="card-title" style="text-align: center; font-weight: bold; font-size: 30px;">IDIS</h4>
                   <form action="/" method="POST">
                     @csrf
-                    <div class="login-separater text-center mb-4"> <span>OU CONECTEZ-VOUS AVEC CLOUDI-FI</span>
+                    <div class="login-separater text-center mb-4"> <span>CONNECTEZ-VOUS AVEC IDIS</span>
                       <hr>
                     </div>
                     @if (Session::has('message'))
@@ -51,7 +51,7 @@
                         </div>
                       </div>
                       <div class="col-12" style="padding: 20px 0 0 0;">
-                        <label for="inputChoosePassword" class="form-label">Enter le Mot de Passe</label>
+                        <label for="inputChoosePassword" class="form-label">Entrer le mot de passe</label>
                         <div class="ms-auto position-relative">
                           <div class="position-absolute top-50 translate-middle-y search-icon px-3"><i class="bi bi-lock-fill"></i></div>
                           <input type="password" name="password" class="form-control radius-30 ps-5" id="inputChoosePassword" placeholder="Entrer le mot de passe">
@@ -67,7 +67,7 @@
                       </div>
                       <div class="col-12">
                         <div class="d-grid">
-                          <button type="submit" class="btn btn-primary radius-30">S'Identifier</button>
+                          <button type="submit" class="btn btn-primary radius-30">S'identifier</button>
                         </div>
                       </div>
                     </div>

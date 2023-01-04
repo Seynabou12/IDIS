@@ -73,6 +73,7 @@
                                     <td>{{ $customer->total_aps}}</td>
                                     <td>{{ $customer->creationdate }}</td>
                                     <td>{{ $customer->plan_expiration }}</td>
+                                    
                                     <td class="text-center text-primary cursor-event">
                                         <a href="/selected-customer/{{$customer->id}}" class="text-primary" data-bs-toggle="tooltip" data-bs-placement="bottom" title="" data-bs-original-title="View detail" aria-label="Views"><i class="fs-5 bi bi-eye-fill"></i></a>
                                         <span class="text-warning" onclick="$(this).edit('{{ $customer->id }}')"><i class="fs-5 bi bi-pencil-fill"></i></span>

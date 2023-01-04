@@ -55,7 +55,8 @@
                             <div class="info">
                                 <p class="mb-1"><strong>Premiére Connexion </strong> : {{ $guest->creationdate }}</p>
                                 <p class="mb-1"><strong>Derniére Authentification</strong> : {{ $guest->authdate }}</p>
-                                <p class="mb-1"><strong>Temp Total</strong> :{{abs(strtotime($guest->authdate ) - strtotime($guest->creationdate))}} secondes </p>
+                                <p class="mb-1"><strong>Temp Total</strong> : </p>
+                                <!-- {{abs(strtotime($guest->authdate ) - strtotime($guest->creationdate))}} secondes -->
                             </div>
                         </div>
                     </div>
@@ -67,7 +68,7 @@
                         <div class="d-flex align-items-center gap-3">
                             <div class="info">
                                
-                                <p class="mb-1"><strong>La Source</strong> : {{ $guest->auth_provider }} </p>
+                                <p class="mb-1"><strong>Source</strong> : {{ $guest->auth_provider }} </p>
                                 <p class="mb-1"><strong>Unité Organisationnelle</strong> : {{ $guest->country }} </p>
                                 <p class="mb-1"><strong>Source d'Authentification</strong> : {{ $guest->authsource }} </p>
                             </div>
@@ -108,16 +109,17 @@
                                     </tr>
                                 </thead>
                                 <tbody>
+
                                     @foreach($guest->device_data as $guests)
                                     <tr>
-                                       
+
                                         <td>{{ $guests->client_mac  }}</td>
                                         <td>{{ $guests->first_seen }}</td>
                                         <td>{{ $guests->last_seen }}</td>
 
                                     </tr>
-
                                     @endforeach
+
                                 </tbody>
                             </table>
                         </div>

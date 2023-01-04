@@ -24,7 +24,7 @@
     <link href="/assets/css/semi-dark.css" rel="stylesheet" />
     <link href="/assets/css/header-colors.css" rel="stylesheet" />
 
-    <title>IDIS-Accueil</title>
+    <title>IDIS</title>
 </head>
 
 <body>
@@ -35,11 +35,12 @@
         @include('./layouts.sidebar')
 
         <main class="page-content">
+
             <div class="card">
                 <div class="card-header py-3">
                     <div class="row g-3 align-items-center">
                         <div class="col-12 col-lg-4 col-md-6 me-auto">
-                            <h5 class="mb-1"><strong>Customer Name: &nbsp</strong>{{ $customer->company_name }}</h5>
+                            <h5 class="mb-1"><strong>Nom de L'Entreprise: &nbsp</strong>{{ $customer->company_name }}</h5>
                             <p class="mb-0">Numéro Entreprise : #{{ $customer->id }}</p>
                         </div>
                     </div>
@@ -70,7 +71,7 @@
                                             <i class="bi bi-plus-circle text-success"></i>
                                         </div>
                                         <div class="info">
-                                            <p class="mb-1"><strong>Nombre Total Visiteur</strong> : {{ $customer->total_users }}</p>
+                                            <p class="mb-1"><strong>Nombre Total de Sessions</strong> : {{ $customer->total_users }}</p>
                                             <p class="mb-1"><strong>Nombre APS</strong> : {{ $customer->total_aps }}</p>
                                             <p class="mb-1"><strong>Total Lieux</strong> : {{ $customer->total_venues }}</p>
                                         </div>
@@ -97,19 +98,19 @@
                     </div>
                 </div>
             </div>
-            <div class="row">
+            <div class="row d-flex">
+
                 <div class="col-12 col-lg-8 col-xl-8 d-flex">
                     <div class="card radius-10 w-100">
                         <div class="card-body">
                             <div class="row row-cols-1 row-cols-lg-2 g-3 align-items-center">
                                 <div class="col">
-                                    <h5 class="mb-0">Devices Data</h5>
+                                    <h5 class="mb-0">Evolution des 12 premiers mois</h5>
                                 </div>
                                 <div class="col">
                                     <div class="d-flex align-items-center justify-content-sm-end gap-3 cursor-pointer">
-                                        <div class="font-13"><i class="bi bi-circle-fill text-primary"></i><span class="ms-2">Windows</span></div>
-                                        <div class="font-13"><i class="bi bi-circle-fill text-success"></i><span class="ms-2">Mac</span></div>
-                                        <div class="font-13"><i class="bi bi-circle-fill text-danger"></i><span class="ms-2">Mobiles</span></div>
+                                        <div class="font-13" id="visiteur"><i class="bi bi-circle-fill text-primary"></i><span class="ms-2">Visiteurs</span></div>
+                                        <div class="font-13"><i class="bi bi-circle-fill text-success"></i><span class="ms-2">Sessions</span></div>
                                     </div>
                                 </div>
                             </div>
@@ -118,6 +119,50 @@
                     </div>
                 </div>
                 <div class="col-12 col-lg-4 col-xl-4 d-flex">
+                    <div class="card radius-10 w-100">
+                        <div class="card-header bg-transparent">
+                            <div class="row g-3 align-items-center">
+                                <div class="col">
+                                    <h5 class="mb-0">Statistiques</h5>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="card-body">
+                            <div class="d-lg-flex align-items-center justify-content-center gap-4">
+                                <div id="chart3"></div>
+                                <ul class="list-group list-group-flush" style="margin-right: 10px;">
+                                    <li class="list-group-item"><i class="bi bi-circle-fill text-pink me-1"></i> Visiteurs: <span class="me-1">4</span></li>
+                                    <li class="list-group-item"><i class="bi bi-circle-fill text-info me-1"></i> Sessions: <span class="me-1">{{ $customer->total_users }}</span></li>
+                                </ul>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+            </div>
+
+            <div class="row d-flex">
+            
+                <div class="col-12 col-lg-6 col-xl-6 d-flex">
+                    <div class="card radius-10 w-100">
+                        <div class="card-body">
+                            <div class="row row-cols-1 row-cols-lg-2 g-3 align-items-center">
+                                <div class="col">
+                                    <h5 class="mb-0">Barre d'évolution</h5>
+                                </div>
+                                <div class="col">
+                                    <div class="d-flex align-items-center justify-content-sm-end gap-3 cursor-pointer">
+                                        <div class="font-13"><i class="bi bi-circle-fill text-primary"></i><span class="ms-2">Sessions</span></div>
+                                        <div class="font-13"><i class="bi bi-circle-fill text-pink"></i><span class="ms-2">Visiteurs</span></div>
+                                    </div>
+                                </div>
+                            </div>
+                            <div id="chart4"></div>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="col-12 col-lg-6 col-xl-6 d-flex">
 
                     <div class="card radius-10 w-100">
                         <div class="card-header bg-transparent">
@@ -128,135 +173,33 @@
                                 <div class="card-body">
                                     <table class="table mb-0">
                                         <thead class="table-dark">
+
                                             <tr>
                                                 <th scope="col">Authentication</th>
-                                                <th scope="col">Count</th>
+                                                <th scope="col">Nombre</th>
                                             </tr>
+
                                         </thead>
                                         <tbody>
-                                            <tr>
-                                                <th scope="row">Windows</th>
-                                                <td>23</td>
 
+                                            <tr>
+                                                <th scope="row">Sessions</th>
+                                                <td>{{ $customer->total_users }}</td>
                                             </tr>
                                             <tr>
-                                                <th scope="row">Mobiles</th>
-                                                <td>24</td>
+                                                <th scope="row">Visiteurs</th>
+                                                <td>4</td>
+                                            </tr>
 
-                                            </tr>
-                                            <tr>
-                                                <th scope="row">MacBooks</th>
-                                                <td colspan="2">4</td>
-                                            </tr>
                                         </tbody>
                                     </table>
                                 </div>
                             </div>
                         </div>
+                    </div>
+                </div>
+            </div>
 
-                    </div>
-                    <!-- <div class="card radius-10 w-100">
-                        <div class="card-header bg-transparent">
-                            <div class="row g-3 align-items-center">
-                                <div class="col">
-                                    <h5 class="mb-0">Statistics</h5>
-                                </div>
-                                <div class="col">
-                                    <div class="d-flex align-items-center justify-content-end gap-3 cursor-pointer">
-                                        <div class="dropdown">
-                                            <a class="dropdown-toggle dropdown-toggle-nocaret" href="#" data-bs-toggle="dropdown" aria-expanded="false"><i class="bx bx-dots-horizontal-rounded font-22 text-option"></i>
-                                            </a>
-                                            <ul class="dropdown-menu">
-                                                <li><a class="dropdown-item" href="javascript:;">Action</a>
-                                                </li>
-                                                <li><a class="dropdown-item" href="javascript:;">Another action</a>
-                                                </li>
-                                                <li>
-                                                    <hr class="dropdown-divider">
-                                                </li>
-                                                <li><a class="dropdown-item" href="javascript:;">Something else here</a>
-                                                </li>
-                                            </ul>
-                                        </div>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-                        <div class="card-body">
-                            <div id="chart2"></div>
-                        </div>
-                        <ul class="list-group list-group-flush mb-0">
-                            <li class="list-group-item d-flex justify-content-between align-items-center bg-transparent">New Orders<span class="badge bg-primary badge-pill">25%</span>
-                            </li>
-                            <li class="list-group-item d-flex justify-content-between align-items-center bg-transparent">Completed<span class="badge bg-orange badge-pill">65%</span>
-                            </li>
-                            <li class="list-group-item d-flex justify-content-between align-items-center bg-transparent">Pending<span class="badge bg-success badge-pill">10%</span>
-                            </li>
-                        </ul>
-                    </div> -->
-                </div>
-            </div>
-            <div class="row">
-                <div class="col-12 col-lg-6 col-xl-6 d-flex">
-                    <div class="card radius-10 w-100">
-                        <div class="card-header bg-transparent">
-                            <div class="row g-3 align-items-center">
-                                <div class="col">
-                                    <h5 class="mb-0">Statistics</h5>
-                                </div>
-                                <div class="col">
-                                    <div class="d-flex align-items-center justify-content-end gap-3 cursor-pointer">
-                                        <div class="dropdown">
-                                            <a class="dropdown-toggle dropdown-toggle-nocaret" href="#" data-bs-toggle="dropdown" aria-expanded="false"><i class="bx bx-dots-horizontal-rounded font-22 text-option"></i>
-                                            </a>
-                                            <ul class="dropdown-menu">
-                                                <li><a class="dropdown-item" href="javascript:;">Action</a>
-                                                </li>
-                                                <li><a class="dropdown-item" href="javascript:;">Another action</a>
-                                                </li>
-                                                <li>
-                                                    <hr class="dropdown-divider">
-                                                </li>
-                                                <li><a class="dropdown-item" href="javascript:;">Something else here</a>
-                                                </li>
-                                            </ul>
-                                        </div>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-                        <div class="card-body">
-                            <div class="d-lg-flex align-items-center justify-content-center gap-4">
-                                <div id="chart3"></div>
-                                <ul class="list-group list-group-flush">
-                                    <li class="list-group-item"><i class="bi bi-circle-fill text-purple me-1"></i> Visitors: <span class="me-1">89</span></li>
-                                    <li class="list-group-item"><i class="bi bi-circle-fill text-info me-1"></i> Subscribers: <span class="me-1">45</span></li>
-                                    <li class="list-group-item"><i class="bi bi-circle-fill text-pink me-1"></i> Contributor: <span class="me-1">35</span></li>
-                                    <li class="list-group-item"><i class="bi bi-circle-fill text-success me-1"></i> Author: <span class="me-1">62</span></li>
-                                </ul>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-                <div class="col-12 col-lg-6 col-xl-6 d-flex">
-                    <div class="card radius-10 w-100">
-                        <div class="card-body">
-                            <div class="row row-cols-1 row-cols-lg-2 g-3 align-items-center">
-                                <div class="col">
-                                    <h5 class="mb-0">Product Actions</h5>
-                                </div>
-                                <div class="col">
-                                    <div class="d-flex align-items-center justify-content-sm-end gap-3 cursor-pointer">
-                                        <div class="font-13"><i class="bi bi-circle-fill text-primary"></i><span class="ms-2">Views</span></div>
-                                        <div class="font-13"><i class="bi bi-circle-fill text-pink"></i><span class="ms-2">Clicks</span></div>
-                                    </div>
-                                </div>
-                            </div>
-                            <div id="chart4"></div>
-                        </div>
-                    </div>
-                </div>
-            </div>
         </main>
 
         <div class="overlay nav-toggle-icon"></div>
@@ -326,7 +269,6 @@
     </div>
 
     <script src="/assets/js/bootstrap.bundle.min.js"></script>
-
     <script src="/assets/js/jquery.min.js"></script>
     <script src="/assets/plugins/simplebar/js/simplebar.min.js"></script>
     <script src="/assets/plugins/metismenu/js/metisMenu.min.js"></script>

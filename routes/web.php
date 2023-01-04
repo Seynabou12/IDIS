@@ -4,6 +4,7 @@ use App\Http\Controllers\AccueilController;
 use App\Http\Controllers\AdminDashbordController;
 use App\Http\Controllers\AuthController;
 use App\Http\Controllers\CaptivePortalsController;
+use App\Http\Controllers\ChartController;
 use App\Http\Controllers\CustomerController;
 use App\Http\Controllers\GroupController;
 use App\Http\Controllers\GuestController;
@@ -29,6 +30,7 @@ use Illuminate\Support\Facades\Route;
 */
 
 Route::get('/welcom', [AdminDashbordController::class, 'welcom']);
+Route::get('/chart', [ChartController::class, 'home']);
 
 Route::get('/reporting', [ReportingContoller::class, 'reporting']);
 
@@ -54,6 +56,7 @@ Route::get('/users', [UtilisateurController::class, 'index'])->where('id', '[0-9
 Route::get('/users/{id}/details', [UtilisateurController::class, 'details'])->name('user.details')->where("id", "[0-9a-z]+");
 Route::get('/users/{id}/delete', [UtilisateurController::class, 'delete'])->name("user.delete")->where('id', '[0-9a-z\-]+');
 
+Route::get('/guests/connexion-chart', [GuestController::class, 'chart'])->where('id', '[0-9a-z\-]+');
 Route::get('/guests/connexion', [GuestController::class, 'index'])->where('id', '[0-9a-z\-]+');
 Route::get('/guests/{id}/details', [GuestController::class, 'details'])->where("id", "[0-9a-z]+");
 Route::any('/guests/detail', [GuestController::class, 'detail'])->name('guest.detail');
