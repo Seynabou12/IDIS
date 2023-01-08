@@ -14,7 +14,6 @@ var options = {
     chart: {
         foreColor: '#9a9797',
         type: "bar",
-        //width: 130,
         height: 355,
         toolbar: {
             show: !1

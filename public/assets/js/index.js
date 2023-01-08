@@ -1,19 +1,33 @@
 $(function () {
   "use strict";
 
-  // chart 1
+  var vs = [];
+  var ss = [];
+  var ct = [];
+  var cts = [];
 
+  for (const e in tab) {
+
+    vs.push(tab[e]);
+    cts.push(e);
+  }
+
+  for (const c in tab1) {
+    ss.push(tab1[c]);
+    ct.push(c);
+  }
 
   var options = {
 
     series: [
       {
-        name: "Visiteurs",
-        data: [4, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0],
+        name: "Sessions",
+        data: vs,
       },
       {
-        name: "Sessions",
-        data: [7, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0]
+        name: "Visiteurs",
+        data: ss,
+        // [9,0,0,0,0,0,0,0,0,0,0,0],
       }
     ],
     chart: {
@@ -84,14 +98,11 @@ $(function () {
         inverseColors: true,
         opacityFrom: 0.8,
         opacityTo: 0.2,
-        //stops: [0, 50, 100],
-        //colorStops: []
       }
     },
     colors: ["#3461ff", "#12bf24"],
-  
     xaxis: {
-      categories: ["Dec", "Jan", "Fév", "Mars", "Avr", "Mai", "Juin", "Jul", "Aout", "Sep", "Oct", "Nov"]
+      categories: cts
     },
     yaxist: {
       title: {
@@ -110,6 +121,7 @@ $(function () {
 
   var chart = new ApexCharts(document.querySelector("#chart1"), options);
   chart.render();
+
 
   // chart 2
   var options = {
@@ -163,6 +175,7 @@ $(function () {
       width: 360,
       type: 'donut',
     },
+
     labels: ["Sessions", "Visiteurs"],
     fill: {
       type: 'gradient',
@@ -202,100 +215,123 @@ $(function () {
   chart.render();
 
   // chart 4
-  var options = {
-    series: [{
-      name: "Sessions",
-      data: [7, 0, 0, 0, 0, 0, 0, 0]
-    }, {
-      name: "Visiteurs",
-      data: [4, 0, 0, 0, 0, 0, 0, 0]
-    }],
-    chart: {
-      foreColor: '#9a9797',
-      type: "bar",
-      //width: 130,
-      height: 280,
-      toolbar: {
-        show: !1
+
+  let mois = [];
+  let sessions = [];
+  async function apiData() {
+
+    const apilink = document.location.origin + "/guests/connexion-chart";
+    const response = await fetch(apilink);
+    return await response.json();
+
+  }
+
+
+
+  async function drawChart() {
+    var options = {
+      series: [{
+        labels: mois,
+        name: "Sessions",
+        data: sessions,
+      }],
+
+      chart: {
+        foreColor: '#9a9797',
+        type: "bar",
+        height: 280,
+        toolbar: {
+          show: !1
+        },
+        zoom: {
+          enabled: !1
+        },
+
+        dropShadow: {
+          enabled: 0,
+          top: 3,
+          left: 14,
+          blur: 4,
+          opacity: .12,
+          color: "#3361ff"
+        },
+
+        sparkline: {
+          enabled: !1
+        }
       },
-      zoom: {
+
+      markers: {
+        size: 0,
+        colors: ["#3361ff"],
+        strokeColors: "#fff",
+        strokeWidth: 2,
+        hover: {
+          size: 7
+        }
+      },
+
+      plotOptions: {
+        bar: {
+          horizontal: !1,
+          columnWidth: "40%",
+          endingShape: "rounded"
+        }
+      },
+
+      legend: {
+        show: false,
+        position: 'top',
+        horizontalAlign: 'left',
+        offsetX: -20
+      },
+
+      dataLabels: {
         enabled: !1
       },
 
-      dropShadow: {
-        enabled: 0,
-        top: 3,
-        left: 14,
-        blur: 4,
-        opacity: .12,
-        color: "#3361ff"
+      stroke: {
+        show: !0,
+        width: 0,
+        curve: "smooth"
       },
-      sparkline: {
-        enabled: !1
-      }
-    },
-    markers: {
-      size: 0,
-      colors: ["#3361ff"],
-      strokeColors: "#fff",
-      strokeWidth: 2,
-      hover: {
-        size: 7
-      }
-    },
-    plotOptions: {
-      bar: {
-        horizontal: !1,
-        columnWidth: "40%",
-        endingShape: "rounded"
-      }
-    },
-    legend: {
-      show: false,
-      position: 'top',
-      horizontalAlign: 'left',
-      offsetX: -20
-    },
-    dataLabels: {
-      enabled: !1
-    },
-    stroke: {
-      show: !0,
-      width: 0,
-      curve: "smooth"
-    },
-    fill: {
-      type: 'gradient',
-      gradient: {
-        shade: 'light',
-        type: "vertical",
-        shadeIntensity: 0.5,
-        gradientToColors: ["#005bea", "#ff0080"],
-        inverseColors: true,
-        opacityFrom: 1,
-        opacityTo: 1,
-        //stops: [0, 50, 100],
-        //colorStops: []
-      }
-    },
 
-    colors: ["#348bff", "#ff00ab"],
-    xaxis: {
-      categories: ["Dec", "Jan", "Fev", "Mars", "Avr", "Mai", "Juin", "Jul", "Aout", "Sep", "Oct", "Nov", "Dec"]
-    },
-    tooltip: {
-      theme: 'dark',
-      y: {
-        formatter: function (val) {
-          return "" + val + ""
+      fill: {
+        type: 'gradient',
+        gradient: {
+          shade: 'light',
+          type: "vertical",
+          shadeIntensity: 0.5,
+          gradientToColors: ["#005bea", "#ff0080"],
+          inverseColors: true,
+          opacityFrom: 1,
+          opacityTo: 1,
+          //stops: [0, 50, 100],
+          //colorStops: []
+        }
+      },
+
+      colors: ["#348bff", "#ff00ab"],
+      xaxis: {
+        categories: mois,
+      },
+
+      tooltip: {
+        theme: 'dark',
+        y: {
+          formatter: function (val) {
+            return "" + val + ""
+          }
         }
       }
-    }
 
-  };
+    };
 
-  var chart = new ApexCharts(document.querySelector("#chart4"), options);
-  chart.render();
+    var chart = new ApexCharts(document.querySelector("#chart4"), options);
+    chart.render();
+  }
+
+  drawChart();
 
   jQuery('#geographic-map').vectorMap({
     map: 'world_mill_en',

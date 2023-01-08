@@ -10,36 +10,26 @@ use Illuminate\Support\Facades\DB;
 
 class GuestController extends Controller
 {
+    
 
     public function chart()
     {
 
         $guests = Guest::list();
-        $tab = [
-            1 => 0,
-            2 => 0,
-            3 => 0,
-            4 => 0,
-            5 => 0,
-            6 => 0,
-            7 => 0,
-            8 => 0,
-            9 => 0,
-            10 => 0,
-            11 => 0,
-            12 => 0,
-        ];
 
-        // si la date se trouve dans les douzes derniéres mois
         $date1 = Carbon::today();
         $date2 = Carbon::today()->subYear(1);
-        $newDateTime = Carbon::now()->subMonth();
+        $d = Carbon::today()->subYear(1)->addMonth(1);
+        while($d <= $date1){
+            $tab[$d->month] = 0;
+            $d->addMonth(1);
+        }
         foreach ($guests as $guest) {
             $date = Carbon::parse(substr($guest->creationdate, 0, 10));
             if ($date >= $date2 && $date <= $date1)
                 $tab[$date->month] += 1;
         }
-        
+
         return response()->json($tab);
     }
 
@@ -80,8 +70,9 @@ class GuestController extends Controller
             $guest->device_data = $device;
             $device_data[] = $guest;
         }
-
+      
         return view('pages.guest.detail', compact("list", "device_data", "firstValue", "guest"));
+
     }
 
     public function detaile()
@@ -96,8 +87,9 @@ class GuestController extends Controller
             }
             $size["$guest->email"] = isset($size["$guest->email"]) ? $size["$guest->email"]  + 1 : 1;
         }
-
+        
         return view('pages.guest.connexion', compact('list', 'size'));
+
     }
 
     public function details(string $id)

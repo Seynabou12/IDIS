@@ -71,9 +71,9 @@
                                             <i class="bi bi-plus-circle text-success"></i>
                                         </div>
                                         <div class="info">
-                                            <p class="mb-1"><strong>Nombre Total de Sessions</strong> : {{ $customer->total_users }}</p>
+                                            <p class="mb-1"><strong>Nombre Sessions</strong> : {{ $customer->total_users }}</p>
+                                            <p class="mb-1"><strong>Nombre Visiteur</strong> : {{ count($list) }}</p>
                                             <p class="mb-1"><strong>Nombre APS</strong> : {{ $customer->total_aps }}</p>
-                                            <p class="mb-1"><strong>Total Lieux</strong> : {{ $customer->total_venues }}</p>
                                         </div>
                                     </div>
                                 </div>
@@ -131,7 +131,7 @@
                             <div class="d-lg-flex align-items-center justify-content-center gap-4">
                                 <div id="chart3"></div>
                                 <ul class="list-group list-group-flush" style="margin-right: 10px;">
-                                    <li class="list-group-item"><i class="bi bi-circle-fill text-pink me-1"></i> Visiteurs: <span class="me-1">4</span></li>
+                                    <li class="list-group-item"><i class="bi bi-circle-fill text-pink me-1"></i> Visiteurs: <span class="me-1">{{count($list)}}</span></li>
                                     <li class="list-group-item"><i class="bi bi-circle-fill text-info me-1"></i> Sessions: <span class="me-1">{{ $customer->total_users }}</span></li>
                                 </ul>
                             </div>
@@ -188,7 +188,7 @@
                                             </tr>
                                             <tr>
                                                 <th scope="row">Visiteurs</th>
-                                                <td>4</td>
+                                                <td>{{ count($list) }}</td>
                                             </tr>
 
                                         </tbody>
@@ -282,6 +282,11 @@
     <script src="/assets/plugins/datatable/js/jquery.dataTables.min.js"></script>
     <script src="/assets/plugins/datatable/js/dataTables.bootstrap5.min.js"></script>
 
+
+    <script>
+            var tab = @json($tab);
+            var tab1 = @json($tab1);
+    </script>
 
     <script src="/assets/js/app.js"></script>
     <script src="/assets/js/index.js"></script>
